@@ -7,23 +7,33 @@ Para el index, crea un array de frases que se muestren abajo del todo de forma a
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="estilos_index.css">
   <title>PersonalGymTracker</title>
 </head>
 <body>
   <h1>Menú principal</h1>
-
+  <br>
     <h2>BIENVENIDO</h2>
+<br>
+    <!-- espacio para mostrar la semana actual -->
+    <div id="semana-actual">
 
-    <button>Gestionar semanas</button>
-    <br>
-    <br>
-    <button>Ejercicios</button>
-    <br>
-    <br>
-    <button>Estadísticas</button>
+    </div>
 
-<h4 id="frase_aletoria"></h4>
+    <div id="botones-nav">
 
+    <button class="boton-nav" data-url="seccion_semanas.html">Gestionar semanas</button>
+    <br>
+    <br>
+    <button class="boton-nav" data-url="seccion_ejercicios.html">Ejercicios</button>
+    <br>
+    <br>
+    <button class="boton-nav" data-url="seccion_estadisticas.html">Estadísticas</button>
+    </div>
+
+<h4 id="frase_aleatoria"></h4>
+
+<script src="db.js"></script>
 <script src="index.js"></script>
 </body>
 </html>

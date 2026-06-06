@@ -1,0 +1,68 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  background-color: #0a0a0a;
+  color: #ffffff;
+  font-family: system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;
+  padding: 2rem 1.5rem;
+  max-width: 700px;
+  margin: 0 auto;
+}
+
+/* Títulos y subtítulos en verde */
+h1, h2, h3, h4 {
+  color: #00e676;
+  text-align: center;
+}
+
+/* Efecto tarjeta para la semana actual */
+#semana-actual {
+  background-color: #121212;
+  border-radius: 24px;
+  padding: 1.5rem;
+  margin-bottom: 2rem;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.6);
+  border: 1px solid #2c2c2c;
+}
+
+/* Botones con estilo oscuro */
+#botones-nav {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  margin: 2rem 0;
+}
+
+.boton-nav {
+  background-color: #1f1f1f;
+  border: 1px solid #333;
+  color: white;
+  padding: 14px 20px;
+  font-size: 1rem;
+  font-weight: 600;
+  border-radius: 60px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  text-align: center;
+}
+
+.boton-nav:hover {
+  background-color: #2a2a2a;
+  border-color: #00e676;
+  color: #00e676;
+}
+
+/* Frase aleatoria abajo */
+#frase_aleatoria {
+  text-align: center;
+  font-style: italic;
+  color: #aaaaaa;
+  font-size: 2.5rem;
+  margin-top: 2rem;
+  padding-top: 1rem;
+  border-top: 1px solid #2c2c2c;
+}
