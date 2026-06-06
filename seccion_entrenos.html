@@ -1,0 +1,86 @@
+
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Syne:wght@400;700&family=Inconsolata:wght@400;500&display=swap');
+  .gt { font-family: 'Syne', sans-serif; background: #fafaf8; color: #1a1a1a; padding: 1rem; border-radius: 12px; min-height: 560px; border: 0.5px solid #e0ddd5; }
+  .gt-header { display: flex; justify-content: space-between; align-items: baseline; margin-bottom: 1.25rem; border-bottom: 1.5px solid #1a1a1a; padding-bottom: 10px; }
+  .gt-logo { font-size: 20px; font-weight: 700; letter-spacing: -0.5px; }
+  .gt-date { font-family: 'Inconsolata', monospace; font-size: 12px; color: #999; }
+  .gt-stats { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; margin-bottom: 1.5rem; }
+  .gt-stat { background: #f0ede6; border-radius: 8px; padding: 10px 12px; }
+  .gt-stat-label { font-family: 'Inconsolata', monospace; font-size: 10px; color: #999; letter-spacing: 0.5px; text-transform: uppercase; margin-bottom: 2px; }
+  .gt-stat-val { font-size: 22px; font-weight: 700; line-height: 1.1; }
+  .gt-stat-val span { font-size: 12px; font-weight: 400; color: #888; }
+  .gt-stat-delta { font-family: 'Inconsolata', monospace; font-size: 11px; color: #5a8a3c; margin-top: 2px; }
+  .gt-week { margin-bottom: 1rem; }
+  .gt-week-row { display: flex; justify-content: space-between; align-items: center; padding: 10px 0; border-bottom: 0.5px solid #e0ddd5; cursor: pointer; }
+  .gt-week-label { font-size: 15px; font-weight: 700; }
+  .gt-week-count { font-family: 'Inconsolata', monospace; font-size: 12px; color: #999; }
+  .gt-entreno-block { padding: 12px 0 4px 12px; border-left: 2px solid #1a1a1a; margin: 8px 0 8px 4px; }
+  .gt-entreno-name { font-size: 12px; font-weight: 700; text-transform: uppercase; letter-spacing: 1px; color: #888; margin-bottom: 8px; }
+  .gt-ejercicio { margin-bottom: 10px; }
+  .gt-ej-name { font-size: 14px; font-weight: 700; margin-bottom: 5px; }
+  .gt-series-row { display: flex; gap: 6px; flex-wrap: wrap; }
+  .gt-serie-pill { background: #f0ede6; border-radius: 20px; padding: 4px 10px; font-family: 'Inconsolata', monospace; font-size: 12px; color: #1a1a1a; }
+  .gt-avg-row { font-family: 'Inconsolata', monospace; font-size: 11px; color: #aaa; margin-top: 4px; }
+  .gt-add { font-size: 12px; color: #bbb; cursor: pointer; display: flex; align-items: center; gap: 4px; margin-top: 8px; background: none; border: none; font-family: 'Syne', sans-serif; padding: 0; }
+  .gt-new-week { margin-top: 1.5rem; width: 100%; padding: 10px; background: #1a1a1a; color: #fafaf8; border: none; border-radius: 8px; font-family: 'Syne', sans-serif; font-size: 14px; font-weight: 700; cursor: pointer; letter-spacing: 0.5px; }
+</style>
+<div class="gt">
+  <h2 class="sr-only">GymTracker — mockup con estadísticas de volumen</h2>
+  <div class="gt-header">
+    <span class="gt-logo">GymTracker</span>
+    <span class="gt-date">Jun 03, 2026</span>
+  </div>
+
+  <div class="gt-stats">
+    <div class="gt-stat">
+      <div class="gt-stat-label">Volumen semana</div>
+      <div class="gt-stat-val">12,480 <span>kg</span></div>
+      <div class="gt-stat-delta">↑ +8.3% vs sem. ant.</div>
+    </div>
+    <div class="gt-stat">
+      <div class="gt-stat-label">Entrenos</div>
+      <div class="gt-stat-val">3 <span>/ sem.</span></div>
+      <div class="gt-stat-delta" style="color:#aaa">igual que antes</div>
+    </div>
+  </div>
+
+  <div class="gt-week">
+    <div class="gt-week-row">
+      <span class="gt-week-label">Semana 1</span>
+      <span class="gt-week-count">3 entrenos <i class="ti ti-chevron-down" style="font-size:13px" aria-hidden="true"></i></span>
+    </div>
+    <div class="gt-entreno-block">
+      <div class="gt-entreno-name">Lunes — Pecho</div>
+      <div class="gt-ejercicio">
+        <div class="gt-ej-name">Press banca</div>
+        <div class="gt-series-row">
+          <span class="gt-serie-pill">8 × 80kg</span>
+          <span class="gt-serie-pill">7 × 82.5kg</span>
+          <span class="gt-serie-pill">6 × 85kg</span>
+        </div>
+        <div class="gt-avg-row">∅ 7 reps · 82.5 kg</div>
+      </div>
+      <div class="gt-ejercicio">
+        <div class="gt-ej-name">Aperturas</div>
+        <div class="gt-series-row">
+          <span class="gt-serie-pill">12 × 14kg</span>
+          <span class="gt-serie-pill">10 × 16kg</span>
+        </div>
+        <div class="gt-avg-row">∅ 11 reps · 15 kg</div>
+      </div>
+      <button class="gt-add" aria-label="agregar ejercicio">
+        <i class="ti ti-plus" aria-hidden="true"></i> ejercicio
+      </button>
+    </div>
+  </div>
+
+  <div class="gt-week">
+    <div class="gt-week-row">
+      <span class="gt-week-label">Semana 2</span>
+      <span class="gt-week-count">1 entreno <i class="ti ti-chevron-down" style="font-size:13px" aria-hidden="true"></i></span>
+    </div>
+  </div>
+
+  <button class="gt-new-week" aria-label="nueva semana">+ Nueva semana</button>
+</div>
