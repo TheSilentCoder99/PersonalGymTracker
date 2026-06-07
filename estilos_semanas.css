@@ -1,0 +1,212 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  background-color: #0a0a0a;
+  color: #ffffff;
+  font-family: system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;
+  padding: 2rem 1.5rem;
+  max-width: 700px;
+  margin: 0 auto;
+  position: relative;
+}
+
+/* Desplazamiento suave global */
+html {
+  scroll-behavior: smooth;
+}
+
+/* Títulos en verde */
+h1{
+  color: #00e676;
+  font-size: 2rem;
+  font-weight: 700;
+  border-left: 5px solid #00e676;
+  padding-left: 1rem;
+  margin-bottom: 2rem;
+}
+
+h3{
+  color: #00e676;
+  font-size: 1.5rem;
+  font-weight: 700;
+  border-left: 5px solid #00e676;
+  padding-left: 1rem;
+  margin-bottom: 2rem;
+}
+
+/* Contenedor de todas las semanas */
+#All-semanas {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  margin-bottom: 3rem;
+}
+
+/* Efecto tarjeta para cada semana */
+.semana-card {
+  background-color: #121212;
+  border-radius: 20px;
+  padding: 1.2rem 1.5rem;
+  border: 1px solid #2c2c2c;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4);
+  transition: border-color 0.2s ease;
+}
+
+.semana-card:hover {
+  border-color: #00e676;
+}
+
+/* Título de la semana dentro de la tarjeta */
+.semana-card h3 {
+  color: #00e676;
+  font-size: 1.3rem;
+  font-weight: 600;
+  margin-bottom: 0.75rem;
+}
+
+/* Información de la semana (fecha, número de entrenos, etc.) */
+.semana-card p {
+  color: #bbbbbb;
+  font-size: 0.9rem;
+  margin-bottom: 0.5rem;
+  line-height: 1.4;
+}
+
+/* Botones de acción dentro de cada tarjeta (editar, eliminar, ver) */
+.semana-buttons {
+  display: flex;
+  gap: 0.75rem;
+  margin-top: 1rem;
+  flex-wrap: wrap;
+}
+
+.semana-buttons button {
+  background-color: #1f1f1f;
+  border: 1px solid #333;
+  color: white;
+  padding: 8px 16px;
+  font-size: 0.85rem;
+  font-weight: 500;
+  border-radius: 40px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.semana-buttons button:hover {
+  background-color: #2a2a2a;
+  border-color: #00e676;
+  color: #00e676;
+}
+
+/* Botón para añadir nueva semana (fuera de las tarjetas) */
+.btn-agregar {
+  background-color: #00e676;
+  border: none;
+  color: #0a0a0a;
+  padding: 12px 24px;
+  font-size: 1rem;
+  font-weight: 600;
+  border-radius: 60px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  margin-top: 1rem;
+  margin-bottom: 2rem;
+  width: 100%;
+}
+
+.btn-agregar:hover {
+  background-color: #00c853;
+  transform: scale(1.01);
+}
+
+/* Enlace "Arriba" estilo botón flotante o fijo abajo a la derecha */
+a[href="#arriba"] {
+  position: fixed;
+  bottom: 2rem;
+  right: 2rem;
+  background-color: #1f1f1f;
+  border: 1px solid #333;
+  color: #00e676;
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-decoration: none;
+  font-size: 1.5rem;
+  transition: all 0.2s ease;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4);
+  z-index: 100;
+}
+
+a[href="#arriba"]:hover {
+  background-color: #2a2a2a;
+  border-color: #00e676;
+  transform: scale(1.1);
+}
+
+/* Asegurar que el ancla #arriba existe (puedes poner un div invisible al inicio) */
+#arriba {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 1px;
+  height: 1px;
+}
+
+/* Enlace "Volver" estilo botón */
+a {
+  display: inline-block;
+  background-color: #1f1f1f;
+  border: 1px solid #333;
+  color: white;
+  padding: 10px 20px;
+  font-size: 0.9rem;
+  font-weight: 500;
+  border-radius: 60px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  text-align: center;
+  text-decoration: none;
+  margin-bottom: 2rem;
+}
+
+a:hover {
+  background-color: #2a2a2a;
+  border-color: #00e676;
+  color: #00e676;
+}
+
+
+/* Media query para móviles */
+@media (max-width: 550px) {
+  body {
+    padding: 1rem;
+  }
+  
+  .semana-card {
+    padding: 1rem;
+  }
+  
+  a[href="#arriba"] {
+    bottom: 1rem;
+    right: 1rem;
+    width: 40px;
+    height: 40px;
+    font-size: 1.2rem;
+  }
+  
+  .semana-buttons button {
+    padding: 6px 12px;
+    font-size: 0.8rem;
+  }
+}
+
+.oculto {
+  display: none;
+}
