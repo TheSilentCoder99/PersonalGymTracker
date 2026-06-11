@@ -4,36 +4,50 @@ Para el index, crea un array de frases que se muestren abajo del todo de forma a
 
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="estilos_index.css">
   <title>PersonalGymTracker</title>
 </head>
+
 <body>
-  <h1>Menú principal</h1>
+    <h1>BIENVENIDO</h1>
   <br>
-    <h2>BIENVENIDO</h2>
+  <div id="semana-actual">
+  <h3>Nuevo entrenamiento</h3>
 <br>
-    <!-- espacio para mostrar la semana actual -->
-    <div id="semana-actual">
+    <form action="">
+      <label for="entreno">Entrenamiento
+        <input id="nombre_entreno" type="text" name="nombre_entreno">
+      </label>
+      <br>
+      <br>
+      <label for="fecha">Fecha
+        <input id="fecha_nueva_semana" type="date" name="fecha_nueva_semana">
+      </label>
+      <br>
+      <br>
+      <button id="crear-entrenamiento" type="submit">Guardar</button>
+    </form>
+  </div>
 
-    </div>
-
-    <div id="botones-nav">
-
-    <button class="boton-nav" data-url="seccion_semanas.html">Gestionar semanas</button>
+  <!-- BOTONES PARA CAMBIAR DE VENTANA -->
+  <div id="botones-nav">
+    <button class="boton-nav" data-url="seccion_entrenos.html">Gestionar entrenos</button>
     <br>
     <br>
     <button class="boton-nav" data-url="seccion_ejercicios.html">Ejercicios</button>
     <br>
     <br>
     <button class="boton-nav" data-url="seccion_estadisticas.html">Estadísticas</button>
-    </div>
+  </div>
 
-<h4 id="frase_aleatoria"></h4>
+  <h4 id="frase_aleatoria"></h4>
 
-<script src="db.js"></script>
-<script src="index.js"></script>
+  <script src="db.js"></script>
+  <script src="index.js"></script>
 </body>
+
 </html>

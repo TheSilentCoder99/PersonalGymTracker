@@ -125,40 +125,44 @@ contenedor_botones.addEventListener("click", (evento) => {
 });
 
 
+// PEGO LOS DATOS DEL FORMULARIO AL JS
+    const fecha_entreno = document.getElementById('fecha_nueva_semana');
+    const nombre_entreno = document.getElementById('nombre_entreno');
+    const boton_crear_entreno = document.getElementById('crear-entrenamiento');
 
-async function mostrarUltimaSemana() {
+// FUNCIÓN QUE CREA UN ENTRENAMIENTO Y LO GUARDA EN EL ARRAY DE ENTRENAMIENTOS QUE YA ESTABA CREADO
+async function crearEntrenamiento(nombre, fecha) {
 
-    // Traigo todas las semanas desde otra función en otro .js
-    const todasLasSemanas = await obtenerTodasLasSemanas();
+    const entrenamiento = {
+        id: Date.now(),
+        nombre,
+        fecha,
+        ejercicios: []
+    };
 
-    //   Si aún no hay semanas, escribo un mensaje dentro del div
-    if (todasLasSemanas.length === 0) {
-        document.getElementById("semana-actual").innerHTML = `
-    <h3>No hay semanas registradas todavía.</h3>
-  `;
-        return;
-    }
-
-    // La última semana es la que tiene el id más alto
-    // (porque usamos Date.now() como id)
-    const ultimaSemana = todasLasSemanas.at(-1);
-
-    //   Escribo la info de la última semana en el div
-    document.getElementById("semana-actual").innerHTML = `
-    <h3>${ultimaSemana.nombre}</h3>
-    <p>Entrenos registrados: ${ultimaSemana.entrenos.length}</p>
-  `;
+    // GUARDO EL ENTRENAMIENTO EN LA BD
+    await guardarEntrenamiento(entrenamiento);
 }
 
+         // 2. Escuchas el clic del botón
+boton_crear_entreno.addEventListener('click', function(event) {
+    // Evita que la página se recargue si el botón está dentro de un <form>
+    event.preventDefault(); 
+    // 3. OBTENGO LOS VALORES JUSTO AHORA (cuando el usuario ya escribió)
+    let fecha_ingresada = fecha_entreno.value;
+    let nombre_ingresado = nombre_entreno.value;
+    crearEntrenamiento(nombre_ingresado,fecha_ingresada);
+
+    nombre_entreno.value = "";
+    fecha_entreno.value = "";
+
+});
 
 window.onload = async function () {
 
     // CREO O ABRO LA BD PARA PODER HACER OPS RELACIONADAS CON ELLA
     await inicializarBaseDeDatos();
 
-    await mostrarUltimaSemana();
-
     const indiceAleatorio = Math.floor(Math.random() * frases.length);
     document.getElementById("frase_aleatoria").textContent = frases[indiceAleatorio];
-
 }

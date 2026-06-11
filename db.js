@@ -1,120 +1,73 @@
-// SE PREPARA LA CONEXIÓN CON LA BD
-// Nombre de la base de datos IndexedDB
-const NOMBRE_BASE_DE_DATOS = "gymtracker";
+let conexion;
 
-// Versión actual de la base de datos (debe ser un número entero mayor que 0)
-const VERSION_BASE_DE_DATOS = 1;
-
-// Variable global para almacenar el objeto IDBDatabase una vez abierta la conexión
-let conexion; 
-
-/**
- * Inicializa la base de datos (la abre o la crea si no existe)
- * @returns {Promise<IDBDatabase>} Promesa con la instancia de la conexión
- */
 function inicializarBaseDeDatos() {
-  return new Promise((promesaCumplida, promesaFallida) => {
+    return new Promise((resolve, reject) => {
 
-    // Solicita la apertura de la base de datos con el nombre y versión indicados
-    const peticionAbrirBD = indexedDB.open(NOMBRE_BASE_DE_DATOS, VERSION_BASE_DE_DATOS);
+        const request = indexedDB.open("gymtracker", 2);
 
-    // Se ejecuta solo si la base de datos no existe o si la versión solicitada es mayor que la actual
-    peticionAbrirBD.onupgradeneeded = (evento) => {
+        request.onupgradeneeded = (e) => {
+            const db = e.target.result;
 
-      // Obtiene la instancia de la base de datos desde el resultado del evento
-      const baseDeDatos = evento.target.result;
+            db.createObjectStore("entrenamientos", {
+                keyPath: "id"
+            });
+        };
 
-      // Crea un almacén de objetos (equivalente a una tabla en SQL) llamado "semanas"
-      // Define la propiedad "id" como la clave primaria (keyPath) para identificar cada registro
-      baseDeDatos.createObjectStore("semanas", { keyPath: "id" });
-    };
+        request.onsuccess = (e) => {
+            conexion = e.target.result;
+            resolve(conexion);
+        };
 
-    // Se ejecuta cuando la conexión se ha abierto correctamente
-    peticionAbrirBD.onsuccess = (evento) => {
-      // Almacena el acceso a la base de datos en la variable global
-      conexion = evento.target.result; 
-      // Resuelve la promesa devolviendo la conexión activa
-      promesaCumplida(conexion);
-    };
-
-    // Se ejecuta si hay un fallo de permisos, bloqueo o error al abrir la base de datos
-    peticionAbrirBD.onerror = (evento) => {
-      // Rechaza la promesa devolviendo el objeto de error específico
-      promesaFallida(evento.target.error);
-    };
-
-  });
+        request.onerror = (e) => reject(e.target.error);
+    });
 }
 
+// SIEMPRE ES INICIAR - CONECTAR - EJECUTAR - DEVOLVER
+function guardarEntrenamiento(entrenamiento) {
+    return new Promise((resolve, reject) => {
 
-// CRUD PARA SEMANAS
-/**
- * Guarda un registro nuevo o actualiza uno existente en el almacén
- * @param {Object} objetoSemana - Datos de la semana a persistir (debe incluir la propiedad 'id')
- * @returns {Promise<void>}
- */
-function guardarSemana(objetoSemana) {
-  return new Promise((promesaCumplida, promesaFallida) => {
+        // INICIO UNA TRANSACCIÓN DE LECTURA Y ESCRITURA EN LA "TABLA" ENTRENAMIENTOS
+        const transaccion_en_DB = conexion.transaction("entrenamientos", "readwrite");
 
-    // Abre una transacción de lectura y escritura específica para el almacén "semanas"
-    const transaccion = conexion.transaction("semanas", "readwrite");
-    
-    // Obtiene el acceso al almacén de objetos dentro de la transacción activa
-    const almacenDeSemanas = transaccion.objectStore("semanas");
-    
-    // Solicita insertar el objeto (si el 'id' no existe) o actualizarlo (si el 'id' ya existe)
-    const peticionGuardar = almacenDeSemanas.put(objetoSemana);
+        // ME CONECTO A LA TABLA ENTRENAMIENTOS
+        const tabla_entrenamientos = transaccion_en_DB.objectStore("entrenamientos");
 
-    // Confirma la operación resolviendo la promesa si el guardado es exitoso
-    peticionGuardar.onsuccess = () => promesaCumplida();
-    
-    // Captura cualquier fallo en la inserción/actualización y rechaza la promesa
-    peticionGuardar.onerror   = (evento) => promesaFallida(evento.target.error);
+        // METO EL NUEVO ENTRENAMIENTO EN LA TABLA ENTRENAMIENTOS
+        const request = tabla_entrenamientos.put(entrenamiento);
 
-  });
+        request.onsuccess = () => resolve();
+        request.onerror = (e) => reject(e.target.error);
+    });
 }
 
-/**
- * Recupera todos los registros almacenados en "semanas"
- * @returns {Promise<Array>} Promesa con la lista de objetos recuperados
- */
-function obtenerTodasLasSemanas() {
-  return new Promise((promesaCumplida, promesaFallida) => {
+function obtenerEntrenamientos() {
+    return new Promise((resolve, reject) => {
 
-    // Abre una transacción en modo solo lectura (optimiza el rendimiento)
-    const transaccion = conexion.transaction("semanas", "readonly");
-    
-    // Obtiene el acceso al almacén "semanas"
-    const almacenDeSemanas = transaccion.objectStore("semanas");
-    
-    // Solicita la extracción de todos los registros del almacén de manera asíncrona
-    const peticionLeerTodo = almacenDeSemanas.getAll();
+        // INICIO LA TRANSACCIÓN EN MODO DE SOLO LECTURA
+        const tx = conexion.transaction("entrenamientos", "readonly");
 
-    // Devuelve el array con todos los datos encontrados al resolver la promesa
-    peticionLeerTodo.onsuccess = (evento) => promesaCumplida(evento.target.result);
-    
-    // Maneja errores de lectura rechazando la promesa con el motivo del fallo
-    peticionLeerTodo.onerror   = (evento) => promesaFallida(evento.target.error);
+        // ME CONECTO A LA TABLA ENTRENAMIENTOS PARA HACER LA TRANSACCIÓN
+        const store = tx.objectStore("entrenamientos");
 
-  });
+        // DEVUELVO TODOS LOS ENTRENAMIENTOS DE LA TABLA ENTRENAMIENTOS
+        const request = store.getAll();
+
+        request.onsuccess = () => resolve(request.result);
+        request.onerror = (e) => reject(e.target.error);
+    });
 }
 
-/**
- * Elimina un registro específico basado en su identificador único
- * @param {*} idDeLaSemana - Clave primaria del objeto a eliminar
- * @returns {Promise<void>}
- */
-function eliminarSemana(idDeLaSemana) {
+function eliminarEntreno (idEntreno) {
   return new Promise((promesaCumplida, promesaFallida) => {
 
     // Abre una transacción de lectura y escritura para permitir el borrado
-    const transaccion = conexion.transaction("semanas", "readwrite");
+    const transaccion = conexion.transaction("entrenamientos", "readwrite");
     
     // Accede al almacén de objetos "semanas"
-    const almacenDeSemanas = transaccion.objectStore("semanas");
+    const tabla_entrenamientos = transaccion.objectStore("entrenamientos");
     
     // Solicita la eliminación del registro que coincida con el id provisto
-    const peticionEliminar = almacenDeSemanas.delete(idDeLaSemana);
+    const peticionEliminar = tabla_entrenamientos.delete(idEntreno);
 
     // Resuelve la promesa indicando que el borrado concluyó con éxito
     peticionEliminar.onsuccess = () => promesaCumplida();
