@@ -121,11 +121,13 @@ async function pintarEntrenamientos() {
                     let nombre = document.getElementById('nombre_ejercicio').value;
                     let series = document.getElementById('num_series').value;
                     await addEjercicio_Entreno(Number(boton_guardar.dataset.id), { nombre, series });
-                    
+
+                    // CUANDO AÑADO ALGÚN EJERCICIO NUEVO, PINTO TODA LA UI OTRA VEZ PARA QUE, AL PULSAR EL DESPLEGABLE, APAREZCA EN SEGUIDA
                     await pintarEntrenamientos()
                 });
             }
 
+            // QUITA O PONE LA CLASE OCULTO A ESTE ELEMENTO DEPENDIENDO DE SI LA TIENE O NO. ESTA CLASE ESTÁ DEFINIDA EN EL CSS Y SIRVE PARA, DE BASE, OCULTAR EL ELEMENTO QUE LA RECIBE
             contenedor_formulario_a_rellenar.classList.toggle('oculto');
         });
     });
