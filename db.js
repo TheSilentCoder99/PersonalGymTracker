@@ -40,6 +40,7 @@ function guardarEntrenamiento(entrenamiento) {
     });
 }
 
+// REFERIDO A TODOS
 function obtenerEntrenamientos() {
     return new Promise((resolve, reject) => {
 
@@ -63,7 +64,7 @@ function eliminarEntreno (idEntreno) {
     // Abre una transacción de lectura y escritura para permitir el borrado
     const transaccion = conexion.transaction("entrenamientos", "readwrite");
     
-    // Accede al almacén de objetos "semanas"
+    // Accede al almacén de objetos "entrenamientos"
     const tabla_entrenamientos = transaccion.objectStore("entrenamientos");
     
     // Solicita la eliminación del registro que coincida con el id provisto
@@ -74,6 +75,27 @@ function eliminarEntreno (idEntreno) {
     
     // Rechaza la promesa si la solicitud de borrado falla
     peticionEliminar.onerror   = (evento) => promesaFallida(evento.target.error);
+
+  });
+}
+
+function ObtenerEntreno (idEntreno) {
+  return new Promise((promesaCumplida, promesaFallida) => {
+
+    // Abre una transacción de lectura y escritura para permitir el borrado
+    const transaccion = conexion.transaction("entrenamientos", "readonly");
+    
+    // Accede al almacén de objetos "entrenamientos"
+    const tabla_entrenamientos = transaccion.objectStore("entrenamientos");
+    
+    // Solicita el registro que coincida con el id provisto
+    const peticionObtener = tabla_entrenamientos.get(idEntreno);
+
+    // Resuelve la promesa indicando que concluyó con éxito
+    peticionObtener.onsuccess = () => promesaCumplida(peticionObtener.result);
+    
+    // Rechaza la promesa si la solicitud falla
+    peticionObtener.onerror   = (evento) => promesaFallida(evento.target.error);
 
   });
 }

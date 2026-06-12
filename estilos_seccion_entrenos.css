@@ -1,0 +1,298 @@
+.oculto{
+    display: none;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  background-color: #0a0a0a;
+  color: #ffffff;
+  font-family: system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;
+  padding: 2rem 1.5rem;
+  max-width: 700px;
+  margin: 0 auto;
+  position: relative;
+}
+
+/* Desplazamiento suave global */
+html {
+  scroll-behavior: smooth;
+}
+
+/* Títulos en verde */
+h1 {
+  color: #00e676;
+  font-size: 2rem;
+  font-weight: 700;
+  border-left: 5px solid #00e676;
+  padding-left: 1rem;
+  margin-bottom: 1.5rem;
+}
+
+/* Enlace "Volver" estilo botón */
+a[href="index.html"] {
+  display: inline-block;
+  background-color: #1f1f1f;
+  border: 1px solid #333;
+  color: white;
+  padding: 10px 20px;
+  font-size: 0.9rem;
+  font-weight: 500;
+  border-radius: 60px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  text-align: center;
+  text-decoration: none;
+  margin-bottom: 1.5rem;
+}
+
+a[href="index.html"]:hover {
+  background-color: #2a2a2a;
+  border-color: #00e676;
+  color: #00e676;
+}
+
+/* Contenedor de todos los entrenamientos */
+#All-entrenos {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  margin: 1.5rem 0 2rem 0;
+}
+
+/* Tarjeta de entrenamiento */
+.entrenamiento {
+  background-color: #121212;
+  border-radius: 20px;
+  padding: 1.2rem 1.5rem;
+  border: 1px solid #2c2c2c;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4);
+  transition: border-color 0.2s ease;
+  position: relative;
+}
+
+.entrenamiento:hover {
+  border-color: #00e676;
+}
+
+/* Título del entrenamiento */
+.entrenamiento h3 {
+  color: #00e676;
+  font-size: 1.3rem;
+  font-weight: 600;
+  margin-bottom: 0.5rem;
+  padding-right: 2rem;
+}
+
+/* Fecha del entrenamiento */
+.entrenamiento p {
+  color: #bbbbbb;
+  font-size: 0.9rem;
+  margin-bottom: 1rem;
+  line-height: 1.4;
+}
+
+/* Botón de borrar (x) */
+.borrar-entrenamiento {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  background-color: #2a1a1a;
+  border: 1px solid #661111;
+  color: #ff5555;
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  cursor: pointer;
+  font-size: 1.2rem;
+  font-weight: bold;
+  transition: all 0.2s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.borrar-entrenamiento:hover {
+  background-color: #441111;
+  border-color: #ff0000;
+  color: #ff8888;
+  transform: scale(1.05);
+}
+
+/* Botón de añadir ejercicios */
+.add-entrenamiento {
+  background-color: #1f1f1f;
+  border: 1px solid #333;
+  color: white;
+  padding: 8px 16px;
+  font-size: 0.85rem;
+  font-weight: 500;
+  border-radius: 40px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  margin-top: 0.5rem;
+}
+
+.add-entrenamiento:hover {
+  background-color: #2a2a2a;
+  border-color: #00e676;
+  color: #00e676;
+}
+
+/* Contenedor del formulario de ejercicios */
+.formulario_ejercicios {
+  margin-top: 1rem;
+  padding-top: 1rem;
+  border-top: 1px solid #2c2c2c;
+  transition: all 0.3s ease;
+}
+
+/* Clase para ocultar/mostrar */
+.formulario_ejercicios.oculto {
+  display: none;
+}
+
+/* Formulario de ejercicios */
+#formulario_ejercicios_usuario {
+  background-color: #0e0e0e;
+  padding: 1rem;
+  border-radius: 16px;
+  margin-top: 0.5rem;
+}
+
+#formulario_ejercicios_usuario label {
+  color: #00e676;
+  font-size: 0.85rem;
+  font-weight: 500;
+  margin-bottom: 0.25rem;
+  display: inline-block;
+}
+
+#formulario_ejercicios_usuario input {
+  width: 100%;
+  background-color: #1a1a1a;
+  border: 1px solid #333;
+  color: white;
+  padding: 10px 12px;
+  border-radius: 12px;
+  font-size: 0.9rem;
+  margin-bottom: 0.75rem;
+  transition: border-color 0.2s ease;
+}
+
+#formulario_ejercicios_usuario input:focus {
+  outline: none;
+  border-color: #00e676;
+}
+
+/* Botón guardar ejercicio */
+.guardar-ejercicio {
+  background-color: #00e676;
+  border: none;
+  color: #0a0a0a;
+  padding: 10px 20px;
+  font-size: 1rem;
+  font-weight: 600;
+  border-radius: 40px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  width: 100%;
+}
+
+.guardar-ejercicio:hover {
+  background-color: #00c853;
+  transform: scale(1.01);
+}
+
+/* Lista de ejercicios dentro del entrenamiento (si la generas) */
+.lista-ejercicios {
+  margin-top: 1rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.ejercicio-item {
+  background-color: #0a0a0a;
+  padding: 0.75rem;
+  border-radius: 12px;
+  border-left: 3px solid #00e676;
+  font-size: 0.9rem;
+}
+
+.ejercicio-item strong {
+  color: #00e676;
+}
+
+/* Enlace "Ir arriba" fijo */
+a[href="#arriba"] {
+  position: fixed;
+  bottom: 2rem;
+  right: 2rem;
+  background-color: #1f1f1f;
+  border: 1px solid #333;
+  color: #00e676;
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-decoration: none;
+  font-size: 1.2rem;
+  transition: all 0.2s ease;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4);
+  z-index: 100;
+}
+
+a[href="#arriba"]:hover {
+  background-color: #2a2a2a;
+  border-color: #00e676;
+  transform: scale(1.1);
+}
+
+/* Ancla #arriba */
+#arriba {
+  scroll-margin-top: 2rem;
+}
+
+/* Media query para móviles */
+@media (max-width: 550px) {
+  body {
+    padding: 1rem;
+  }
+  
+  .entrenamiento {
+    padding: 1rem;
+  }
+  
+  .borrar-entrenamiento {
+    top: 0.75rem;
+    right: 0.75rem;
+    width: 28px;
+    height: 28px;
+    font-size: 1rem;
+  }
+  
+  .entrenamiento h3 {
+    font-size: 1.1rem;
+    padding-right: 2rem;
+  }
+  
+  a[href="#arriba"] {
+    bottom: 1rem;
+    right: 1rem;
+    width: 40px;
+    height: 40px;
+    font-size: 1rem;
+  }
+  
+  #formulario_ejercicios_usuario input {
+    padding: 8px 10px;
+    font-size: 0.85rem;
+  }
+}
