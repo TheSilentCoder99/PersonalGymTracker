@@ -12,11 +12,19 @@ async function pintarEntrenamientos() {
 
     let htmlEntrenos = "";
 
+    let htmlEjercicios = "";
+
     // GUARDO TODOS LOS ENTRENAMIENTOS
     let All_entrenamientos = await obtenerEntrenamientos();
 
     // DE CADA ENTRENAMIENTO, PINTO SU HTML EN EL DIV QUE LOS CONTIENE
     All_entrenamientos.forEach(este_entreno => {
+
+            // CONSTRUYO LA LISTA DE EJERCICIOS DE ESTE ENTRENO
+    let htmlEjercicios = "";
+    este_entreno.ejercicios.forEach(ejercicio => {
+        htmlEjercicios += `<li>${ejercicio.nombre} — ${ejercicio.series} series</li>`;
+    });
 
         htmlEntrenos += `
             <div class="entrenamiento">
@@ -34,9 +42,18 @@ async function pintarEntrenamientos() {
 
                 <div class="formulario_ejercicios oculto">
                 </div>
+
+                <button class="mostrar_ocultar">
+                 Ejercicios
+                </button>
+
+                <div class="mostrar_ejercicios oculto">
+                    <ul>${htmlEjercicios}</ul>
+                    </div>
             </div>
         `;
     });
+
 
     // PINTO LOS ENTRENAMIENTOS EN EL HTML
     const contenedor_entrenos = document.getElementById('All-entrenos');
@@ -62,10 +79,9 @@ async function pintarEntrenamientos() {
 
     // ATRAPO TODOS LOS BOTONES DE AÑADIR EJERCICIO QUE SE GENERAN EN EL INNER HTML
     const botones_add_ejercicio = document.querySelectorAll('.add-ejercicio');
-
     botones_add_ejercicio.forEach(boton_add_ejercicio => {
-        boton_add_ejercicio.addEventListener('click', () => {
-
+        boton_add_ejercicio.addEventListener('click', async () => {
+            
             let contenedor_formulario_a_rellenar = boton_add_ejercicio.nextElementSibling;
 
             // SOLO RELLENA EL FORMULARIO LA PRIMERA VEZ, Y ASIGNA EL LISTENER DEL GUARDAR
@@ -94,7 +110,8 @@ async function pintarEntrenamientos() {
                         <button class="guardar-ejercicio" data-id="${boton_add_ejercicio.dataset.id}">
                             ✅
                         </button>
-                    </form>`;
+                    </form>
+                    `;
 
                 // EL LISTENER DEL GUARDAR VA AQUÍ, DENTRO DEL IF, PARA ASIGNARSE SOLO UNA VEZ
                 let boton_guardar = contenedor_formulario_a_rellenar.querySelector('.guardar-ejercicio');
@@ -104,12 +121,25 @@ async function pintarEntrenamientos() {
                     let nombre = document.getElementById('nombre_ejercicio').value;
                     let series = document.getElementById('num_series').value;
                     await addEjercicio_Entreno(Number(boton_guardar.dataset.id), { nombre, series });
+                    
+                    await pintarEntrenamientos()
                 });
             }
 
             contenedor_formulario_a_rellenar.classList.toggle('oculto');
         });
     });
+
+        // BOTÓN PARA MOSTRAR U OCULTAR LOS EJERCICIOS
+const botones_mostrar_ejercicios = document.querySelectorAll('.mostrar_ocultar');
+
+botones_mostrar_ejercicios.forEach(boton_mostrar => {
+    boton_mostrar.addEventListener('click', () => {
+        const contenedor_a_ocultar = boton_mostrar.nextElementSibling;
+        contenedor_a_ocultar.classList.toggle('oculto');
+    });
+});
+
 }
 
 window.onload = async function () {
