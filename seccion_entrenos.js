@@ -20,11 +20,11 @@ async function pintarEntrenamientos() {
     // DE CADA ENTRENAMIENTO, PINTO SU HTML EN EL DIV QUE LOS CONTIENE
     All_entrenamientos.forEach(este_entreno => {
 
-            // CONSTRUYO LA LISTA DE EJERCICIOS DE ESTE ENTRENO
-    let htmlEjercicios = "";
-    este_entreno.ejercicios.forEach(ejercicio => {
-        htmlEjercicios += `<li>${ejercicio.nombre} — ${ejercicio.series} series</li>`;
-    });
+        // CONSTRUYO LA LISTA DE EJERCICIOS DE ESTE ENTRENO
+        let htmlEjercicios = "";
+        este_entreno.ejercicios.forEach(ejercicio => {
+            htmlEjercicios += `<li>${ejercicio.nombre} — ${ejercicio.series} series</li>`;
+        });
 
         htmlEntrenos += `
             <div class="entrenamiento">
@@ -81,7 +81,7 @@ async function pintarEntrenamientos() {
     const botones_add_ejercicio = document.querySelectorAll('.add-ejercicio');
     botones_add_ejercicio.forEach(boton_add_ejercicio => {
         boton_add_ejercicio.addEventListener('click', async () => {
-            
+
             let contenedor_formulario_a_rellenar = boton_add_ejercicio.nextElementSibling;
 
             // SOLO RELLENA EL FORMULARIO LA PRIMERA VEZ, Y ASIGNA EL LISTENER DEL GUARDAR
@@ -107,9 +107,14 @@ async function pintarEntrenamientos() {
                         </select>
                         <br>
                         <br>
+                        <div class="contenedor_series" id="contenedor_series">
+
+                        </div>
+
                         <button class="guardar-ejercicio" data-id="${boton_add_ejercicio.dataset.id}">
                             ✅
                         </button>
+
                     </form>
                     `;
 
@@ -117,12 +122,32 @@ async function pintarEntrenamientos() {
                 let boton_guardar = contenedor_formulario_a_rellenar.querySelector('.guardar-ejercicio');
 
                 boton_guardar.addEventListener('click', async (event) => {
+                
                     event.preventDefault();
+                        
                     let nombre = document.getElementById('nombre_ejercicio').value;
-                    let series = document.getElementById('num_series').value;
+                    let series = Number(document.getElementById('num_series').value);
+
                     await addEjercicio_Entreno(Number(boton_guardar.dataset.id), { nombre, series });
 
-                    // CUANDO AÑADO ALGÚN EJERCICIO NUEVO, PINTO TODA LA UI OTRA VEZ PARA QUE, AL PULSAR EL DESPLEGABLE, APAREZCA EN SEGUIDA
+                                          // genero tantos input de peso y series como series haya elegido el usuario al crear el ejercicio
+                let html_series_peso = "";
+
+                for (let i = 0; i < series; i++) {
+
+                    let num_series = i+1;
+
+                    html_series_peso += `
+                                        <li>Serie ${num_series}: [__kg] [__reps]</li>
+                                        `;
+                }
+
+                            let div_series = document.getElementById('contenedor_series');
+
+                                                // DIBUJO TODA ESTA PARTE CON LAS SERIES GENERADAS
+                            div_series.innerHTML = html_series_peso;
+
+                             // CUANDO AÑADO ALGÚN EJERCICIO NUEVO, PINTO TODA LA UI OTRA VEZ PARA QUE, AL PULSAR EL DESPLEGABLE, APAREZCA EN SEGUIDA
                     await pintarEntrenamientos()
                 });
             }
@@ -132,15 +157,15 @@ async function pintarEntrenamientos() {
         });
     });
 
-        // BOTÓN PARA MOSTRAR U OCULTAR LOS EJERCICIOS
-const botones_mostrar_ejercicios = document.querySelectorAll('.mostrar_ocultar');
+    // BOTÓN PARA MOSTRAR U OCULTAR LOS EJERCICIOS
+    const botones_mostrar_ejercicios = document.querySelectorAll('.mostrar_ocultar');
 
-botones_mostrar_ejercicios.forEach(boton_mostrar => {
-    boton_mostrar.addEventListener('click', () => {
-        const contenedor_a_ocultar = boton_mostrar.nextElementSibling;
-        contenedor_a_ocultar.classList.toggle('oculto');
+    botones_mostrar_ejercicios.forEach(boton_mostrar => {
+        boton_mostrar.addEventListener('click', () => {
+            const contenedor_a_ocultar = boton_mostrar.nextElementSibling;
+            contenedor_a_ocultar.classList.toggle('oculto');
+        });
     });
-});
 
 }
 
