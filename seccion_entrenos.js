@@ -12,20 +12,29 @@ async function pintarEntrenamientos() {
 
     let htmlEntrenos = "";
 
-    let htmlEjercicios = "";
-
     // GUARDO TODOS LOS ENTRENAMIENTOS
     let All_entrenamientos = await obtenerEntrenamientos();
 
     // DE CADA ENTRENAMIENTO, PINTO SU HTML EN EL DIV QUE LOS CONTIENE
     All_entrenamientos.forEach(este_entreno => {
-
+        
         // CONSTRUYO LA LISTA DE EJERCICIOS DE ESTE ENTRENO
         let htmlEjercicios = "";
+
+        // ACCEDO AL ARRAY DE EJERCICIOS DEL ENTRENAMIENTO QUE SE ESTÉ RECORRIENDO EN ESE MOMENTO
         este_entreno.ejercicios.forEach(ejercicio => {
-            htmlEjercicios += `<li>${ejercicio.nombre} — ${ejercicio.series} series</li>`;
+        // ACCEDO AL ARRAY DE SERIES DEL EJERCICIO QUE SE ESTÉ RECORRIENDO EN ESE MOMENTO
+  let htmlSeries = "";
+ejercicio.series.forEach(serie => {
+    htmlSeries += `
+        <li>${serie.kg}kg - ${serie.reps} reps</li>
+    `;
+});
+// CONSTRUYO EL HTML QUE SE MOSTRARÁ FINALMENTE AL USUARIO ACCEDIENDO AL NOMBRE DEL EJERCICIO (PRIMER FOR-EACH HIJO) Y AÑADIENDO EL HTML CONSTRUIDO DE SERIES(EN EL FOR-EACH NIETO)
+            htmlEjercicios += `<li>${ejercicio.nombre}</li> <ol>${htmlSeries}</ol>`;
         });
 
+        // CONSTRUYO UI FINAL
         htmlEntrenos += `
             <div class="entrenamiento">
 
@@ -62,12 +71,13 @@ async function pintarEntrenamientos() {
     // ATRAPO TODOS LOS BOTONES DE BORRADO QUE SE GENERAN EN EL INNER HTML
     const botones_borrar = document.querySelectorAll('.borrar-entrenamiento');
 
-    // A CADA BOTÓN LE ASIGNO UN EVENTO PARA QUE BORREN A SU CONTENEDOR
+    // A CADA BOTÓN LE ASIGNO UN EVENTO PARA QUE BORREN A SU CONTENEDOR ASÍ EL BORRADO SE VE EN TIEMPO REAL
     botones_borrar.forEach(boton_borrar => {
         boton_borrar.addEventListener('click', async () => {
 
             const idDelEntreno = Number(boton_borrar.dataset.id);
 
+            // PARA QUE EL BORRADO NO SEA BRUSCO, SE PIDE CONFIRMACIÓN AL USUARIO
             let resultado_borrado = confirm('¿Quieres borrar este entrenamiento?');
 
             if (resultado_borrado) {
@@ -114,7 +124,7 @@ async function pintarEntrenamientos() {
                         <br>
                         <!-- Este primer botón crea la UI-->
                         <button class="guardar-ejercicio" data-id="${boton_add_ejercicio.dataset.id}">
-                            ✅
+                            Añadir
                         </button>
 
                         <!-- Este segundo botón es el que guarda los entrenamientos-->
@@ -166,6 +176,7 @@ async function pintarEntrenamientos() {
                   let boton_guardar_definitivo = contenedor_formulario_a_rellenar.querySelector('.guardar-ejercicio_definitivo');
 
             boton_guardar_definitivo.addEventListener('click', async (event) => {
+                
 
                 event.preventDefault();
 
@@ -196,9 +207,8 @@ let ejercicio = {
     series
 };
 
-            await addEjercicio_Entreno(Number(boton_guardar_definitivo.dataset.id), ejercicio)
+            await addEjercicio_Entreno(Number(boton_guardar_definitivo.dataset.id), ejercicio);
                 await pintarEntrenamientos();
-
             });
 
             }

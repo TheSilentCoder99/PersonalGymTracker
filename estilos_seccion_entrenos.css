@@ -1,5 +1,5 @@
-.oculto{
-    display: none;
+.oculto {
+  display: none;
 }
 
 * {
@@ -89,7 +89,7 @@ a[href="index.html"]:hover {
 }
 
 /* Fecha del entrenamiento */
-.entrenamiento p {
+.entrenamiento > p {
   color: #bbbbbb;
   font-size: 0.9rem;
   margin-bottom: 1rem;
@@ -124,7 +124,28 @@ a[href="index.html"]:hover {
 }
 
 /* Botón de añadir ejercicios */
-.add-entrenamiento {
+.add-ejercicio {
+  background-color: #1f1f1f;
+  border: 1px solid #333;
+  color: white;
+  padding: 8px 16px;
+  font-size: 0.85rem;
+  font-weight: 500;
+  border-radius: 40px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  margin-top: 0.5rem;
+  margin-right: 0.5rem;
+}
+
+.add-ejercicio:hover {
+  background-color: #2a2a2a;
+  border-color: #00e676;
+  color: #00e676;
+}
+
+/* Botón de mostrar/ocultar ejercicios */
+.mostrar_ocultar {
   background-color: #1f1f1f;
   border: 1px solid #333;
   color: white;
@@ -137,10 +158,53 @@ a[href="index.html"]:hover {
   margin-top: 0.5rem;
 }
 
-.add-entrenamiento:hover {
+.mostrar_ocultar:hover {
   background-color: #2a2a2a;
   border-color: #00e676;
   color: #00e676;
+}
+
+/* Contenedor de ejercicios (lista) */
+.mostrar_ejercicios {
+  margin-top: 1rem;
+  padding-top: 1rem;
+  border-top: 1px solid #2c2c2c;
+}
+
+.mostrar_ejercicios ul {
+  list-style: none;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.mostrar_ejercicios ul > li {
+  background-color: #0a0a0a;
+  padding: 0.75rem;
+  border-radius: 12px;
+  border-left: 3px solid #00e676;
+  font-weight: 600;
+  color: #00e676;
+}
+
+.mostrar_ejercicios ul > li ol {
+  list-style: none;
+  padding: 0;
+  margin-top: 0.5rem;
+  padding-left: 0.5rem;
+}
+
+.mostrar_ejercicios ul > li ol li {
+  color: #cccccc;
+  font-weight: normal;
+  padding: 0.25rem 0;
+  font-size: 0.9rem;
+  border-bottom: 1px solid #1a1a1a;
+}
+
+.mostrar_ejercicios ul > li ol li:last-child {
+  border-bottom: none;
 }
 
 /* Contenedor del formulario de ejercicios */
@@ -157,14 +221,14 @@ a[href="index.html"]:hover {
 }
 
 /* Formulario de ejercicios */
-#formulario_ejercicios_usuario {
+.formulario_ejercicios form {
   background-color: #0e0e0e;
   padding: 1rem;
   border-radius: 16px;
   margin-top: 0.5rem;
 }
 
-#formulario_ejercicios_usuario label {
+.formulario_ejercicios form label {
   color: #00e676;
   font-size: 0.85rem;
   font-weight: 500;
@@ -172,7 +236,9 @@ a[href="index.html"]:hover {
   display: inline-block;
 }
 
-#formulario_ejercicios_usuario input {
+.formulario_ejercicios form input[type="text"],
+.formulario_ejercicios form input[type="number"],
+.formulario_ejercicios form select {
   width: 100%;
   background-color: #1a1a1a;
   border: 1px solid #333;
@@ -184,48 +250,94 @@ a[href="index.html"]:hover {
   transition: border-color 0.2s ease;
 }
 
-#formulario_ejercicios_usuario input:focus {
+.formulario_ejercicios form input:focus,
+.formulario_ejercicios form select:focus {
   outline: none;
   border-color: #00e676;
 }
 
-/* Botón guardar ejercicio */
+.formulario_ejercicios form select {
+  appearance: none;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 12 12'%3E%3Cpath fill='%2300e676' d='M6 8L1 3h10z'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 12px center;
+  padding-right: 36px;
+}
+
+/* Contenedor de series dinámicas */
+.contenedor_series {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  margin: 0.5rem 0 1rem 0;
+}
+
+.contenedor_series li {
+  background-color: #121212;
+  padding: 0.75rem;
+  border-radius: 12px;
+  border: 1px solid #2c2c2c;
+  list-style: none;
+  color: #cccccc;
+  font-size: 0.9rem;
+}
+
+.contenedor_series li input {
+  width: 80px;
+  background-color: #1a1a1a;
+  border: 1px solid #333;
+  color: white;
+  padding: 6px 10px;
+  border-radius: 8px;
+  font-size: 0.85rem;
+  transition: border-color 0.2s ease;
+  margin: 0.25rem 0;
+}
+
+.contenedor_series li input:focus {
+  outline: none;
+  border-color: #00e676;
+}
+
+.contenedor_series li input[type="number"] {
+  width: 70px;
+}
+
+/* Botones del formulario */
 .guardar-ejercicio {
+  background-color: #1f1f1f;
+  border: 1px solid #333;
+  color: white;
+  padding: 10px 20px;
+  font-size: 0.9rem;
+  font-weight: 500;
+  border-radius: 40px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  margin-right: 0.5rem;
+}
+
+.guardar-ejercicio:hover {
+  background-color: #2a2a2a;
+  border-color: #00e676;
+  color: #00e676;
+}
+
+.guardar-ejercicio_definitivo {
   background-color: #00e676;
   border: none;
   color: #0a0a0a;
   padding: 10px 20px;
-  font-size: 1rem;
+  font-size: 0.9rem;
   font-weight: 600;
   border-radius: 40px;
   cursor: pointer;
   transition: all 0.2s ease;
-  width: 100%;
 }
 
-.guardar-ejercicio:hover {
+.guardar-ejercicio_definitivo:hover {
   background-color: #00c853;
-  transform: scale(1.01);
-}
-
-/* Lista de ejercicios dentro del entrenamiento (si la generas) */
-.lista-ejercicios {
-  margin-top: 1rem;
-  display: flex;
-  flex-direction: column;
-  gap: 0.5rem;
-}
-
-.ejercicio-item {
-  background-color: #0a0a0a;
-  padding: 0.75rem;
-  border-radius: 12px;
-  border-left: 3px solid #00e676;
-  font-size: 0.9rem;
-}
-
-.ejercicio-item strong {
-  color: #00e676;
+  transform: scale(1.02);
 }
 
 /* Enlace "Ir arriba" fijo */
@@ -291,8 +403,26 @@ a[href="#arriba"]:hover {
     font-size: 1rem;
   }
   
-  #formulario_ejercicios_usuario input {
+  .formulario_ejercicios form {
+    padding: 0.75rem;
+  }
+  
+  .formulario_ejercicios form input[type="text"],
+  .formulario_ejercicios form input[type="number"],
+  .formulario_ejercicios form select {
     padding: 8px 10px;
     font-size: 0.85rem;
+  }
+  
+  .contenedor_series li input[type="number"] {
+    width: 60px;
+  }
+  
+  .add-ejercicio,
+  .mostrar_ocultar,
+  .guardar-ejercicio,
+  .guardar-ejercicio_definitivo {
+    padding: 6px 12px;
+    font-size: 0.8rem;
   }
 }
