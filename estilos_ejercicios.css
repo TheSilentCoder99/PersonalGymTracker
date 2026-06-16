@@ -1,3 +1,7 @@
+.oculto {
+  display: none;
+}
+
 * {
   margin: 0;
   padding: 0;
@@ -11,15 +15,17 @@ body {
   padding: 2rem 1.5rem;
   max-width: 700px;
   margin: 0 auto;
+  position: relative;
+}
+
+/* Desplazamiento suave global */
+html {
   scroll-behavior: smooth;
 }
 
-/* Títulos y subtítulos en verde */
-h1, h2 {
-  color: #00e676;
-}
-
+/* Títulos en verde */
 h1 {
+  color: #00e676;
   font-size: 2rem;
   font-weight: 700;
   border-left: 5px solid #00e676;
@@ -28,10 +34,11 @@ h1 {
 }
 
 h2 {
+  color: #00e676;
   font-size: 1.3rem;
   font-weight: 500;
   margin-top: 0.25rem;
-  margin-bottom: 1rem;
+  margin-bottom: 0.75rem;
   opacity: 0.9;
 }
 
@@ -43,7 +50,7 @@ p {
 }
 
 /* Enlace "Volver" estilo botón */
-a {
+a[href="index.html"] {
   display: inline-block;
   background-color: #1f1f1f;
   border: 1px solid #333;
@@ -56,10 +63,10 @@ a {
   transition: all 0.2s ease;
   text-align: center;
   text-decoration: none;
-  margin-bottom: 2rem;
+  margin-bottom: 1.5rem;
 }
 
-a:hover {
+a[href="index.html"]:hover {
   background-color: #2a2a2a;
   border-color: #00e676;
   color: #00e676;
@@ -70,35 +77,138 @@ a:hover {
   display: flex;
   flex-direction: column;
   gap: 1rem;
+  margin: 1.5rem 0 2rem 0;
 }
 
-/* Efecto tarjeta para cada ejercicio */
-.ejercicio-card {
+/* Tarjeta de ejercicio */
+.ejercicio {
   background-color: #121212;
   border-radius: 20px;
-  padding: 1.2rem 1.5rem;
   border: 1px solid #2c2c2c;
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4);
-  transition: transform 0.1s ease, border-color 0.2s ease;
+  transition: border-color 0.2s ease;
+  overflow: hidden;
 }
 
-.ejercicio-card:hover {
+.ejercicio:hover {
   border-color: #00e676;
 }
 
-/* Nombre del ejercicio */
-.ejercicio-card h3 {
+/* Botón del nombre del ejercicio (tipo acordeón) */
+.ejercicio-nombre {
+  width: 100%;
+  background-color: #1a1a1a;
+  border: none;
   color: #00e676;
-  font-size: 1.2rem;
+  padding: 1rem 1.5rem;
+  font-size: 1.1rem;
   font-weight: 600;
-  margin-bottom: 0.5rem;
+  text-align: left;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-family: inherit;
 }
 
-/* Descripción o grupo muscular */
-.ejercicio-card p {
-  color: #bbbbbb;
-  font-size: 0.9rem;
-  margin-bottom: 0;
+.ejercicio-nombre:hover {
+  background-color: #222222;
+  color: #00ff88;
+}
+
+/* Añadir flecha indicadora al botón */
+.ejercicio-nombre::after {
+  content: "▾";
+  font-size: 1.2rem;
+  color: #00e676;
+  transition: transform 0.3s ease;
+}
+
+/* Cuando el contenido está visible, la flecha apunta hacia arriba */
+.ejercicio:has(.ejercicio-contenido:not(.oculto)) .ejercicio-nombre::after {
+  transform: rotate(180deg);
+}
+
+/* Contenido del ejercicio (se muestra/oculta) */
+.ejercicio-contenido {
+  padding: 0 1.5rem 1.5rem 1.5rem;
+  animation: fadeIn 0.3s ease;
+}
+
+/* Animación de aparición suave */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Descripción del ejercicio */
+.ejercicio-contenido p {
+  color: #cccccc;
+  font-size: 0.95rem;
+  line-height: 1.6;
+  margin-bottom: 1rem;
+  padding: 0.5rem 0;
+  border-bottom: 1px solid #2c2c2c;
+}
+
+/* Video del ejercicio */
+.ejercicio-contenido video {
+  width: 100%;
+  max-width: 100%;
+  height: auto;
+  border-radius: 12px;
+  border: 1px solid #2c2c2c;
+  background-color: #000000;
+  display: block;
+}
+
+/* Estilo para el poster del video (miniatura) */
+.ejercicio-contenido video[poster] {
+  object-fit: cover;
+}
+
+/* Mensaje cuando no hay video disponible */
+.ejercicio-contenido video:not([src]) {
+  display: none;
+}
+
+/* Enlace "Arriba" fijo */
+a[href="#arriba"] {
+  position: fixed;
+  bottom: 2rem;
+  right: 2rem;
+  background-color: #1f1f1f;
+  border: 1px solid #333;
+  color: #00e676;
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-decoration: none;
+  font-size: 1.5rem;
+  transition: all 0.2s ease;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4);
+  z-index: 100;
+}
+
+a[href="#arriba"]:hover {
+  background-color: #2a2a2a;
+  border-color: #00e676;
+  transform: scale(1.1);
+}
+
+/* Ancla #arriba */
+#arriba {
+  scroll-margin-top: 2rem;
 }
 
 /* Media query para móviles */
@@ -107,34 +217,64 @@ a:hover {
     padding: 1rem;
   }
   
-  .ejercicio-card {
-    padding: 1rem;
+  .ejercicio-nombre {
+    padding: 0.75rem 1rem;
+    font-size: 1rem;
+  }
+  
+  .ejercicio-contenido {
+    padding: 0 1rem 1rem 1rem;
+  }
+  
+  .ejercicio-contenido p {
+    font-size: 0.9rem;
+  }
+  
+  .ejercicio-contenido video {
+    border-radius: 8px;
+  }
+  
+  a[href="#arriba"] {
+    bottom: 1rem;
+    right: 1rem;
+    width: 40px;
+    height: 40px;
+    font-size: 1.2rem;
+  }
+  
+  h1 {
+    font-size: 1.7rem;
+  }
+  
+  h2 {
+    font-size: 1.1rem;
   }
 }
 
-.oculto {
+/* Media query para tablets */
+@media (min-width: 551px) and (max-width: 1024px) {
+  .ejercicio-contenido video {
+    max-width: 100%;
+  }
+}
+
+/* Estilo para cuando el video no se carga o no tiene source */
+.ejercicio-contenido video:not([src]) {
   display: none;
 }
 
-a[href="#arriba"] {
-  display: inline-block;
-  background-color: #1f1f1f;
-  border: 1px solid #333;
-  color: white;
-  padding: 10px 20px;
-  font-size: 0.9rem;
-  font-weight: 500;
-  border-radius: 60px;
-  cursor: pointer;
-  transition: all 0.2s ease;
+/* Mensaje alternativo cuando no hay video */
+.ejercicio-contenido video:not([src]) + .sin-video {
+  display: block;
+}
+
+.sin-video {
+  display: none;
+  color: #666;
+  font-style: italic;
+  padding: 1rem;
   text-align: center;
-  text-decoration: none;
-  margin-top: 2rem;
+  background-color: #0a0a0a;
+  border-radius: 12px;
+  border: 1px dashed #2c2c2c;
 }
-
-a[href="#arriba"]:hover {
-  background-color: #2a2a2a;
-  border-color: #00e676;
-  color: #00e676;
-}
-

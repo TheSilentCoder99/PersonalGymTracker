@@ -103,7 +103,7 @@ ejercicio.series.forEach(serie => {
                         <br>
                         <input type="text" id="nombre_ejercicio" name="nombre_ejercicio">
                         <br>
-                        <label for="num_series">Series</label>
+                        <label for="num_series">Nº de series</label>
                         <br>
                         <select name="series" id="num_series">
                             <option value="1">1</option>
@@ -124,7 +124,7 @@ ejercicio.series.forEach(serie => {
                         <br>
                         <!-- Este primer botón crea la UI-->
                         <button class="guardar-ejercicio" data-id="${boton_add_ejercicio.dataset.id}">
-                            Añadir
+                            Definir series
                         </button>
 
                         <!-- Este segundo botón es el que guarda los entrenamientos-->

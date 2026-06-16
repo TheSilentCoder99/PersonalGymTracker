@@ -126,13 +126,12 @@ contenedor_botones.addEventListener("click", (evento) => {
 
 
 // PEGO LOS DATOS DEL FORMULARIO AL JS
-    const fecha_entreno = document.getElementById('fecha_nueva_semana');
-    const nombre_entreno = document.getElementById('nombre_entreno');
-    const boton_crear_entreno = document.getElementById('crear-entrenamiento');
+const fecha_entreno = document.getElementById('fecha_nueva_semana');
+const nombre_entreno = document.getElementById('nombre_entreno');
+const boton_crear_entreno = document.getElementById('crear-entrenamiento');
 
 // FUNCIÓN QUE CREA UN ENTRENAMIENTO Y LO GUARDA EN EL ARRAY DE ENTRENAMIENTOS QUE YA ESTABA CREADO
 async function crearEntrenamiento(nombre, fecha) {
-
     const entrenamiento = {
         id: Date.now(),
         nombre,
@@ -144,14 +143,25 @@ async function crearEntrenamiento(nombre, fecha) {
     await guardarEntrenamiento(entrenamiento);
 }
 
-         // 2. Escuchas el clic del botón
-boton_crear_entreno.addEventListener('click', function(event) {
+// 2. Escuchas el clic del botón
+boton_crear_entreno.addEventListener('click', function (event) {
     // Evita que la página se recargue si el botón está dentro de un <form>
-    event.preventDefault(); 
+    event.preventDefault();
     // 3. OBTENGO LOS VALORES JUSTO AHORA (cuando el usuario ya escribió)
+
+    // SI LA FECHA SE DEJA VACÍA, SE TOMA POR DEFECTO EL DÍA ACTUAL
+    if(fecha_entreno.value === '') {
+
+        const hoy = new Date();
+        const year = hoy.getFullYear();
+        const mes = String(hoy.getMonth() + 1).padStart(2, '0'); // Enero es 0
+        const dia = String(hoy.getDate()).padStart(2, '0');
+        fecha_entreno.value = `${year}-${mes}-${dia}`;
+    }
+
     let fecha_ingresada = fecha_entreno.value;
     let nombre_ingresado = nombre_entreno.value;
-    crearEntrenamiento(nombre_ingresado,fecha_ingresada);
+    crearEntrenamiento(nombre_ingresado, fecha_ingresada);
 
     nombre_entreno.value = "";
     fecha_entreno.value = "";

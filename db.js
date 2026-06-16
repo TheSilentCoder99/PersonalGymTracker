@@ -3,7 +3,7 @@ let conexion;
 function inicializarBaseDeDatos() {
     return new Promise((resolve, reject) => {
 
-        const request = indexedDB.open("gymtracker", 2);
+        const request = indexedDB.open("gymtracker", 3);
 
         request.onupgradeneeded = (e) => {
             const db = e.target.result;
