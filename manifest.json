@@ -1,12 +1,12 @@
 {
     "name": "Gym Tracker",
     "short_name": "GymTracker",
-    "start_url": ".",
+    "start_url": "./index.html",
     "display": "standalone",
-    "lang":"spanish",
+    "lang": "spanish",
     "icons": [
         {
-            "src": "logo_mancuena.png",
+            "src": "icono_mancuena.png",
             "sizes": "192x192",
             "type": "image/png"
         },

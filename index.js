@@ -150,7 +150,7 @@ boton_crear_entreno.addEventListener('click', function (event) {
     // 3. OBTENGO LOS VALORES JUSTO AHORA (cuando el usuario ya escribió)
 
     // SI LA FECHA SE DEJA VACÍA, SE TOMA POR DEFECTO EL DÍA ACTUAL
-    if(fecha_entreno.value === '') {
+    if (fecha_entreno.value === '') {
 
         const hoy = new Date();
         const year = hoy.getFullYear();
@@ -175,4 +175,18 @@ window.onload = async function () {
 
     const indiceAleatorio = Math.floor(Math.random() * frases.length);
     document.getElementById("frase_aleatoria").textContent = frases[indiceAleatorio];
+
+    if ("serviceWorker" in navigator) {
+
+        navigator.serviceWorker.register("./service-worker.js")
+            .then(() => {
+                console.log("Service Worker registrado");
+            })
+            .catch(error => {
+                console.log("Error:", error);
+            });
+
+    }
+
 }
+
