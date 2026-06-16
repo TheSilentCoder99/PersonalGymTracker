@@ -6,12 +6,12 @@
     "lang": "spanish",
     "icons": [
         {
-            "src": "icono_mancuena.png",
+            "src": "/icono_mancuerna.png",
             "sizes": "192x192",
             "type": "image/png"
         },
         {
-            "src": "logo_mancuena.png",
+            "src": "/logo_mancuerna.png",
             "sizes": "512x512",
             "type": "image/png"
         }
