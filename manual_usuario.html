@@ -1,0 +1,516 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Manual de usuario — PersonalGymTracker</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      background-color: #0a0a0a;
+      color: #ffffff;
+      font-family: system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;
+      padding: 2rem 1.5rem;
+      max-width: 720px;
+      margin: 0 auto;
+    }
+
+    /* ─── CABECERA ─────────────────────────────────────── */
+    .cabecera {
+      margin-bottom: 2.5rem;
+    }
+
+    .cabecera h1 {
+      color: #00e676;
+      font-size: 2rem;
+      font-weight: 700;
+      border-left: 5px solid #00e676;
+      padding-left: 1rem;
+      margin-bottom: 0.5rem;
+    }
+
+    .cabecera p {
+      color: #aaaaaa;
+      font-size: 0.95rem;
+      padding-left: 1.3rem;
+    }
+
+    /* ─── ÍNDICE ───────────────────────────────────────── */
+    nav.indice {
+      background-color: #121212;
+      border: 1px solid #2c2c2c;
+      border-radius: 20px;
+      padding: 1.5rem;
+      margin-bottom: 2.5rem;
+    }
+
+    nav.indice h2 {
+      color: #00e676;
+      font-size: 1rem;
+      font-weight: 600;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      margin-bottom: 1rem;
+    }
+
+    nav.indice ol {
+      padding-left: 1.2rem;
+      display: flex;
+      flex-direction: column;
+      gap: 0.5rem;
+    }
+
+    nav.indice ol li a {
+      color: #cccccc;
+      text-decoration: none;
+      font-size: 0.95rem;
+      transition: color 0.2s;
+    }
+
+    nav.indice ol li a:hover {
+      color: #00e676;
+    }
+
+    /* ─── SECCIONES ────────────────────────────────────── */
+    section {
+      margin-bottom: 3rem;
+      scroll-margin-top: 2rem;
+    }
+
+    section h2 {
+      color: #00e676;
+      font-size: 1.4rem;
+      font-weight: 700;
+      border-left: 4px solid #00e676;
+      padding-left: 0.9rem;
+      margin-bottom: 1.2rem;
+    }
+
+    section h3 {
+      color: #00e676;
+      font-size: 1rem;
+      font-weight: 600;
+      margin: 1.2rem 0 0.5rem 0;
+    }
+
+    section p {
+      color: #cccccc;
+      line-height: 1.7;
+      font-size: 0.95rem;
+      margin-bottom: 0.75rem;
+    }
+
+    /* ─── PASOS NUMERADOS ──────────────────────────────── */
+    ol.pasos {
+      list-style: none;
+      padding: 0;
+      display: flex;
+      flex-direction: column;
+      gap: 0.75rem;
+      margin-top: 0.5rem;
+    }
+
+    ol.pasos li {
+      display: flex;
+      gap: 1rem;
+      align-items: flex-start;
+      background-color: #121212;
+      border: 1px solid #2c2c2c;
+      border-radius: 14px;
+      padding: 0.9rem 1rem;
+      color: #cccccc;
+      font-size: 0.95rem;
+      line-height: 1.6;
+    }
+
+    ol.pasos li .num {
+      flex-shrink: 0;
+      background-color: #00e676;
+      color: #0a0a0a;
+      font-weight: 700;
+      font-size: 0.8rem;
+      width: 24px;
+      height: 24px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-top: 1px;
+    }
+
+    /* ─── AVISO / TIP ──────────────────────────────────── */
+    .tip {
+      background-color: #0d1f14;
+      border: 1px solid #00e676;
+      border-radius: 14px;
+      padding: 1rem 1.2rem;
+      color: #aad9b8;
+      font-size: 0.9rem;
+      line-height: 1.6;
+      margin-top: 0.75rem;
+    }
+
+    .tip strong {
+      color: #00e676;
+    }
+
+    /* ─── TABLA DE REFERENCIA ──────────────────────────── */
+    .tabla-wrapper {
+      overflow-x: auto;
+      margin-top: 0.5rem;
+      border-radius: 14px;
+      border: 1px solid #2c2c2c;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 0.9rem;
+    }
+
+    thead tr {
+      background-color: #1a1a1a;
+    }
+
+    thead th {
+      color: #00e676;
+      text-align: left;
+      padding: 0.75rem 1rem;
+      font-weight: 600;
+      border-bottom: 1px solid #2c2c2c;
+    }
+
+    tbody tr {
+      border-bottom: 1px solid #1a1a1a;
+    }
+
+    tbody tr:last-child {
+      border-bottom: none;
+    }
+
+    tbody td {
+      padding: 0.7rem 1rem;
+      color: #cccccc;
+      vertical-align: top;
+    }
+
+    tbody td:first-child {
+      color: #00e676;
+      font-weight: 500;
+      white-space: nowrap;
+    }
+
+    /* ─── DIVISOR ──────────────────────────────────────── */
+    hr {
+      border: none;
+      border-top: 1px solid #2c2c2c;
+      margin: 2.5rem 0;
+    }
+
+    /* ─── BOTÓN VOLVER ─────────────────────────────────── */
+    .btn-volver {
+      display: inline-block;
+      background-color: #1f1f1f;
+      border: 1px solid #333;
+      color: white;
+      padding: 10px 20px;
+      font-size: 0.9rem;
+      font-weight: 500;
+      border-radius: 60px;
+      cursor: pointer;
+      transition: all 0.2s ease;
+      text-decoration: none;
+      margin-bottom: 2rem;
+    }
+
+    .btn-volver:hover {
+      background-color: #2a2a2a;
+      border-color: #00e676;
+      color: #00e676;
+    }
+
+    /* ─── BOTÓN IR ARRIBA ──────────────────────────────── */
+    a.ir-arriba {
+      position: fixed;
+      bottom: 2rem;
+      right: 2rem;
+      background-color: #1f1f1f;
+      border: 1px solid #333;
+      color: #00e676;
+      width: 48px;
+      height: 48px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-decoration: none;
+      font-size: 1.4rem;
+      transition: all 0.2s ease;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.4);
+      z-index: 100;
+    }
+
+    a.ir-arriba:hover {
+      background-color: #2a2a2a;
+      border-color: #00e676;
+      transform: scale(1.1);
+    }
+
+    /* ─── RESPONSIVE ───────────────────────────────────── */
+    @media (max-width: 550px) {
+      body { padding: 1rem; }
+      .cabecera h1 { font-size: 1.6rem; }
+      section h2 { font-size: 1.2rem; }
+      a.ir-arriba { bottom: 1rem; right: 1rem; width: 40px; height: 40px; font-size: 1.1rem; }
+    }
+  </style>
+</head>
+
+<body id="arriba">
+
+  <a class="btn-volver" href="index.html">← Volver</a>
+
+  <div class="cabecera">
+    <h1>Manual de usuario</h1>
+    <p>PersonalGymTracker · Guía completa de uso</p>
+  </div>
+
+  <!-- ÍNDICE -->
+  <nav class="indice" aria-label="Índice de contenidos">
+    <h2>Contenidos</h2>
+    <ol>
+      <li><a href="#que-es">¿Qué es PersonalGymTracker?</a></li>
+      <li><a href="#crear-entreno">Crear un entrenamiento</a></li>
+      <li><a href="#gestionar-entrenos">Gestionar entrenamientos</a></li>
+      <li><a href="#añadir-ejercicios">Añadir ejercicios a un entrenamiento</a></li>
+      <li><a href="#ejercicios-propuestos">Ejercicios propuestos</a></li>
+      <li><a href="#estadisticas">Estadísticas</a></li>
+      <li><a href="#instalar">Instalar la app en tu dispositivo</a></li>
+      <li><a href="#referencia">Referencia rápida de botones</a></li>
+    </ol>
+  </nav>
+
+  <!-- 1. QUÉ ES -->
+  <section id="que-es">
+    <h2>1. ¿Qué es PersonalGymTracker?</h2>
+    <p>PersonalGymTracker es una aplicación web progresiva (PWA) diseñada para registrar y seguir tus entrenamientos de gimnasio directamente desde el navegador, sin necesidad de cuenta ni conexión a internet.</p>
+    <p>Todos los datos se guardan en tu propio dispositivo mediante IndexedDB, lo que significa que nadie más tiene acceso a ellos y funcionan sin servidor.</p>
+    <div class="tip">
+      <strong>Tip:</strong> Puedes instalarla en la pantalla de inicio de tu móvil o escritorio para usarla como una app nativa. Consulta la sección <a href="#instalar" style="color:#00e676">Instalar la app</a>.
+    </div>
+  </section>
+
+  <hr>
+
+  <!-- 2. CREAR ENTRENO -->
+  <section id="crear-entreno">
+    <h2>2. Crear un entrenamiento</h2>
+    <p>Desde la pantalla principal puedes registrar un nuevo entrenamiento en segundos.</p>
+    <ol class="pasos">
+      <li><span class="num">1</span>Abre la app. Verás el formulario <strong>«Nuevo entrenamiento»</strong> en la parte superior.</li>
+      <li><span class="num">2</span>Escribe el nombre del entrenamiento en el campo <strong>Entrenamiento</strong> (por ejemplo: «Empuje», «Espalda y bíceps», «Día de pierna»).</li>
+      <li><span class="num">3</span>Selecciona la fecha en el campo <strong>Fecha</strong>. Si lo dejas en blanco, se usará automáticamente la fecha de hoy.</li>
+      <li><span class="num">4</span>Pulsa <strong>Guardar</strong>. El entrenamiento queda registrado y estará disponible en la sección <em>Gestionar entrenos</em>.</li>
+    </ol>
+    <div class="tip">
+      <strong>Tip:</strong> Crea primero el entrenamiento vacío y luego añade los ejercicios desde la sección <em>Gestionar entrenos</em>.
+    </div>
+  </section>
+
+  <hr>
+
+  <!-- 3. GESTIONAR ENTRENOS -->
+  <section id="gestionar-entrenos">
+    <h2>3. Gestionar entrenamientos</h2>
+    <p>Accede pulsando el botón <strong>«Gestionar entrenos»</strong> en la pantalla principal. Aquí se listan todos los entrenamientos guardados.</p>
+
+    <h3>Ver los ejercicios de un entrenamiento</h3>
+    <ol class="pasos">
+      <li><span class="num">1</span>Localiza la tarjeta del entrenamiento que quieres consultar.</li>
+      <li><span class="num">2</span>Pulsa el botón <strong>«Ejercicios»</strong>. Se desplegará la lista de ejercicios con sus series, kilos y repeticiones.</li>
+      <li><span class="num">3</span>Pulsa de nuevo para ocultar la lista.</li>
+    </ol>
+
+    <h3>Borrar un entrenamiento</h3>
+    <ol class="pasos">
+      <li><span class="num">1</span>Pulsa el botón <strong>✕</strong> en la esquina superior derecha de la tarjeta.</li>
+      <li><span class="num">2</span>Confirma el borrado en el diálogo que aparece. Esta acción es permanente.</li>
+    </ol>
+
+    <div class="tip">
+      <strong>Aviso:</strong> Borrar un entrenamiento elimina también todos los ejercicios y series que contiene. No hay forma de recuperarlo.
+    </div>
+  </section>
+
+  <hr>
+
+  <!-- 4. AÑADIR EJERCICIOS -->
+  <section id="añadir-ejercicios">
+    <h2>4. Añadir ejercicios a un entrenamiento</h2>
+    <p>Cada entrenamiento puede contener tantos ejercicios como necesites. Para añadir uno:</p>
+    <ol class="pasos">
+      <li><span class="num">1</span>En la tarjeta del entrenamiento, pulsa <strong>«Añadir ejercicios»</strong>. Se abrirá un formulario debajo.</li>
+      <li><span class="num">2</span>Escribe el nombre del ejercicio en el campo <strong>Nombre</strong> (por ejemplo: «Press banca», «Dominadas»).</li>
+      <li><span class="num">3</span>Selecciona el número de series en el desplegable <strong>Nº de series</strong> (de 1 a 8).</li>
+      <li><span class="num">4</span>Pulsa <strong>«Definir series»</strong>. Aparecerán los campos de <em>kg</em> y <em>reps</em> para cada serie.</li>
+      <li><span class="num">5</span>Rellena los kilos y repeticiones de cada serie.</li>
+      <li><span class="num">6</span>Pulsa <strong>«Guardar ejercicio ✅»</strong>. El ejercicio queda guardado dentro del entrenamiento.</li>
+    </ol>
+    <div class="tip">
+      <strong>Tip:</strong> Puedes añadir varios ejercicios seguidos repitiendo el proceso desde el paso 1. Cada vez que guardas, la lista de ejercicios se actualiza en tiempo real.
+    </div>
+  </section>
+
+  <hr>
+
+  <!-- 5. EJERCICIOS PROPUESTOS -->
+  <section id="ejercicios-propuestos">
+    <h2>5. Ejercicios propuestos</h2>
+    <p>La sección <strong>«Ejercicios propuestos»</strong> incluye una biblioteca de 20 ejercicios organizados por grupo muscular, con descripción de la técnica y vídeo de referencia.</p>
+    <ol class="pasos">
+      <li><span class="num">1</span>Pulsa <strong>«Ejercicios propuestos»</strong> en la pantalla principal.</li>
+      <li><span class="num">2</span>Verás una lista con el nombre y el músculo que trabaja cada ejercicio.</li>
+      <li><span class="num">3</span>Pulsa sobre cualquier ejercicio para desplegar su descripción y vídeo demostrativo.</li>
+      <li><span class="num">4</span>Pulsa de nuevo para cerrarlo.</li>
+    </ol>
+    <p>Los grupos musculares disponibles son: Pecho, Hombros, Tríceps, Espalda, Bíceps, Piernas, Glúteo y Gemelos.</p>
+  </section>
+
+  <hr>
+
+  <!-- 6. ESTADÍSTICAS -->
+  <section id="estadisticas">
+    <h2>6. Estadísticas</h2>
+    <p>La sección <strong>«Estadísticas»</strong> está en desarrollo. Próximamente mostrará:</p>
+    <ol class="pasos">
+      <li><span class="num">📈</span>Volumen por ejercicio a lo largo del tiempo.</li>
+      <li><span class="num">🏆</span>Peso máximo levantado por ejercicio (récord personal).</li>
+      <li><span class="num">📊</span>Número total de series por semana.</li>
+      <li><span class="num">⚖️</span>Progresión del peso medio por ejercicio.</li>
+    </ol>
+    <div class="tip">
+      <strong>Nota:</strong> Cuantos más entrenamientos registres ahora, más datos tendrás disponibles cuando las estadísticas estén activas.
+    </div>
+  </section>
+
+  <hr>
+
+  <!-- 7. INSTALAR -->
+  <section id="instalar">
+    <h2>7. Instalar la app en tu dispositivo</h2>
+    <p>PersonalGymTracker es una PWA: puedes añadirla a la pantalla de inicio y usarla sin abrir el navegador.</p>
+
+    <h3>En Android (Chrome)</h3>
+    <ol class="pasos">
+      <li><span class="num">1</span>Abre la app en Chrome.</li>
+      <li><span class="num">2</span>Pulsa el menú (⋮) y selecciona <strong>«Añadir a pantalla de inicio»</strong>.</li>
+      <li><span class="num">3</span>Confirma. El icono de la mancuerna aparecerá en tu escritorio.</li>
+    </ol>
+
+    <h3>En iPhone / iPad (Safari)</h3>
+    <ol class="pasos">
+      <li><span class="num">1</span>Abre la app en Safari.</li>
+      <li><span class="num">2</span>Pulsa el botón de compartir (□↑) en la barra inferior.</li>
+      <li><span class="num">3</span>Selecciona <strong>«Añadir a la pantalla de inicio»</strong> y confirma.</li>
+    </ol>
+
+    <h3>En escritorio (Chrome / Edge)</h3>
+    <ol class="pasos">
+      <li><span class="num">1</span>Abre la app en el navegador.</li>
+      <li><span class="num">2</span>Busca el icono de instalación (⊕) en la barra de direcciones.</li>
+      <li><span class="num">3</span>Haz clic e instala. La app se abrirá en ventana propia.</li>
+    </ol>
+
+    <div class="tip">
+      <strong>Sin conexión:</strong> Una vez instalada, la app funciona completamente sin internet gracias al Service Worker integrado.
+    </div>
+  </section>
+
+  <hr>
+
+  <!-- 8. REFERENCIA RÁPIDA -->
+  <section id="referencia">
+    <h2>8. Referencia rápida de botones</h2>
+    <div class="tabla-wrapper">
+      <table>
+        <thead>
+          <tr>
+            <th>Botón</th>
+            <th>Dónde aparece</th>
+            <th>Qué hace</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Guardar</td>
+            <td>Pantalla principal</td>
+            <td>Crea un nuevo entrenamiento con el nombre y la fecha indicados.</td>
+          </tr>
+          <tr>
+            <td>Gestionar entrenos</td>
+            <td>Pantalla principal</td>
+            <td>Abre la lista de todos los entrenamientos guardados.</td>
+          </tr>
+          <tr>
+            <td>Ejercicios propuestos</td>
+            <td>Pantalla principal</td>
+            <td>Abre la biblioteca de ejercicios con descripciones y vídeos.</td>
+          </tr>
+          <tr>
+            <td>Estadísticas</td>
+            <td>Pantalla principal</td>
+            <td>Abre la sección de seguimiento de progreso (en desarrollo).</td>
+          </tr>
+          <tr>
+            <td>✕</td>
+            <td>Tarjeta de entrenamiento</td>
+            <td>Borra el entrenamiento y todos sus ejercicios (pide confirmación).</td>
+          </tr>
+          <tr>
+            <td>Añadir ejercicios</td>
+            <td>Tarjeta de entrenamiento</td>
+            <td>Despliega el formulario para añadir un ejercicio al entrenamiento.</td>
+          </tr>
+          <tr>
+            <td>Definir series</td>
+            <td>Formulario de ejercicio</td>
+            <td>Genera los campos de kg y reps según el número de series elegido.</td>
+          </tr>
+          <tr>
+            <td>Guardar ejercicio ✅</td>
+            <td>Formulario de ejercicio</td>
+            <td>Guarda el ejercicio con sus series en el entrenamiento.</td>
+          </tr>
+          <tr>
+            <td>Ejercicios</td>
+            <td>Tarjeta de entrenamiento</td>
+            <td>Muestra u oculta la lista de ejercicios del entrenamiento.</td>
+          </tr>
+          <tr>
+            <td>← Volver</td>
+            <td>Todas las secciones</td>
+            <td>Regresa a la pantalla principal.</td>
+          </tr>
+          <tr>
+            <td>⬆ / Ir arriba</td>
+            <td>Secciones con scroll</td>
+            <td>Desplaza la página al inicio.</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <a class="ir-arriba" href="#arriba" aria-label="Ir arriba">↑</a>
+
+</body>
+</html>

@@ -18,6 +18,8 @@ const ARCHIVOS_CACHE = [
     "./db.js",
     // MANIFEST
         "./manifest.json",
+        // MANUAL DE USUARIO
+        "./manual_usuario.html"
 ];
 
 // INSTALACIÓN DEL SERVICE WORKER
