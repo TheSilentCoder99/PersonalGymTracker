@@ -11,7 +11,7 @@ const ejercicios = [
   { nombre: "Remo con barra", musculo: "Espalda alta", descripcion: "Tracción horizontal con barra hacia el abdomen. Ideal para desarrollar trapecios, romboides y dorsales.", multimedia: "" },
   { nombre: "Remo sentado", musculo: "Espalda media", descripcion: "Tracción con polea baja y agarre en V. Trabaja la parte media de la espalda y los dorsales inferiores.", multimedia: "" },
   { nombre: "Face pull", musculo: "Espalda alta", descripcion: "Tirón facial con polea alta. Perfecto para deltoides posterior, trapecio y mejorar la postura.", multimedia: "" },
-  { nombre: "Curl banco inclinado", musculo: "Bíceps", descripcion: "Curl de bíceps acostado boca arriba en banco inclinado. Alarga el bíceps y evita trampas con el torso.", multimedia: "" },
+  { nombre: "Curl de bíceps banco inclinado", musculo: "Bíceps", descripcion: "Curl de bíceps acostado boca arriba en banco inclinado. Alarga el bíceps y evita trampas con el torso.", multimedia: "" },
   { nombre: "Curl de bíceps en polea", musculo: "Bíceps", descripcion: "Curl con polea baja y barra recta o cuerda. Mantiene tensión constante durante todo el movimiento.", multimedia: "" },
   { nombre: "Elevaciones laterales en polea", musculo: "Hombros", descripcion: "Elevación lateral con polea baja de pie. Aísla el deltoides medio de forma continua.", multimedia: "" },
   { nombre: "Sentadillas con barra", musculo: "Piernas", descripcion: "Ejercicio rey del tren inferior. Trabaja cuádriceps, glúteos y estabilizadores de forma global.", multimedia: "" },

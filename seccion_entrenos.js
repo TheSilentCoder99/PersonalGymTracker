@@ -17,20 +17,20 @@ async function pintarEntrenamientos() {
 
     // DE CADA ENTRENAMIENTO, PINTO SU HTML EN EL DIV QUE LOS CONTIENE
     All_entrenamientos.forEach(este_entreno => {
-        
+
         // CONSTRUYO LA LISTA DE EJERCICIOS DE ESTE ENTRENO
         let htmlEjercicios = "";
 
         // ACCEDO AL ARRAY DE EJERCICIOS DEL ENTRENAMIENTO QUE SE ESTÉ RECORRIENDO EN ESE MOMENTO
         este_entreno.ejercicios.forEach(ejercicio => {
-        // ACCEDO AL ARRAY DE SERIES DEL EJERCICIO QUE SE ESTÉ RECORRIENDO EN ESE MOMENTO
-  let htmlSeries = "";
-ejercicio.series.forEach(serie => {
-    htmlSeries += `
+            // ACCEDO AL ARRAY DE SERIES DEL EJERCICIO QUE SE ESTÉ RECORRIENDO EN ESE MOMENTO
+            let htmlSeries = "";
+            ejercicio.series.forEach(serie => {
+                htmlSeries += `
         <li>${serie.kg}kg - ${serie.reps} reps</li>
     `;
-});
-// CONSTRUYO EL HTML QUE SE MOSTRARÁ FINALMENTE AL USUARIO ACCEDIENDO AL NOMBRE DEL EJERCICIO (PRIMER FOR-EACH HIJO) Y AÑADIENDO EL HTML CONSTRUIDO DE SERIES(EN EL FOR-EACH NIETO)
+            });
+            // CONSTRUYO EL HTML QUE SE MOSTRARÁ FINALMENTE AL USUARIO ACCEDIENDO AL NOMBRE DEL EJERCICIO (PRIMER FOR-EACH HIJO) Y AÑADIENDO EL HTML CONSTRUIDO DE SERIES(EN EL FOR-EACH NIETO)
             htmlEjercicios += `<li>${ejercicio.nombre}</li> <ol>${htmlSeries}</ol>`;
         });
 
@@ -101,7 +101,32 @@ ejercicio.series.forEach(serie => {
                     <form action="">
                         <label for="nombre_ejercicio">Nombre</label>
                         <br>
-                        <input type="text" id="nombre_ejercicio" name="nombre_ejercicio">
+
+                        <!-- CREAS UN ACORDEON QUE DESPLIEGUE COMO OPCIÓN TODOS LOS EJERCICIOS DE LA SECCIÓN "EJERCICIOS PROPUESTOS". MANTEN EL ID. ALLÍ DEBERÍAS CREAR UNA OPCIÓN PARA QUE EL USUARIO PUEDE INSERTAR SUS PROPIOS EJERCICIOS-->
+                       
+                        <select name="nombre_ejercicio" id="nombre_ejercicio">
+                            <option value="Press banca">Press banca</option>
+                            <option value="Banca inclinada">Banca inclinada</option>
+                            <option value="Press militar">Press militar</option>
+                            <option value="Fondos lastrados">Fondos lastrados</option>
+                            <option value="Tríceps en polea">Tríceps en polea</option>
+                            <option value="Pájaros polea alta">Pájaros polea alta</option>
+                            <option value="Pájaros polea baja">Pájaros polea baja</option>
+                            <option value="Dominadas lastradas">Dominadas lastradas</option>
+                            <option value="Jalón al pecho">Jalón al pecho</option>
+                            <option value="Remo con barra>Remo con barra</option>
+                            <option value="Remo sentado">Remo sentado</option>
+                            <option value="Face pull>Face pull</option>
+                            <option value="Curl de bíceps banco inclinado"> Curl de bíceps banco inclinado</option>
+                            <option value="Curl de bíceps polea">Curl de bíceps polea</option>
+                            <option value="Elevaciones laterales en polea">Elevaciones laterales en polea</option>
+                            <option value="Sentadillas con barra">Sentadillas con barra</option>
+                            <option value="Prensa de piernas">Prensa de piernas</option>
+                            <option value="Peso muerto rumano>Peso muerto rumano</option>
+                            <option value="Hiptrust">Hiptrust</option>
+                            <option value="Elevaciones de gemelo">Elevaciones de gemelo</option>
+                        </select>
+
                         <br>
                         <label for="num_series">Nº de series</label>
                         <br>
@@ -170,56 +195,55 @@ ejercicio.series.forEach(serie => {
                     div_series.innerHTML = html_series_peso;
 
                 });
-                
 
-            //     // ESTE SEGUNDO BOTÓN YA SÍ QUE GUARDA EL ENTRENO Y LAS SERIES
-                  let boton_guardar_definitivo = contenedor_formulario_a_rellenar.querySelector('.guardar-ejercicio_definitivo');
 
-            boton_guardar_definitivo.addEventListener('click', async (event) => {
-                
+                //     // ESTE SEGUNDO BOTÓN YA SÍ QUE GUARDA EL ENTRENO Y LAS SERIES
+                let boton_guardar_definitivo = contenedor_formulario_a_rellenar.querySelector('.guardar-ejercicio_definitivo');
 
-                event.preventDefault();
+                boton_guardar_definitivo.addEventListener('click', async (event) => {
 
-                let nombre = document.getElementById('nombre_ejercicio').value;
 
-                // TOMO LOS VALORES DE PESO RELLENADOS POR EL USUARIO
-                const inputPeso = contenedor_formulario_a_rellenar.querySelectorAll('.kg');
+                    event.preventDefault();
 
-                // TOMO LOS VALORES DE REPES RELLENADOS POR EL USUARIO
-                 const inputRepes = contenedor_formulario_a_rellenar.querySelectorAll('.repes');
+                    let nombre = document.getElementById('nombre_ejercicio').value;
 
-                //  CREO UN ARRAY DE SERIES QUE SERÁ RELLENADO CON CADA VALOR DE PESO Y REPES
-                 let series = [];
+                    // TOMO LOS VALORES DE PESO RELLENADOS POR EL USUARIO
+                    const inputPeso = contenedor_formulario_a_rellenar.querySelectorAll('.kg');
 
-                // PARA CREAR LAS SERIES, RECORRO LOS VALORES DE PESO Y REPES A LA MISMA VEZ, O SEA, EL MISMO INDICE. DE CADA PESO TOMO EL VALOR Y LA POSICIÓN
-                inputPeso.forEach((input, i) => {
-                series.push({
-        // EL VALOR LO UTILIZO AQUÍ, PARA AÑADIRLO EN KG
-                kg: Number(input.value),
-        // LA POSICIÓN LA UTILIZO AQUÍ, PARA TOMAR EL VALOR DEL Nº DE REPES DE LA MISMA POSICIÓN
-                reps: Number(inputRepes[i].value)
-    });
-});
+                    // TOMO LOS VALORES DE REPES RELLENADOS POR EL USUARIO
+                    const inputRepes = contenedor_formulario_a_rellenar.querySelectorAll('.repes');
 
-// CREO ESTE EJERCICIO
-let ejercicio = {
-    nombre,
-    series
-};
+                    //  CREO UN ARRAY DE SERIES QUE SERÁ RELLENADO CON CADA VALOR DE PESO Y REPES
+                    let series = [];
 
-            await addEjercicio_Entreno(Number(boton_guardar_definitivo.dataset.id), ejercicio);
-                await pintarEntrenamientos();
-            });
+                    // PARA CREAR LAS SERIES, RECORRO LOS VALORES DE PESO Y REPES A LA MISMA VEZ, O SEA, EL MISMO INDICE. DE CADA PESO TOMO EL VALOR Y LA POSICIÓN
+                    inputPeso.forEach((input, i) => {
+                        series.push({
+                            // EL VALOR LO UTILIZO AQUÍ, PARA AÑADIRLO EN KG
+                            kg: Number(input.value),
+                            // LA POSICIÓN LA UTILIZO AQUÍ, PARA TOMAR EL VALOR DEL Nº DE REPES DE LA MISMA POSICIÓN
+                            reps: Number(inputRepes[i].value)
+                        });
+
+                    });
+
+                    // CREO ESTE EJERCICIO
+                    let ejercicio = {
+                        nombre,
+                        series
+                    };
+
+                    await addEjercicio_Entreno(Number(boton_guardar_definitivo.dataset.id), ejercicio);
+                    await pintarEntrenamientos();
+                });
 
             }
 
-    
+
             // QUITA O PONE LA CLASE OCULTO A ESTE ELEMENTO DEPENDIENDO DE SI LA TIENE O NO. ESTA CLASE ESTÁ DEFINIDA EN EL CSS Y SIRVE PARA, DE BASE, OCULTAR EL ELEMENTO QUE LA RECIBE
             contenedor_formulario_a_rellenar.classList.toggle('oculto');
         });
     });
-
-
 
     // BOTÓN PARA MOSTRAR U OCULTAR LOS EJERCICIOS
     const botones_mostrar_ejercicios = document.querySelectorAll('.mostrar_ocultar');
@@ -236,4 +260,5 @@ let ejercicio = {
 window.onload = async function () {
     await inicializarBaseDeDatos();
     await pintarEntrenamientos();
+
 }

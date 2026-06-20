@@ -14,6 +14,11 @@ const ARCHIVOS_CACHE = [
     "./seccion_entrenos.html",
     "./seccion_entrenos.js",
     "./estilos_seccion_entrenos.css",
+    //SECCIÓN ESTADÍSTICAS
+    "./seccion_estadisticas.html",
+    "./seccion_estadisticas.js",
+        "./estilos_estadisticas.css",
+
 // BASE DE DATOS
     "./db.js",
     // MANIFEST
