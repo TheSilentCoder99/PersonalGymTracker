@@ -1,4 +1,4 @@
-const ejercicios = [
+let ejercicios = [
   { nombre: "Press banca", musculo: "Pecho", descripcion: "Ejercicio básico de empuje horizontal. Ideal para desarrollar fuerza y masa en el pectoral mayor.", multimedia: "" },
   { nombre: "Banca inclinada", musculo: "Pecho alto", descripcion: "Variante del press banca con banco inclinado. Enfoca el trabajo en la parte alta del pectoral y el deltoides anterior.", multimedia: "" },
   { nombre: "Press militar", musculo: "Hombros", descripcion: "Elevación de barra por encima de la cabeza de pie o sentado. Clave para la fuerza del hombro y el desarrollo del deltoides.", multimedia: "" },

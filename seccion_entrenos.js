@@ -10,6 +10,7 @@ async function addEjercicio_Entreno(idEntrenamiento, ejercicio) {
 
 async function pintarEntrenamientos() {
 
+
     let htmlEntrenos = "";
 
     // GUARDO TODOS LOS ENTRENAMIENTOS
@@ -92,6 +93,14 @@ async function pintarEntrenamientos() {
     botones_add_ejercicio.forEach(boton_add_ejercicio => {
         boton_add_ejercicio.addEventListener('click', async () => {
 
+                    // ACCEDO A CADA NOMBRE DE LOS EJERCICIOS REGISTRADOS PARA CREAR SU OPTION E INSERTARLOS EN EL ACORDEÓN
+    let acordeon_ejercicios = "";
+
+    ejercicios.forEach(dato =>{
+
+        acordeon_ejercicios+= `<option value="${dato.nombre}">${dato.nombre}</option>`
+    });
+
             let contenedor_formulario_a_rellenar = boton_add_ejercicio.nextElementSibling;
 
             // SOLO RELLENA EL FORMULARIO LA PRIMERA VEZ, Y ASIGNA EL LISTENER DEL GUARDAR
@@ -101,30 +110,9 @@ async function pintarEntrenamientos() {
                     <form action="">
                         <label for="nombre_ejercicio">Nombre</label>
                         <br>
-
-                        <!-- CREAS UN ACORDEON QUE DESPLIEGUE COMO OPCIÓN TODOS LOS EJERCICIOS DE LA SECCIÓN "EJERCICIOS PROPUESTOS". MANTEN EL ID. ALLÍ DEBERÍAS CREAR UNA OPCIÓN PARA QUE EL USUARIO PUEDE INSERTAR SUS PROPIOS EJERCICIOS-->
                        
                         <select name="nombre_ejercicio" id="nombre_ejercicio">
-                            <option value="Press banca">Press banca</option>
-                            <option value="Banca inclinada">Banca inclinada</option>
-                            <option value="Press militar">Press militar</option>
-                            <option value="Fondos lastrados">Fondos lastrados</option>
-                            <option value="Tríceps en polea">Tríceps en polea</option>
-                            <option value="Pájaros polea alta">Pájaros polea alta</option>
-                            <option value="Pájaros polea baja">Pájaros polea baja</option>
-                            <option value="Dominadas lastradas">Dominadas lastradas</option>
-                            <option value="Jalón al pecho">Jalón al pecho</option>
-                            <option value="Remo con barra>Remo con barra</option>
-                            <option value="Remo sentado">Remo sentado</option>
-                            <option value="Face pull>Face pull</option>
-                            <option value="Curl de bíceps banco inclinado"> Curl de bíceps banco inclinado</option>
-                            <option value="Curl de bíceps polea">Curl de bíceps polea</option>
-                            <option value="Elevaciones laterales en polea">Elevaciones laterales en polea</option>
-                            <option value="Sentadillas con barra">Sentadillas con barra</option>
-                            <option value="Prensa de piernas">Prensa de piernas</option>
-                            <option value="Peso muerto rumano>Peso muerto rumano</option>
-                            <option value="Hiptrust">Hiptrust</option>
-                            <option value="Elevaciones de gemelo">Elevaciones de gemelo</option>
+                            ${acordeon_ejercicios}
                         </select>
 
                         <br>
@@ -258,6 +246,7 @@ async function pintarEntrenamientos() {
 }
 
 window.onload = async function () {
+
     await inicializarBaseDeDatos();
     await pintarEntrenamientos();
 
