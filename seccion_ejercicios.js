@@ -101,7 +101,8 @@ boton_guardar_ejercicio.addEventListener('click',()=>{
 
       let input_descripcion_nueva = document.getElementById('descripción_ejercicio').value;
 
-         let input_multimedia_nueva = document.getElementById('multimedia_ejercicio').value;
+      // FALTA EL TRATAMIENTO DE LA MULTIMEDIA PARA QUE SE MUESTRE EN LA LISTA DE EJERCICIOS
+      let input_multimedia_nueva = document.getElementById('multimedia_ejercicio').value;
 
 
   if(input_nombre_nuevo === ''){
@@ -119,6 +120,12 @@ let este_ejercicio = {
   ejercicios.push(este_ejercicio);
 
   pintarEjercicios();
+
+  // VACÍO LOS DATOS INTRODUCIDOS
+  document.getElementById('nombre_ejercicio').value = '';
+    document.getElementById('musculo_ejercicio').value = '';
+  document.getElementById('descripción_ejercicio').value = '';
+    document.getElementById('multimedia_ejercicio').value = '';
 
   alert('¡Ejercicio añadido!');
 

@@ -128,14 +128,17 @@ contenedor_botones.addEventListener("click", (evento) => {
 // PEGO LOS DATOS DEL FORMULARIO AL JS
 const fecha_entreno = document.getElementById('fecha_nueva_semana');
 const nombre_entreno = document.getElementById('nombre_entreno');
+const nota_entreno = document.getElementById('nota_entreno');
+
 const boton_crear_entreno = document.getElementById('crear-entrenamiento');
 
 // FUNCIÓN QUE CREA UN ENTRENAMIENTO Y LO GUARDA EN EL ARRAY DE ENTRENAMIENTOS QUE YA ESTABA CREADO
-async function crearEntrenamiento(nombre, fecha) {
+async function crearEntrenamiento(nombre, fecha, nota) {
     const entrenamiento = {
         id: Date.now(),
         nombre,
         fecha,
+        nota,
         ejercicios: []
     };
 
@@ -161,10 +164,12 @@ boton_crear_entreno.addEventListener('click', function (event) {
 
     let fecha_ingresada = fecha_entreno.value;
     let nombre_ingresado = nombre_entreno.value;
-    crearEntrenamiento(nombre_ingresado, fecha_ingresada);
+    let nota_ingresada = nota_entreno.value
+    crearEntrenamiento(nombre_ingresado, fecha_ingresada,nota_ingresada);
 
     nombre_entreno.value = "";
     fecha_entreno.value = "";
+    nota_ingresada.value = "";
 
 });
 

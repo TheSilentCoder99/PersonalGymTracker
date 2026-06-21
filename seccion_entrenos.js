@@ -1,6 +1,8 @@
-async function addEjercicio_Entreno(idEntrenamiento, ejercicio) {
+async function addEjercicio_Entreno(idEntrenamiento, ejercicio, nota) {
 
     let entreno_actual = await ObtenerEntreno(idEntrenamiento);
+
+    entreno_actual.nota = nota;
 
     entreno_actual.ejercicios.push(ejercicio);
 
@@ -61,6 +63,11 @@ async function pintarEntrenamientos() {
                     <ul>${htmlEjercicios}</ul>
                     </div>
             </div>
+
+            <div> 
+                <p>${este_entreno.nota || "Sin notas"}</p>
+                </div>
+
         `;
     });
 
@@ -93,13 +100,13 @@ async function pintarEntrenamientos() {
     botones_add_ejercicio.forEach(boton_add_ejercicio => {
         boton_add_ejercicio.addEventListener('click', async () => {
 
-                    // ACCEDO A CADA NOMBRE DE LOS EJERCICIOS REGISTRADOS PARA CREAR SU OPTION E INSERTARLOS EN EL ACORDEÓN
-    let acordeon_ejercicios = "";
+            // ACCEDO A CADA NOMBRE DE LOS EJERCICIOS REGISTRADOS PARA CREAR SU OPTION E INSERTARLOS EN EL ACORDEÓN
+            let acordeon_ejercicios = "";
 
-    ejercicios.forEach(dato =>{
+            ejercicios.forEach(dato => {
 
-        acordeon_ejercicios+= `<option value="${dato.nombre}">${dato.nombre}</option>`
-    });
+                acordeon_ejercicios += `<option value="${dato.nombre}">${dato.nombre}</option>`
+            });
 
             let contenedor_formulario_a_rellenar = boton_add_ejercicio.nextElementSibling;
 
@@ -201,6 +208,8 @@ async function pintarEntrenamientos() {
                     // TOMO LOS VALORES DE REPES RELLENADOS POR EL USUARIO
                     const inputRepes = contenedor_formulario_a_rellenar.querySelectorAll('.repes');
 
+                    let nota = document.getElementById('nota_entreno').value;
+
                     //  CREO UN ARRAY DE SERIES QUE SERÁ RELLENADO CON CADA VALOR DE PESO Y REPES
                     let series = [];
 
@@ -221,7 +230,7 @@ async function pintarEntrenamientos() {
                         series
                     };
 
-                    await addEjercicio_Entreno(Number(boton_guardar_definitivo.dataset.id), ejercicio);
+                    await addEjercicio_Entreno(Number(boton_guardar_definitivo.dataset.id), ejercicio, nota);
                     await pintarEntrenamientos();
                 });
 

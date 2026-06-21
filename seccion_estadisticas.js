@@ -15,14 +15,66 @@ window.onload = async function () {
     let total_ejercicios = 0;
 
 
-entrenamientos.forEach(entreno => {
+    const div_info_pr = document.querySelector('.mostrar_pr');
 
+    let acordeon_ejercicios = "";
+
+    ejercicios.forEach(dato =>{
+
+        acordeon_ejercicios+= `<option value="${dato.nombre}" class="lista_ejercicios">${dato.nombre}</option>`
+    });
+
+ div_info_pr.innerHTML =  `
+ <label>Peso record</label>
+    <br>
+    <select class="selector_ejercicio">${acordeon_ejercicios}</select>
+    <br>
+    <label id="peso_pr"></label>`;
+
+    let selector =  document.querySelector('.selector_ejercicio');
+
+const etiqueta_pr = document.getElementById('peso_pr');
+
+selector.addEventListener('change', () => {
+
+    let nombreBuscado = selector.value;
+
+    let peso_maximo_en = 0;
+
+    entrenamientos.forEach(entreno => {
+
+        entreno.ejercicios.forEach(ejercicio => {
+
+
+          if (ejercicio.nombre === nombreBuscado) {
+
+            ejercicio.series.forEach(serie => {
+
+                if (serie.kg > peso_maximo_en) {
+                    peso_maximo_en = serie.kg;
+                }
+
+            })
+        };
+
+        });
+
+    });
+
+    etiqueta_pr.textContent = `${peso_maximo_en} kg`;
+
+});
+
+
+entrenamientos.forEach(entreno => {
+    
             // LOǴICA DEL TOTAL DE ENTRENOS, OK
            total_entrenos++;
 
     entreno.ejercicios.forEach(ejercicio => {
 
         total_ejercicios++;
+
 
         ejercicio.series.forEach(serie => {
 
@@ -41,7 +93,7 @@ entrenamientos.forEach(entreno => {
             
         });
     });
-})
+});
 
 let info_estadisticas = 
 `<ol>
