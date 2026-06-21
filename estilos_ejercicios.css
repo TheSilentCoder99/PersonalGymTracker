@@ -73,7 +73,7 @@ a[href="index.html"]:hover {
 }
 
 /* Contenedor de la lista de ejercicios */
-#lista-ejercicios {
+#lista-ejercicios{
   display: flex;
   flex-direction: column;
   gap: 1rem;
@@ -92,6 +92,130 @@ a[href="index.html"]:hover {
 
 .ejercicio:hover {
   border-color: #00e676;
+}
+
+/* Botón para agregar nuevo ejercicio */
+.agregar-ejercicio {
+  background-color: #00e676;
+  border: none;
+  color: #0a0a0a;
+  padding: 14px 24px;
+  font-size: 1rem;
+  font-weight: 600;
+  border-radius: 60px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  width: 100%;
+  margin-bottom: 1.5rem;
+}
+
+.agregar-ejercicio:hover {
+  background-color: #00c853;
+  transform: scale(1.01);
+}
+
+/* Contenedor del formulario de nuevo ejercicio */
+#nuevo-ejercicio {
+  background-color: #121212;
+  border-radius: 20px;
+  padding: 1.5rem;
+  margin-bottom: 2rem;
+  border: 1px solid #2c2c2c;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4);
+  transition: all 0.3s ease;
+}
+
+#nuevo-ejercicio.oculto {
+  display: none;
+}
+
+/* Formulario de nuevo ejercicio */
+#nuevo-ejercicio form {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+#nuevo-ejercicio label {
+  color: #00e676;
+  font-size: 0.9rem;
+  font-weight: 500;
+  margin-bottom: 0.25rem;
+}
+
+#nuevo-ejercicio input[type="text"] {
+  width: 100%;
+  background-color: #1a1a1a;
+  border: 1px solid #333;
+  color: white;
+  padding: 10px 12px;
+  border-radius: 12px;
+  font-size: 0.95rem;
+  transition: border-color 0.2s ease;
+  margin-bottom: 0.5rem;
+}
+
+#nuevo-ejercicio input[type="text"]:focus {
+  outline: none;
+  border-color: #00e676;
+}
+
+/* Botón guardar nuevo ejercicio (✅) */
+#boton_guardar_ejercicio {
+  background-color: #00e676;
+  border: none;
+  color: #0a0a0a;
+  padding: 12px 24px;
+  font-size: 1.2rem;
+  font-weight: 600;
+  border-radius: 40px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  margin-top: 0.5rem;
+  width: 100%;
+}
+
+#boton_guardar_ejercicio:hover {
+  background-color: #00c853;
+  transform: scale(1.01);
+}
+
+/* Animación de aparición del formulario */
+@keyframes slideDown {
+  from {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+#nuevo-ejercicio:not(.oculto) {
+  animation: slideDown 0.3s ease;
+}
+
+/* Media query para móviles */
+@media (max-width: 550px) {
+  #nuevo-ejercicio {
+    padding: 1rem;
+  }
+  
+  .agregar-ejercicio {
+    padding: 12px 20px;
+    font-size: 0.9rem;
+  }
+  
+  #nuevo-ejercicio input[type="text"] {
+    padding: 8px 10px;
+    font-size: 0.9rem;
+  }
+  
+  #boton_guardar_ejercicio {
+    padding: 10px 20px;
+    font-size: 1rem;
+  }
 }
 
 /* Botón del nombre del ejercicio (tipo acordeón) */
