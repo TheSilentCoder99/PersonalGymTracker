@@ -292,6 +292,7 @@
       <li><a href="#crear-entreno">Crear un entrenamiento</a></li>
       <li><a href="#gestionar-entrenos">Gestionar entrenamientos</a></li>
       <li><a href="#añadir-ejercicios">Añadir ejercicios a un entrenamiento</a></li>
+      <li><a href="#notas">Notas de entrenamiento</a></li>
       <li><a href="#ejercicios-propuestos">Ejercicios propuestos</a></li>
       <li><a href="#estadisticas">Estadísticas</a></li>
       <li><a href="#instalar">Instalar la app en tu dispositivo</a></li>
@@ -359,8 +360,8 @@
     <p>Cada entrenamiento puede contener tantos ejercicios como necesites. Para añadir uno:</p>
     <ol class="pasos">
       <li><span class="num">1</span>En la tarjeta del entrenamiento, pulsa <strong>«Añadir ejercicios»</strong>. Se abrirá un formulario debajo.</li>
-      <li><span class="num">2</span>Escribe el nombre del ejercicio en el campo <strong>Nombre</strong> (por ejemplo: «Press banca», «Dominadas»).</li>
-      <li><span class="num">3</span>Selecciona el número de series en el desplegable <strong>Nº de series</strong> (de 1 a 8).</li>
+      <li><span class="num">2</span>Selecciona el nombre del ejercicio en el desplegable <strong>Nombre</strong>. La lista incluye todos los ejercicios propuestos de la app.</li>
+      <li><span class="num">3</span>Elige el número de series en el desplegable <strong>Nº de series</strong> (de 1 a 8).</li>
       <li><span class="num">4</span>Pulsa <strong>«Definir series»</strong>. Aparecerán los campos de <em>kg</em> y <em>reps</em> para cada serie.</li>
       <li><span class="num">5</span>Rellena los kilos y repeticiones de cada serie.</li>
       <li><span class="num">6</span>Pulsa <strong>«Guardar ejercicio ✅»</strong>. El ejercicio queda guardado dentro del entrenamiento.</li>
@@ -372,9 +373,26 @@
 
   <hr>
 
-  <!-- 5. EJERCICIOS PROPUESTOS -->
+  <!-- 5. NOTAS -->
+  <section id="notas">
+    <h2>5. Notas de entrenamiento</h2>
+    <p>Cada entrenamiento dispone de un campo de notas libre donde puedes apuntar sensaciones, observaciones o cualquier información relevante de esa sesión.</p>
+    <ol class="pasos">
+      <li><span class="num">1</span>En la tarjeta del entrenamiento, pulsa <strong>«Ver notas»</strong>. Se desplegará el área de notas.</li>
+      <li><span class="num">2</span>Escribe tu nota en el campo de texto.</li>
+      <li><span class="num">3</span>Pulsa <strong>«Añadir nota»</strong> para guardarla. El texto guardado aparecerá justo debajo.</li>
+      <li><span class="num">4</span>Pulsa <strong>«Ver notas»</strong> de nuevo para ocultar el panel.</li>
+    </ol>
+    <div class="tip">
+      <strong>Tip:</strong> Si guardas una nueva nota sobre una ya existente, la reemplaza. Úsalo para actualizar la nota de esa sesión en cualquier momento.
+    </div>
+  </section>
+
+  <hr>
+
+  <!-- 6. EJERCICIOS PROPUESTOS -->
   <section id="ejercicios-propuestos">
-    <h2>5. Ejercicios propuestos</h2>
+    <h2>6. Ejercicios propuestos</h2>
     <p>La sección <strong>«Ejercicios propuestos»</strong> incluye una biblioteca de 20 ejercicios organizados por grupo muscular, con descripción de la técnica y vídeo de referencia.</p>
     <ol class="pasos">
       <li><span class="num">1</span>Pulsa <strong>«Ejercicios propuestos»</strong> en la pantalla principal.</li>
@@ -383,27 +401,38 @@
       <li><span class="num">4</span>Pulsa de nuevo para cerrarlo.</li>
     </ol>
     <p>Los grupos musculares disponibles son: Pecho, Hombros, Tríceps, Espalda, Bíceps, Piernas, Glúteo y Gemelos.</p>
+    <p>También puedes añadir tus propios ejercicios pulsando el botón <strong>«Agregar nuevo ejercicio»</strong> e introduciendo nombre, músculo, descripción y vídeo.</p>
   </section>
 
   <hr>
 
-  <!-- 6. ESTADÍSTICAS -->
+  <!-- 7. ESTADÍSTICAS -->
   <section id="estadisticas">
-    <h2>6. Estadísticas</h2>
-    <p>La sección <strong>«Estadísticas»</strong> está en desarrollo. Próximamente mostrará:</p>
+    <h2>7. Estadísticas</h2>
+    <p>La sección <strong>«Estadísticas»</strong> calcula automáticamente tus datos a partir de todos los entrenamientos guardados. No requiere ninguna acción manual: se actualiza cada vez que abres la sección.</p>
+
+    <h3>Peso récord por ejercicio</h3>
+    <p>En la parte superior encontrarás un selector desplegable con todos los ejercicios disponibles. Al elegir uno, se muestra al instante el peso máximo que has levantado en ese ejercicio a lo largo de todos tus entrenamientos.</p>
+
+    <h3>Estadísticas globales</h3>
     <ol class="pasos">
-      <li><span class="num">📈</span>Máximo peso levantado.</li>
-      <li><span class="num">🏆</span>Volumen total por entrenamiento.</li>
-      <li><span class="num">📊</span>Número total de entrenamientos.</li>
-      <li><span class="num">⚖️</span></li>
+      <li><span class="num">1</span><strong>Peso máximo levantado</strong> — el kg más alto registrado en cualquier serie de cualquier ejercicio.</li>
+      <li><span class="num">2</span><strong>Peso levantado acumulado</strong> — suma de todos los kg de todas las series de todos los entrenamientos.</li>
+      <li><span class="num">3</span><strong>Volumen de entreno acumulado</strong> — el valor más alto de (kg × reps) alcanzado en una sola serie.</li>
+      <li><span class="num">4</span><strong>Total de entrenos</strong> — número de entrenamientos guardados.</li>
+      <li><span class="num">5</span><strong>Total de ejercicios</strong> — número de ejercicios registrados en todos los entrenamientos.</li>
     </ol>
+
+    <div class="tip">
+      <strong>Tip:</strong> Cuantos más entrenamientos tengas registrados, más significativos serán los datos. Las estadísticas no se pueden borrar de forma independiente; se eliminan solo si borras los entrenamientos que las generan.
+    </div>
   </section>
 
   <hr>
 
-  <!-- 7. INSTALAR -->
+  <!-- 8. INSTALAR -->
   <section id="instalar">
-    <h2>7. Instalar la app en tu dispositivo</h2>
+    <h2>8. Instalar la app en tu dispositivo</h2>
     <p>PersonalGymTracker es una PWA: puedes añadirla a la pantalla de inicio y usarla sin abrir el navegador.</p>
 
     <h3>En Android (Chrome)</h3>
@@ -434,9 +463,9 @@
 
   <hr>
 
-  <!-- 8. REFERENCIA RÁPIDA -->
+  <!-- 9. REFERENCIA RÁPIDA -->
   <section id="referencia">
-    <h2>8. Referencia rápida de botones</h2>
+    <h2>9. Referencia rápida de botones</h2>
     <div class="tabla-wrapper">
       <table>
         <thead>
@@ -465,7 +494,7 @@
           <tr>
             <td>Estadísticas</td>
             <td>Pantalla principal</td>
-            <td>Abre la sección de seguimiento de progreso (en desarrollo).</td>
+            <td>Abre la sección con el peso récord por ejercicio y las estadísticas globales.</td>
           </tr>
           <tr>
             <td>✕</td>
@@ -491,6 +520,21 @@
             <td>Ejercicios</td>
             <td>Tarjeta de entrenamiento</td>
             <td>Muestra u oculta la lista de ejercicios del entrenamiento.</td>
+          </tr>
+          <tr>
+            <td>Ver notas</td>
+            <td>Tarjeta de entrenamiento</td>
+            <td>Muestra u oculta el panel de notas de esa sesión.</td>
+          </tr>
+          <tr>
+            <td>Añadir nota</td>
+            <td>Panel de notas</td>
+            <td>Guarda el texto escrito como nota del entrenamiento.</td>
+          </tr>
+          <tr>
+            <td>Agregar nuevo ejercicio</td>
+            <td>Ejercicios propuestos</td>
+            <td>Muestra u oculta el formulario para crear un ejercicio personalizado.</td>
           </tr>
           <tr>
             <td>← Volver</td>
