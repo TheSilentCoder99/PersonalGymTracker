@@ -1,4 +1,4 @@
-const CACHE_NAME = "gym-tracker-v1";
+const CACHE_NAME = "gym-tracker-v2";
 
 const ARCHIVOS_CACHE = [
     "./",
@@ -29,41 +29,33 @@ const ARCHIVOS_CACHE = [
 
 // INSTALACIÓN DEL SERVICE WORKER
 self.addEventListener("install", evento => {
-
     evento.waitUntil(
-
         caches.open(CACHE_NAME)
             .then(cache => {
-
                 return cache.addAll(ARCHIVOS_CACHE);
-
             })
-
     );
-
 });
-
 
 // ACTIVACIÓN DEL SERVICE WORKER
 self.addEventListener("activate", evento => {
-
-    console.log("Service Worker activo");
-
+    evento.waitUntil(
+        caches.keys().then(nombres => {
+            return Promise.all(
+                nombres
+                    .filter(nombre => nombre !== CACHE_NAME)
+                    .map(nombre => caches.delete(nombre))
+            );
+        })
+    );
 });
-
 
 // INTERCEPTAR PETICIONES
 self.addEventListener("fetch", evento => {
-
     evento.respondWith(
-
         caches.match(evento.request)
             .then(respuesta => {
-
                 return respuesta || fetch(evento.request);
-
             })
-
     );
-
 });
