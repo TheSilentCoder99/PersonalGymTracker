@@ -304,7 +304,7 @@ a[href="index.html"]:hover {
 }
 
 /* Botones del formulario */
-.guardar-ejercicio {
+.definir-series {
   background-color: #1f1f1f;
   border: 1px solid #333;
   color: white;
@@ -317,7 +317,7 @@ a[href="index.html"]:hover {
   margin-right: 0.5rem;
 }
 
-.guardar-ejercicio:hover {
+.definir-series:hover {
   background-color: #2a2a2a;
   border-color: #00e676;
   color: #00e676;
@@ -372,6 +372,610 @@ a[href="#arriba"]:hover {
   scroll-margin-top: 2rem;
 }
 
+/* ===== ESTILOS PARA NOTAS ===== */
+
+/* Botón "Añadir nota" */
+.mostrar_add_notas {
+  background-color: #1f1f1f;
+  border: 1px solid #333;
+  color: white;
+  padding: 8px 16px;
+  font-size: 0.85rem;
+  font-weight: 500;
+  border-radius: 40px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  margin-top: 0.5rem;
+  margin-right: 0.5rem;
+}
+
+.mostrar_add_notas:hover {
+  background-color: #2a2a2a;
+  border-color: #00e676;
+  color: #00e676;
+}
+
+/* Contenedor del área de notas (se muestra/oculta) */
+.entrenamiento > div.oculto,
+.entrenamiento > div:not(.oculto) {
+  margin-top: 0.75rem;
+  padding-top: 0.75rem;
+  border-top: 1px solid #2c2c2c;
+}
+
+/* Área de texto para la nota */
+.nota-entreno {
+  width: 100%;
+  background-color: #1a1a1a;
+  border: 1px solid #333;
+  color: white;
+  padding: 10px 12px;
+  border-radius: 12px;
+  font-size: 0.9rem;
+  font-family: inherit;
+  resize: vertical;
+  min-height: 60px;
+  transition: border-color 0.2s ease;
+  margin-bottom: 0.5rem;
+}
+
+.nota-entreno:focus {
+  outline: none;
+  border-color: #00e676;
+}
+
+.nota-entreno::placeholder {
+  color: #666666;
+}
+
+/* Botón "Guardar nota" */
+.guardar-nota {
+  background-color: #00e676;
+  border: none;
+  color: #0a0a0a;
+  padding: 8px 20px;
+  font-size: 0.85rem;
+  font-weight: 600;
+  border-radius: 40px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.guardar-nota:hover {
+  background-color: #00c853;
+  transform: scale(1.02);
+}
+
+/* Texto de la nota guardada (visible siempre) */
+.entrenamiento > p:last-of-type {
+  color: #aaaaaa;
+  font-size: 0.85rem;
+  font-style: italic;
+  margin-top: 0.75rem;
+  padding-top: 0.75rem;
+  border-top: 1px dashed #2c2c2c;
+  padding-left: 0.5rem;
+}
+
+/* Cuando no hay nota */
+.entrenamiento > p:last-of-type:empty::before {
+  content: "Sin notas añadidas";
+  color: #555555;
+  font-style: italic;
+}
+
+/* ===== MEJORAS PARA EL FORMULARIO DE EJERCICIOS ===== */
+
+/* Select de ejercicios (acordeón) */
+#nombre_ejercicio {
+  width: 100%;
+  background-color: #1a1a1a;
+  border: 1px solid #333;
+  color: white;
+  padding: 10px 12px;
+  border-radius: 12px;
+  font-size: 0.95rem;
+  transition: border-color 0.2s ease;
+  appearance: none;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 12 12'%3E%3Cpath fill='%2300e676' d='M6 8L1 3h10z'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 12px center;
+  padding-right: 36px;
+  cursor: pointer;
+}
+
+#nombre_ejercicio:focus {
+  outline: none;
+  border-color: #00e676;
+}
+
+#nombre_ejercicio option {
+  background-color: #1a1a1a;
+  color: white;
+  padding: 8px;
+}
+
+/* Contenedor del formulario de ejercicios mejorado */
+.formulario_ejercicios form {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+}
+
+.formulario_ejercicios form label {
+  color: #00e676;
+  font-size: 0.85rem;
+  font-weight: 500;
+  margin-top: 0.5rem;
+}
+
+.formulario_ejercicios form label:first-of-type {
+  margin-top: 0;
+}
+
+/* Select de número de series */
+#num_series {
+  width: 100%;
+  background-color: #1a1a1a;
+  border: 1px solid #333;
+  color: white;
+  padding: 10px 12px;
+  border-radius: 12px;
+  font-size: 0.95rem;
+  transition: border-color 0.2s ease;
+  appearance: none;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 12 12'%3E%3Cpath fill='%2300e676' d='M6 8L1 3h10z'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 12px center;
+  padding-right: 36px;
+  cursor: pointer;
+}
+
+#num_series:focus {
+  outline: none;
+  border-color: #00e676;
+}
+
+#num_series option {
+  background-color: #1a1a1a;
+  color: white;
+  padding: 8px;
+}
+
+/* Contenedor de series dinámicas mejorado */
+.contenedor_series {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  margin: 0.5rem 0 1rem 0;
+  max-height: 300px;
+  overflow-y: auto;
+  padding-right: 4px;
+}
+
+.contenedor_series::-webkit-scrollbar {
+  width: 6px;
+}
+
+.contenedor_series::-webkit-scrollbar-track {
+  background: #0a0a0a;
+  border-radius: 10px;
+}
+
+.contenedor_series::-webkit-scrollbar-thumb {
+  background: #00e676;
+  border-radius: 10px;
+}
+
+.contenedor_series li {
+  background-color: #121212;
+  padding: 0.75rem 1rem;
+  border-radius: 12px;
+  border: 1px solid #2c2c2c;
+  list-style: none;
+  color: #cccccc;
+  font-size: 0.9rem;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.contenedor_series li br {
+  display: none;
+}
+
+.contenedor_series li input {
+  background-color: #1a1a1a;
+  border: 1px solid #333;
+  color: white;
+  padding: 6px 10px;
+  border-radius: 8px;
+  font-size: 0.85rem;
+  transition: border-color 0.2s ease;
+  width: 70px;
+}
+
+.contenedor_series li input:focus {
+  outline: none;
+  border-color: #00e676;
+}
+
+/* Etiqueta "Serie X:" dentro del contenedor */
+.contenedor_series li::before {
+  content: attr(data-label);
+  color: #00e676;
+  font-weight: 600;
+  min-width: 70px;
+}
+
+/* Botones del formulario en línea */
+.formulario_ejercicios form .guardar-ejercicio,
+.formulario_ejercicios form .guardar-ejercicio_definitivo {
+  margin-top: 0.5rem;
+}
+
+.guardar-ejercicio {
+  background-color: #1f1f1f;
+  border: 1px solid #333;
+  color: white;
+  padding: 10px 20px;
+  font-size: 0.9rem;
+  font-weight: 500;
+  border-radius: 40px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.guardar-ejercicio:hover {
+  background-color: #2a2a2a;
+  border-color: #00e676;
+  color: #00e676;
+}
+
+.guardar-ejercicio_definitivo {
+  background-color: #00e676;
+  border: none;
+  color: #0a0a0a;
+  padding: 10px 20px;
+  font-size: 0.9rem;
+  font-weight: 600;
+  border-radius: 40px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.guardar-ejercicio_definitivo:hover {
+  background-color: #00c853;
+  transform: scale(1.02);
+}
+
+/* ==================== ESTILOS PARA NOTAS ==================== */
+
+/* Botón "Ver notas" */
+.boton_ver_notas {
+  background-color: #1f1f1f;
+  border: 1px solid #333;
+  color: white;
+  padding: 8px 16px;
+  font-size: 0.85rem;
+  font-weight: 500;
+  border-radius: 40px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  margin-top: 0.5rem;
+  margin-right: 0.5rem;
+}
+
+.boton_ver_notas:hover {
+  background-color: #2a2a2a;
+  border-color: #00e676;
+  color: #00e676;
+}
+
+/* Contenedor de notas */
+.nota_ejercicio {
+  margin-top: 1rem;
+  padding: 1rem;
+  background-color: #0e0e0e;
+  border-radius: 16px;
+  border: 1px solid #2c2c2c;
+  transition: all 0.3s ease;
+}
+
+.nota_ejercicio.oculto {
+  display: none;
+}
+
+/* Área de texto para notas */
+.nota_entreno {
+  width: 100%;
+  min-height: 80px;
+  background-color: #1a1a1a;
+  border: 1px solid #333;
+  color: white;
+  padding: 10px 12px;
+  border-radius: 12px;
+  font-size: 0.95rem;
+  font-family: inherit;
+  resize: vertical;
+  transition: border-color 0.2s ease;
+  margin-bottom: 0.75rem;
+}
+
+.nota_entreno:focus {
+  outline: none;
+  border-color: #00e676;
+}
+
+/* Texto de la nota guardada */
+.nota_ejercicio p {
+  color: #cccccc;
+  font-size: 0.95rem;
+  line-height: 1.6;
+  padding: 0.75rem;
+  background-color: #0a0a0a;
+  border-radius: 12px;
+  border-left: 3px solid #00e676;
+  margin-bottom: 0.75rem;
+  white-space: pre-wrap;
+  word-break: break-word;
+}
+
+/* Botón "Añadir nota" */
+.add_notas {
+  background-color: #00e676;
+  border: none;
+  color: #0a0a0a;
+  padding: 10px 20px;
+  font-size: 0.9rem;
+  font-weight: 600;
+  border-radius: 40px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  width: 100%;
+}
+
+.add_notas:hover {
+  background-color: #00c853;
+  transform: scale(1.01);
+}
+
+/* ==================== MEJORAS PARA EL FORMULARIO DE EJERCICIOS ==================== */
+
+/* Selects en el formulario */
+.formulario_ejercicios form select {
+  width: 100%;
+  background-color: #1a1a1a;
+  border: 1px solid #333;
+  color: white;
+  padding: 10px 12px;
+  border-radius: 12px;
+  font-size: 0.95rem;
+  margin-bottom: 0.75rem;
+  transition: border-color 0.2s ease;
+  appearance: none;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 12 12'%3E%3Cpath fill='%2300e676' d='M6 8L1 3h10z'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 12px center;
+  padding-right: 36px;
+  cursor: pointer;
+}
+
+.formulario_ejercicios form select:focus {
+  outline: none;
+  border-color: #00e676;
+}
+
+.formulario_ejercicios form select option {
+  background-color: #1a1a1a;
+  color: white;
+  padding: 8px;
+}
+
+/* Botón "Definir series" */
+.definir-series {
+  background-color: #1f1f1f;
+  border: 1px solid #333;
+  color: white;
+  padding: 10px 20px;
+  font-size: 0.9rem;
+  font-weight: 500;
+  border-radius: 40px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  margin-right: 0.5rem;
+  margin-bottom: 0.5rem;
+}
+
+.definir-series:hover {
+  background-color: #2a2a2a;
+  border-color: #00e676;
+  color: #00e676;
+}
+
+/* ==================== MEJORAS EN LA LISTA DE EJERCICIOS ==================== */
+
+/* Estilo para el contenedor de ejercicios dentro del entrenamiento */
+.mostrar_ejercicios ul {
+  list-style: none;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.mostrar_ejercicios ul > li {
+  background-color: #0a0a0a;
+  padding: 0.75rem;
+  border-radius: 12px;
+  border-left: 3px solid #00e676;
+  font-weight: 600;
+  color: #00e676;
+}
+
+.mostrar_ejercicios ul > li ol {
+  list-style: none;
+  padding: 0;
+  margin-top: 0.5rem;
+  padding-left: 0.5rem;
+}
+
+.mostrar_ejercicios ul > li ol li {
+  color: #cccccc;
+  font-weight: normal;
+  padding: 0.25rem 0;
+  font-size: 0.9rem;
+  border-bottom: 1px solid #1a1a1a;
+}
+
+.mostrar_ejercicios ul > li ol li:last-child {
+  border-bottom: none;
+}
+
+/* ==================== MEJORAS EN EL CONTENEDOR DE SERIES ==================== */
+
+.contenedor_series {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  margin: 0.5rem 0 1rem 0;
+}
+
+.contenedor_series li {
+  background-color: #121212;
+  padding: 0.75rem;
+  border-radius: 12px;
+  border: 1px solid #2c2c2c;
+  list-style: none;
+  color: #cccccc;
+  font-size: 0.9rem;
+}
+
+.contenedor_series li input[type="number"] {
+  width: 80px;
+  background-color: #1a1a1a;
+  border: 1px solid #333;
+  color: white;
+  padding: 6px 10px;
+  border-radius: 8px;
+  font-size: 0.85rem;
+  transition: border-color 0.2s ease;
+  margin: 0.25rem 0;
+}
+
+.contenedor_series li input[type="number"]:focus {
+  outline: none;
+  border-color: #00e676;
+}
+
+/* ==================== MEDIA QUERIES ==================== */
+
+@media (max-width: 550px) {
+  /* Ajustes para notas en móvil */
+  .nota_ejercicio {
+    padding: 0.75rem;
+  }
+  
+  .nota_entreno {
+    min-height: 60px;
+    font-size: 0.9rem;
+    padding: 8px 10px;
+  }
+  
+  .nota_ejercicio p {
+    font-size: 0.9rem;
+    padding: 0.5rem;
+  }
+  
+  .add_notas {
+    padding: 8px 16px;
+    font-size: 0.85rem;
+  }
+  
+  .boton_ver_notas {
+    padding: 6px 12px;
+    font-size: 0.8rem;
+  }
+  
+  /* Ajustes para selects en móvil */
+  .formulario_ejercicios form select {
+    padding: 8px 10px;
+    font-size: 0.9rem;
+  }
+  
+  .definir-series {
+    padding: 8px 16px;
+    font-size: 0.85rem;
+  }
+  
+  .contenedor_series li input[type="number"] {
+    width: 60px;
+    padding: 4px 8px;
+    font-size: 0.8rem;
+  }
+}
+
+/* ==================== ANIMACIONES ==================== */
+
+/* Animación para el contenedor de notas */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.nota_ejercicio:not(.oculto) {
+  animation: fadeIn 0.3s ease;
+}
+
+/* Animación para el contenedor de series */
+.contenedor_series li {
+  animation: fadeIn 0.2s ease;
+}
+
+/* ===== MEDIA QUERY PARA MÓVILES ===== */
+@media (max-width: 550px) {
+  .contenedor_series li {
+    padding: 0.5rem 0.75rem;
+    flex-direction: column;
+    align-items: stretch;
+    gap: 0.25rem;
+  }
+  
+  .contenedor_series li br {
+    display: none;
+  }
+  
+  .contenedor_series li input {
+    width: 100%;
+  }
+  
+  .contenedor_series li::before {
+    min-width: auto;
+  }
+  
+  .nota-entreno {
+    min-height: 50px;
+    font-size: 0.85rem;
+  }
+  
+  .mostrar_add_notas,
+  .guardar-nota {
+    padding: 6px 12px;
+    font-size: 0.8rem;
+  }
+  
+  .entrenamiento > p:last-of-type {
+    font-size: 0.8rem;
+  }
+}
+
 /* Media query para móviles */
 @media (max-width: 550px) {
   body {
@@ -420,7 +1024,7 @@ a[href="#arriba"]:hover {
   
   .add-ejercicio,
   .mostrar_ocultar,
-  .guardar-ejercicio,
+  .definir-series,
   .guardar-ejercicio_definitivo {
     padding: 6px 12px;
     font-size: 0.8rem;

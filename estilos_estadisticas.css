@@ -134,6 +134,265 @@ a[href="index.html"]:hover {
   margin: 1.5rem 0 0.75rem 0;
 }
 
+/* ==================== ESTILOS PARA PESO RÉCORD ==================== */
+
+/* Contenedor del selector de peso récord */
+.mostrar_pr {
+  background-color: #121212;
+  border-radius: 24px;
+  padding: 1.5rem;
+  margin-bottom: 2rem;
+  border: 1px solid #2c2c2c;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.6);
+  transition: border-color 0.2s ease;
+}
+
+.mostrar_pr:hover {
+  border-color: #00e676;
+}
+
+/* Label del selector */
+.mostrar_pr label {
+  color: #00e676;
+  font-size: 1rem;
+  font-weight: 600;
+  display: block;
+  margin-bottom: 0.5rem;
+}
+
+/* Selector de ejercicio para peso récord */
+.selector_ejercicio {
+  width: 100%;
+  background-color: #1a1a1a;
+  border: 1px solid #333;
+  color: white;
+  padding: 12px 14px;
+  border-radius: 12px;
+  font-size: 1rem;
+  transition: border-color 0.2s ease;
+  appearance: none;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 12 12'%3E%3Cpath fill='%2300e676' d='M6 8L1 3h10z'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 12px center;
+  padding-right: 36px;
+  cursor: pointer;
+  margin-bottom: 1rem;
+}
+
+.selector_ejercicio:focus {
+  outline: none;
+  border-color: #00e676;
+}
+
+.selector_ejercicio option {
+  background-color: #1a1a1a;
+  color: white;
+  padding: 8px;
+}
+
+/* Etiqueta que muestra el peso récord */
+#peso_pr {
+  display: block;
+  color: #ffffff;
+  font-size: 1.8rem;
+  font-weight: 700;
+  text-align: center;
+  padding: 1rem;
+  background-color: #0a0a0a;
+  border-radius: 16px;
+  border: 2px solid #00e676;
+  margin-top: 0.5rem;
+  transition: all 0.3s ease;
+}
+
+#peso_pr:not(:empty) {
+  animation: pulseRecord 0.5s ease;
+}
+
+/* ==================== ESTILOS PARA ESTADÍSTICAS GENERALES ==================== */
+
+/* Contenedor de estadísticas */
+.mostrar_estadisticas {
+  background-color: #121212;
+  border-radius: 24px;
+  padding: 1.5rem;
+  border: 1px solid #2c2c2c;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.6);
+  margin-bottom: 2rem;
+  transition: border-color 0.2s ease;
+}
+
+.mostrar_estadisticas:hover {
+  border-color: #00e676;
+}
+
+/* Lista de estadísticas */
+.mostrar_estadisticas ol {
+  list-style: none;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.mostrar_estadisticas ol li {
+  background-color: #1a1a1a;
+  padding: 1rem 1.2rem;
+  border-radius: 16px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 0.95rem;
+  color: #cccccc;
+  transition: all 0.2s ease;
+  border-left: 4px solid transparent;
+}
+
+.mostrar_estadisticas ol li:hover {
+  background-color: #222222;
+  transform: translateX(4px);
+  border-left-color: #00e676;
+}
+
+/* Valor numérico de las estadísticas */
+.mostrar_estadisticas ol li .num {
+  color: #00e676;
+  font-weight: 700;
+  font-size: 1.1rem;
+  background-color: #0a0a0a;
+  padding: 0.25rem 0.75rem;
+  border-radius: 20px;
+  white-space: nowrap;
+}
+
+/* ==================== ANIMACIONES ==================== */
+
+/* Animación de pulso cuando se muestra el récord */
+@keyframes pulseRecord {
+  0% {
+    transform: scale(1);
+    border-color: #00e676;
+  }
+  50% {
+    transform: scale(1.02);
+    border-color: #00ff88;
+    box-shadow: 0 0 20px rgba(0, 230, 118, 0.3);
+  }
+  100% {
+    transform: scale(1);
+    border-color: #00e676;
+  }
+}
+
+/* Animación de entrada para las estadísticas */
+@keyframes slideInRight {
+  from {
+    opacity: 0;
+    transform: translateX(-20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+.mostrar_estadisticas ol li {
+  animation: slideInRight 0.3s ease forwards;
+  opacity: 0;
+}
+
+.mostrar_estadisticas ol li:nth-child(1) { animation-delay: 0.05s; }
+.mostrar_estadisticas ol li:nth-child(2) { animation-delay: 0.1s; }
+.mostrar_estadisticas ol li:nth-child(3) { animation-delay: 0.15s; }
+.mostrar_estadisticas ol li:nth-child(4) { animation-delay: 0.2s; }
+.mostrar_estadisticas ol li:nth-child(5) { animation-delay: 0.25s; }
+
+/* ==================== MEDIA QUERIES ==================== */
+
+@media (max-width: 550px) {
+  /* Ajustes para peso récord en móvil */
+  .mostrar_pr {
+    padding: 1rem;
+  }
+  
+  .selector_ejercicio {
+    padding: 10px 12px;
+    font-size: 0.9rem;
+  }
+  
+  #peso_pr {
+    font-size: 1.4rem;
+    padding: 0.75rem;
+  }
+  
+  .mostrar_pr label {
+    font-size: 0.9rem;
+  }
+  
+  /* Ajustes para estadísticas en móvil */
+  .mostrar_estadisticas {
+    padding: 1rem;
+  }
+  
+  .mostrar_estadisticas ol li {
+    padding: 0.75rem 1rem;
+    font-size: 0.85rem;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.25rem;
+  }
+  
+  .mostrar_estadisticas ol li .num {
+    font-size: 1rem;
+    padding: 0.2rem 0.6rem;
+    width: 100%;
+    text-align: center;
+  }
+}
+
+/* Media query para tablets */
+@media (min-width: 551px) and (max-width: 1024px) {
+  .mostrar_pr {
+    padding: 1.2rem;
+  }
+  
+  #peso_pr {
+    font-size: 1.6rem;
+  }
+  
+  .mostrar_estadisticas ol li {
+    padding: 1rem 1.5rem;
+  }
+}
+
+/* ==================== ESTILO PARA CUANDO NO HAY DATOS ==================== */
+
+/* Mensaje cuando no hay ejercicios guardados */
+.mostrar_pr:has(#peso_pr:empty) #peso_pr {
+  border-color: #333;
+  color: #666;
+}
+
+#peso_pr:empty::before {
+  content: "Selecciona un ejercicio";
+  color: #666;
+  font-size: 1rem;
+  font-weight: 400;
+}
+
+/* Cuando el selector está vacío o no hay datos */
+.mostrar_estadisticas:has(ol:empty) {
+  padding: 2rem;
+  text-align: center;
+  color: #666;
+}
+
+.mostrar_estadisticas ol:empty::before {
+  content: "No hay datos de entrenamientos aún. ¡Empieza a entrenar! 💪";
+  font-style: italic;
+  color: #666;
+}
+
 /* Media query para móviles */
 @media (max-width: 550px) {
   body {
