@@ -3,7 +3,9 @@
     "short_name": "GymTracker",
     "start_url": "./index.html",
     "display": "standalone",
-    "lang": "spanish",
+    "lang": "es",
+    "theme_color": "#0a0a0a",
+    "background_color": "#0a0a0a",
     "icons": [
         {
             "src": "/icono_mancuerna.png",
