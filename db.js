@@ -3,14 +3,20 @@ let conexion;
 function inicializarBaseDeDatos() {
     return new Promise((resolve, reject) => {
 
-        const request = indexedDB.open("gymtracker", 3);
+        const request = indexedDB.open("gymtracker", 4);
 
         request.onupgradeneeded = (e) => {
             const db = e.target.result;
 
-            db.createObjectStore("entrenamientos", {
-                keyPath: "id"
-            });
+            
+    if (!db.objectStoreNames.contains("entrenamientos")) {
+        db.createObjectStore("entrenamientos", { keyPath: "id" });
+    }
+
+    if (!db.objectStoreNames.contains("ejercicios")) {
+        db.createObjectStore("ejercicios", { keyPath: "id" });
+    }
+
         };
 
         request.onsuccess = (e) => {
@@ -99,3 +105,24 @@ function ObtenerEntreno (idEntreno) {
 
   });
 }
+
+function guardarEjercicio(ejercicio) {
+    return new Promise((resolve, reject) => {
+        const tx = conexion.transaction("ejercicios", "readwrite");
+        const store = tx.objectStore("ejercicios");
+        const request = store.put(ejercicio);
+        request.onsuccess = () => resolve();
+        request.onerror = (e) => reject(e.target.error);
+    });
+}
+
+function obtenerEjercicios() {
+    return new Promise((resolve, reject) => {
+        const tx = conexion.transaction("ejercicios", "readonly");
+        const store = tx.objectStore("ejercicios");
+        const request = store.getAll();
+        request.onsuccess = () => resolve(request.result);
+        request.onerror = (e) => reject(e.target.error);
+    });
+}
+

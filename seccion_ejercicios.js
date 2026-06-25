@@ -21,14 +21,17 @@ let ejercicios = [
   { nombre: "Elevaciones de gemelo", musculo: "Gemelos", descripcion: "Subida de talones de pie o sentado. Ideal para desarrollar sóleo y gemelos en toda su amplitud.", multimedia: "" }
 ];
 
+async function cargarEjercicios() {
+    const ejerciciosDB = await obtenerEjercicios();
+    ejercicios.push(...ejerciciosDB);
+}
+
 function pintarEjercicios(){
 
-    // Añadir multimedias para cada ejercicio en el array ejercicios
 let div_ejercicios = document.getElementById('lista-ejercicios');
 
   div_ejercicios.innerHTML = "";
 
-// EL CONTENIDO MULTIMEDIA SE CONSTRUYE DINÁMICAMENTE. EL PROBLEMA ES QUE SOLO ADMITIRÁ VIDEOS DE YOUTUBE. PODRÍAS AÑADIR UNA CONDICIÓN QUE MUESTRE UN IFRAME DE YT O UN VIDEO TUYO PROPIO.
 ejercicios.forEach(dato => {
     div_ejercicios.innerHTML +=
 
@@ -48,22 +51,15 @@ ejercicios.forEach(dato => {
     </div>
   `});
 
-// Obtenemos todos los botones de ejercicio que existen en la página
 const todosLosBotonesDeEjercicio = document.querySelectorAll('.ejercicio-nombre');
 
-// Recorremos cada botón y le añadimos un listener de click
 todosLosBotonesDeEjercicio.forEach(botonDeEjercicio => {
 
   botonDeEjercicio.addEventListener('click', () => {
 
-    // El contenido está justo debajo del botón en el HTML
-    // nextElementSibling significa "el elemento hermano que viene justo después"
     const contenidoDelEjercicio = botonDeEjercicio.nextElementSibling;
 
-    // toggle añade la clase si no está, la quita si ya está
     contenidoDelEjercicio.classList.toggle('oculto');
-
-
 
   });
 
@@ -71,14 +67,14 @@ todosLosBotonesDeEjercicio.forEach(botonDeEjercicio => {
 
 }
 
-window.onload =  function () {
+window.onload = async function () {
+
+await inicializarBaseDeDatos();
+
+await cargarEjercicios();
 
 pintarEjercicios();
 
-// MAPEO EL DIV QUE CONTIENE EL FORMULARIO DEL NUEVO EJERCICIO
-
-
-// AL PULSAR EL BOTÓN DE AGREGAR EJERCICIO, SE MUESTRA O SE OCULTA EL FORMULARIO DE MOSTRAR EL EJERCICIO
 const botonAgregarEjercicio = document.querySelector('.agregar-ejercicio');
 
 let div_add_ejercicio = botonAgregarEjercicio.nextElementSibling;
@@ -89,11 +85,9 @@ div_add_ejercicio.classList.toggle('oculto');
 
 });
 
-
 let boton_guardar_ejercicio = document.getElementById('boton_guardar_ejercicio');
 
-  // AL PULSAR EL BOTÓN DE GUARDAR EJERCICIO, SE COMPRUEBA QUE AL MENOS EL NOMBRE TENGA CONTENIDO, SE CREA EL OBJETO Y SE AÑADE AL ARRAY DE OBJETOS EJERCICIOS
-boton_guardar_ejercicio.addEventListener('click',()=>{
+boton_guardar_ejercicio.addEventListener('click',async()=>{
 
    let input_nombre_nuevo = document.getElementById('nombre_ejercicio').value;
 
@@ -101,7 +95,6 @@ boton_guardar_ejercicio.addEventListener('click',()=>{
 
       let input_descripcion_nueva = document.getElementById('descripción_ejercicio').value;
 
-      // FALTA EL TRATAMIENTO DE LA MULTIMEDIA PARA QUE SE MUESTRE EN LA LISTA DE EJERCICIOS
       let input_multimedia_nueva = document.getElementById('multimedia_ejercicio').value;
 
 
@@ -111,6 +104,7 @@ boton_guardar_ejercicio.addEventListener('click',()=>{
   };
 
 let este_ejercicio = {
+      id: Date.now(),
     nombre: input_nombre_nuevo,
     musculo: input_musculo_nuevo,
     descripcion: input_descripcion_nueva,
@@ -118,10 +112,9 @@ let este_ejercicio = {
 };
 
   ejercicios.push(este_ejercicio);
-
+  await guardarEjercicio(este_ejercicio);
   pintarEjercicios();
 
-  // VACÍO LOS DATOS INTRODUCIDOS
   document.getElementById('nombre_ejercicio').value = '';
     document.getElementById('musculo_ejercicio').value = '';
   document.getElementById('descripción_ejercicio').value = '';
@@ -132,5 +125,3 @@ let este_ejercicio = {
 });
 
 }
-
-

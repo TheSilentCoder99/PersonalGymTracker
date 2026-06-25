@@ -18,7 +18,6 @@ async function guardarNota(idEntrenamiento, nota) {
 
 async function pintarEntrenamientos() {
 
-
     let htmlEntrenos = "";
 
     // GUARDO TODOS LOS ENTRENAMIENTOS
@@ -140,9 +139,10 @@ async function pintarEntrenamientos() {
             // ACCEDO A CADA NOMBRE DE LOS EJERCICIOS REGISTRADOS PARA CREAR SU OPTION E INSERTARLOS EN EL ACORDEÓN
             let acordeon_ejercicios = "";
 
-            ejercicios.forEach(dato => {
+           await cargarEjercicios();
 
-                acordeon_ejercicios += `<option value="${dato.nombre}">${dato.nombre}</option>`
+            ejercicios.forEach(dato => {
+            acordeon_ejercicios += `<option value="${dato.nombre}">${dato.nombre}</option>`
             });
 
             let contenedor_formulario_a_rellenar = boton_add_ejercicio.nextElementSibling;
