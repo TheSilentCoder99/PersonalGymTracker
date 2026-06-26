@@ -19,10 +19,11 @@ window.onload = async function () {
 
     let acordeon_ejercicios = "";
 
-    ejercicios.forEach(dato =>{
+           await cargarEjercicios();
 
-        acordeon_ejercicios+= `<option value="${dato.nombre}" class="lista_ejercicios">${dato.nombre}</option>`
-    });
+            ejercicios.forEach(dato => {
+            acordeon_ejercicios += `<option value="${dato.nombre}">${dato.nombre}</option>`
+            });
 
  div_info_pr.innerHTML =  `
  <label>Peso record</label>
@@ -101,7 +102,7 @@ let info_estadisticas =
         <li>Peso levantado acumulado: <span class="num">${peso_levantado_acumulado} kg</span></li>
        <li>Volumen de entreno acumulado: <span class="num">${volumen_por_entreno} kg</span></li>
        <li>Total de entrenos: <span class="num">${total_entrenos} entrenos</span></li>
-       <li>Total de ejercicios: <span class="num">${total_ejercicios} ejercicios.</span></li>
+       <li>Total de ejercicios: <span class="num">${total_ejercicios} ejercicios</span></li>
     </ol>`;
 
     const div_info_estadisticas = document.querySelector('.mostrar_estadisticas');

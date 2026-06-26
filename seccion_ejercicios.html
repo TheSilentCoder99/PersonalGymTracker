@@ -29,7 +29,10 @@
     <p>Para cada ejercicio, recuerda empezar con una técnica correcta y un peso que puedas controlar.</p>
     <a href="index.html">Volver</a>
     <br>
-    <!-- AL PULSAR ESTE BOTÓN, SE MUESTRA EL INPUT PARA AGREGAR EL NUEVO EJERCICIO. -->
+     <label for="buscador_ejercicios" id="input-buscador">Buscar un ejercicio</label>
+    <input type="text" placeholder="Empieza a escribir para buscar..." id="buscador_ejercicios">
+    
+        <!-- AL PULSAR ESTE BOTÓN, SE MUESTRA EL INPUT PARA AGREGAR EL NUEVO EJERCICIO. -->
     <button class="agregar-ejercicio">Agregar nuevo ejercicio</button>
     <div id="nuevo-ejercicio" class="oculto">
         <form action=>
@@ -43,11 +46,10 @@
             <input type="text" id="descripción_ejercicio">
             <br>
             <label for="multimedia_ejercicio">Video/Imagen:</label>
-            <input type="file" id="multimedia_ejercicio">
+            <input type="file" id="multimedia_ejercicio" accept="image/*" multiple>
             <br>
             <button type="button" id="boton_guardar_ejercicio">✅</button>        </form>
     </div>
-
     <div id="lista-ejercicios">
 
 
