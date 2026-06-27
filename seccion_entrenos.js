@@ -39,7 +39,13 @@ async function pintarEntrenamientos() {
     `;
             });
             // CONSTRUYO EL HTML QUE SE MOSTRARÁ FINALMENTE AL USUARIO ACCEDIENDO AL NOMBRE DEL EJERCICIO (PRIMER FOR-EACH HIJO) Y AÑADIENDO EL HTML CONSTRUIDO DE SERIES(EN EL FOR-EACH NIETO)
-            htmlEjercicios += `<li>${ejercicio.nombre}</li> <ol>${htmlSeries}</ol>`;
+            htmlEjercicios += `
+    <li>
+        <button class="borrar-ejercicio" data-id="${ejercicio.id}" data-entreno="${este_entreno.id}">x</button>
+        ${ejercicio.nombre}
+        <ol>${htmlSeries}</ol>
+    </li>`;
+
         });
 
         // CONSTRUYO UI FINAL
@@ -94,21 +100,21 @@ async function pintarEntrenamientos() {
     const contenedor_entrenos = document.getElementById('All-entrenos');
     contenedor_entrenos.innerHTML = htmlEntrenos;
 
-      const botones_add_notas = document.querySelectorAll('.add_notas');
-    botones_add_notas.forEach(boton_nota=>{
-        boton_nota.addEventListener('click',()=>{
+    const botones_add_notas = document.querySelectorAll('.add_notas');
+    botones_add_notas.forEach(boton_nota => {
+        boton_nota.addEventListener('click', () => {
 
-         let nota = boton_nota.closest('.nota_ejercicio').querySelector('.nota_entreno').value;
+            let nota = boton_nota.closest('.nota_ejercicio').querySelector('.nota_entreno').value;
 
             let contenedor = boton_nota.closest('.nota_ejercicio');
 
             let id = Number(boton_nota.dataset.id);
 
-            guardarNota(id,nota);
+            guardarNota(id, nota);
 
             contenedor.querySelector('p').textContent = nota;
 
-            
+
         })
     });
 
@@ -139,10 +145,10 @@ async function pintarEntrenamientos() {
             // ACCEDO A CADA NOMBRE DE LOS EJERCICIOS REGISTRADOS PARA CREAR SU OPTION E INSERTARLOS EN EL ACORDEÓN
             let acordeon_ejercicios = "";
 
-           await cargarEjercicios();
+            await cargarEjercicios();
 
             ejercicios.forEach(dato => {
-            acordeon_ejercicios += `<option value="${dato.nombre}">${dato.nombre}</option>`
+                acordeon_ejercicios += `<option value="${dato.nombre}">${dato.nombre}</option>`
             });
 
             let contenedor_formulario_a_rellenar = boton_add_ejercicio.nextElementSibling;
@@ -260,6 +266,7 @@ async function pintarEntrenamientos() {
 
                     // CREO ESTE EJERCICIO
                     let ejercicio = {
+                        id: Date.now(),
                         nombre,
                         series
                     };
@@ -275,14 +282,14 @@ async function pintarEntrenamientos() {
     });
 
     // BOTÓN PARA MOSTRAR U OCULTAR LAS NOTAS
-         let botones_ver_notas = document.querySelectorAll('.boton_ver_notas');
-                    botones_ver_notas.forEach(ver_notas=>{
-                        ver_notas.addEventListener('click',()=>{
-                            let contenedor_notas = ver_notas.nextElementSibling;
-                            contenedor_notas.classList.toggle('oculto');
+    let botones_ver_notas = document.querySelectorAll('.boton_ver_notas');
+    botones_ver_notas.forEach(ver_notas => {
+        ver_notas.addEventListener('click', () => {
+            let contenedor_notas = ver_notas.nextElementSibling;
+            contenedor_notas.classList.toggle('oculto');
 
-                        });
-                    });
+        });
+    });
 
     // BOTÓN PARA MOSTRAR U OCULTAR LOS EJERCICIOS
     const botones_mostrar_ejercicios = document.querySelectorAll('.mostrar_ocultar');
@@ -290,6 +297,28 @@ async function pintarEntrenamientos() {
         boton_mostrar.addEventListener('click', () => {
             const contenedor_a_ocultar = boton_mostrar.nextElementSibling;
             contenedor_a_ocultar.classList.toggle('oculto');
+        });
+    });
+
+
+    const botones_borrar_ejercicio = document.querySelectorAll('.borrar-ejercicio');
+    botones_borrar_ejercicio.forEach(boton => {
+        boton.addEventListener('click', async () => {
+
+            const idEjercicio = Number(boton.dataset.id);
+            const idEntrenamiento = Number(boton.dataset.entreno);
+
+            let resultado_borrado = confirm('¿Quieres borrar este ejercicio?');
+
+            if (resultado_borrado) {
+                let entreno = await ObtenerEntreno(idEntrenamiento);
+                let indice = entreno.ejercicios.findIndex(e => e.id === idEjercicio);
+
+                entreno.ejercicios.splice(indice, 1);
+
+                await guardarEntrenamiento(entreno);
+                await pintarEntrenamientos();
+            }
         });
     });
 
