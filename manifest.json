@@ -1,21 +1,21 @@
 {
   "name": "Gym Tracker",
   "short_name": "GymTracker",
-  "start_url": "/PersonalGymTracker/",
-  "scope": "/PersonalGymTracker/",
+  "start_url": "./",
+  "scope": "./",
   "display": "standalone",
   "lang": "es",
   "theme_color": "#0a0a0a",
   "background_color": "#0a0a0a",
   "icons": [
     {
-      "src": "/PersonalGymTracker/icono_mancuerna.png",
+      "src": "./icono_mancuerna.png",
       "sizes": "192x192",
       "type": "image/png",
       "purpose": "any"
     },
     {
-      "src": "/PersonalGymTracker/logo_mancuerna.png",
+      "src": "./logo_mancuerna.png",
       "sizes": "512x512",
       "type": "image/png",
       "purpose": "maskable"
