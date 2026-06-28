@@ -90,7 +90,8 @@ async function pintarEntrenamientos() {
                         <button type="button" class="add_notas" data-id="${este_entreno.id}">Añadir nota</button>
 
                         </div>
-
+                        <br>
+                        <a href="seccion_ejercicios.html" style="color:lightgreen" target="_blank">Añadir nuevo ejercicio...</a>
             </div>
 
         `;
@@ -113,7 +114,6 @@ async function pintarEntrenamientos() {
             guardarNota(id, nota);
 
             contenedor.querySelector('p').textContent = nota;
-
 
         })
     });
@@ -138,148 +138,168 @@ async function pintarEntrenamientos() {
     });
 
     // ATRAPO TODOS LOS BOTONES DE AÑADIR EJERCICIO QUE SE GENERAN EN EL INNER HTML
-    const botones_add_ejercicio = document.querySelectorAll('.add-ejercicio');
-    botones_add_ejercicio.forEach(boton_add_ejercicio => {
-        boton_add_ejercicio.addEventListener('click', async () => {
+const botones_add_ejercicio = document.querySelectorAll('.add-ejercicio');
 
-            // ACCEDO A CADA NOMBRE DE LOS EJERCICIOS REGISTRADOS PARA CREAR SU OPTION E INSERTARLOS EN EL ACORDEÓN
-            let acordeon_ejercicios = "";
+botones_add_ejercicio.forEach(boton_add_ejercicio => {
+    boton_add_ejercicio.addEventListener('click', async () => {
 
-            await cargarEjercicios();
+        let acordeon_ejercicios = "";
 
-            ejercicios.forEach(dato => {
-                acordeon_ejercicios += `<option value="${dato.nombre}">${dato.nombre}</option>`
+        await cargarEjercicios();
+
+        let contenedor_formulario_a_rellenar = boton_add_ejercicio.nextElementSibling;
+
+
+        // SOLO RELLENA EL FORMULARIO LA PRIMERA VEZ
+        if (contenedor_formulario_a_rellenar.innerHTML.trim() === '') {
+
+
+            EjerciciosTotales.forEach(dato => {
+                acordeon_ejercicios += `<option value="${dato.nombre}">${dato.nombre}</option>`;
             });
 
-            let contenedor_formulario_a_rellenar = boton_add_ejercicio.nextElementSibling;
 
-            // SOLO RELLENA EL FORMULARIO LA PRIMERA VEZ, Y ASIGNA EL LISTENER DEL GUARDAR
-            if (contenedor_formulario_a_rellenar.innerHTML.trim() === '') {
+            contenedor_formulario_a_rellenar.innerHTML = `
+                <form action="">
+                    <label for="nombre_ejercicio">Nombre</label>
+                    <br>
+                   
+                    <select name="nombre_ejercicio" id="nombre_ejercicio">
+                        ${acordeon_ejercicios}
+                    </select>
 
-                contenedor_formulario_a_rellenar.innerHTML = `
-                    <form action="">
-                        <label for="nombre_ejercicio">Nombre</label>
-                        <br>
-                       
-                        <select name="nombre_ejercicio" id="nombre_ejercicio">
-                            ${acordeon_ejercicios}
-                        </select>
+                    <br>
 
-                        <br>
-                        <label for="num_series">Nº de series</label>
-                        <br>
-                        <select name="series" id="num_series">
-                            <option value="1">1</option>
-                            <option value="2">2</option>
-                            <option value="3">3</option>
-                            <option value="4">4</option>
-                            <option value="5">5</option>
-                            <option value="6">6</option>
-                            <option value="7">7</option>
-                            <option value="8">8</option>
-                        </select>
-                        <br>
-                        <br>
-                        <div class="contenedor_series">
+                    <label for="num_series">Nº de series</label>
+                    <br>
 
-                        </div>
+                    <select name="series" id="num_series">
+                        <option value="1">1</option>
+                        <option value="2">2</option>
+                        <option value="3">3</option>
+                        <option value="4">4</option>
+                        <option value="5">5</option>
+                        <option value="6">6</option>
+                        <option value="7">7</option>
+                        <option value="8">8</option>
+                    </select>
 
+                    <br>
+                    <br>
+
+                    <div class="contenedor_series">
+
+                    </div>
+
+                    <br>
+
+                    <button class="definir-series" data-id="${boton_add_ejercicio.dataset.id}">
+                        Definir series
+                    </button>
+
+                    <button class="guardar-ejercicio_definitivo" data-id="${boton_add_ejercicio.dataset.id}">
+                        Guardar ejercicio ✅
+                    </button>
+
+                </form>
+            `;
+
+
+            let boton_UI = contenedor_formulario_a_rellenar.querySelector('.definir-series');
+
+
+            boton_UI.addEventListener('click', async (event) => {
+
+                event.preventDefault();
+
+                let series = Number(document.getElementById('num_series').value);
+
+                let html_series_peso = "";
+
+                for (let i = 0; i < series; i++) {
+
+                    let num_series = i + 1;
+
+                    html_series_peso += `
+                        <li>
+                        Serie ${num_series}:
                         <br>
-                        <!-- Este primer botón crea la UI-->
-                        <button class="definir-series" data-id="${boton_add_ejercicio.dataset.id}">
-                            Definir series
-                        </button>
-
-                        <!-- Este segundo botón es el que guarda los entrenamientos-->
-                         <button class="guardar-ejercicio_definitivo" data-id="${boton_add_ejercicio.dataset.id}">
-                           Guardar ejercicio ✅
-                        </button>
-                    </form>
+                        kg: <input type="number" min="1" value="1" class="kg">
+                        <br>
+                        reps:<input type="number" min="1" max="100" value="1" class="repes">
+                        </li>
                     `;
-
-                // EL LISTENER DEL GUARDAR VA AQUÍ, DENTRO DEL IF, PARA ASIGNARSE SOLO UNA VEZ
-                let boton_UI = contenedor_formulario_a_rellenar.querySelector('.definir-series');
-
-                // Este primer botón lo único que hace es pintar la UI. No guarda nada en la BD
-                boton_UI.addEventListener('click', async (event) => {
-
-                    event.preventDefault();
-
-                    // TOMO EL VALOR DEL NÚMERO DE SERIES ELEGIDAS POR EL USUARIO
-                    let series = Number(document.getElementById('num_series').value);
-
-                    // genero tantos input de peso y series como series haya elegido el usuario al crear el ejercicio
-                    let html_series_peso = "";
-
-                    for (let i = 0; i < series; i++) {
-
-                        let num_series = i + 1;
-
-                        html_series_peso += `
-                                        <li>Serie ${num_series}:
-                                        <br>
-                                        kg: <input type="number" min="1" value="1" class="kg">
-                                        <br>  
-                                        reps:<input type="number" min="1" max="100" value="1" class="repes">
-                                        </li>
-                                        `;
-                    }
-
-                    let div_series =
-                        contenedor_formulario_a_rellenar.querySelector('.contenedor_series');
-
-                    // DIBUJO TODA ESTA PARTE CON LAS SERIES GENERADAS
-                    div_series.innerHTML = html_series_peso;
-
-                });
+                }
 
 
-                //     // ESTE SEGUNDO BOTÓN YA SÍ QUE GUARDA EL ENTRENO Y LAS SERIES
-                let boton_guardar_definitivo = contenedor_formulario_a_rellenar.querySelector('.guardar-ejercicio_definitivo');
-
-                boton_guardar_definitivo.addEventListener('click', async (event) => {
+                let div_series =
+                    contenedor_formulario_a_rellenar.querySelector('.contenedor_series');
 
 
-                    event.preventDefault();
+                div_series.innerHTML = html_series_peso;
 
-                    let nombre = document.getElementById('nombre_ejercicio').value;
+            });
 
-                    // TOMO LOS VALORES DE PESO RELLENADOS POR EL USUARIO
-                    const inputPeso = contenedor_formulario_a_rellenar.querySelectorAll('.kg');
 
-                    // TOMO LOS VALORES DE REPES RELLENADOS POR EL USUARIO
-                    const inputRepes = contenedor_formulario_a_rellenar.querySelectorAll('.repes');
 
-                    //  CREO UN ARRAY DE SERIES QUE SERÁ RELLENADO CON CADA VALOR DE PESO Y REPES
-                    let series = [];
+            let boton_guardar_definitivo = contenedor_formulario_a_rellenar.querySelector('.guardar-ejercicio_definitivo');
 
-                    // PARA CREAR LAS SERIES, RECORRO LOS VALORES DE PESO Y REPES A LA MISMA VEZ, O SEA, EL MISMO INDICE. DE CADA PESO TOMO EL VALOR Y LA POSICIÓN
-                    inputPeso.forEach((input, i) => {
-                        series.push({
-                            // EL VALOR LO UTILIZO AQUÍ, PARA AÑADIRLO EN KG
-                            kg: Number(input.value),
-                            // LA POSICIÓN LA UTILIZO AQUÍ, PARA TOMAR EL VALOR DEL Nº DE REPES DE LA MISMA POSICIÓN
-                            reps: Number(inputRepes[i].value)
-                        });
+
+            boton_guardar_definitivo.addEventListener('click', async (event) => {
+
+                event.preventDefault();
+
+
+                let nombre = document.getElementById('nombre_ejercicio').value;
+
+
+                const inputPeso = contenedor_formulario_a_rellenar.querySelectorAll('.kg');
+
+                const inputRepes = contenedor_formulario_a_rellenar.querySelectorAll('.repes');
+
+
+                let series = [];
+
+
+                inputPeso.forEach((input, i) => {
+
+                    series.push({
+
+                        kg: Number(input.value),
+
+                        reps: Number(inputRepes[i].value)
 
                     });
 
-                    // CREO ESTE EJERCICIO
-                    let ejercicio = {
-                        id: Date.now(),
-                        nombre,
-                        series
-                    };
-
-                    await addEjercicio_Entreno(Number(boton_guardar_definitivo.dataset.id), ejercicio);
-                    await pintarEntrenamientos();
                 });
 
-            }
-            // QUITA O PONE LA CLASE OCULTO A ESTE ELEMENTO DEPENDIENDO DE SI LA TIENE O NO. ESTA CLASE ESTÁ DEFINIDA EN EL CSS Y SIRVE PARA, DE BASE, OCULTAR EL ELEMENTO QUE LA RECIBE
-            contenedor_formulario_a_rellenar.classList.toggle('oculto');
-        });
+
+
+                let ejercicio = {
+
+                    id: Date.now(),
+
+                    nombre,
+
+                    series
+
+                };
+
+
+
+                await addEjercicio_Entreno(Number(boton_guardar_definitivo.dataset.id), ejercicio);
+
+                await pintarEntrenamientos();
+
+            });
+
+        }
+
+
+        contenedor_formulario_a_rellenar.classList.toggle('oculto');
+
     });
+});
 
     // BOTÓN PARA MOSTRAR U OCULTAR LAS NOTAS
     let botones_ver_notas = document.querySelectorAll('.boton_ver_notas');
@@ -327,6 +347,7 @@ async function pintarEntrenamientos() {
 window.onload = async function () {
 
     await inicializarBaseDeDatos();
+    await cargarEjercicios();
     await pintarEntrenamientos();
 
 }

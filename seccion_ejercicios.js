@@ -1,4 +1,4 @@
-let ejercicios = [
+let ejerciciosPredeterminados = [
   { nombre: "Press banca", musculo: "Pecho", descripcion: "Ejercicio básico de empuje horizontal. Ideal para desarrollar fuerza y masa en el pectoral mayor.", imagenes: [] },
   { nombre: "Banca inclinada", musculo: "Pecho alto", descripcion: "Variante del press banca con banco inclinado. Enfoca el trabajo en la parte alta del pectoral y el deltoides anterior.", imagenes: []},
   { nombre: "Press militar", musculo: "Hombros", descripcion: "Elevación de barra por encima de la cabeza de pie o sentado. Clave para la fuerza del hombro y el desarrollo del deltoides.", imagenes: [] },
@@ -21,12 +21,21 @@ let ejercicios = [
   { nombre: "Elevaciones de gemelo", musculo: "Gemelos", descripcion: "Subida de talones de pie o sentado. Ideal para desarrollar sóleo y gemelos en toda su amplitud.", imagenes: [] }
 ];
 
+let ejerciciosDB = [];
+let EjerciciosTotales = [];
+
 async function cargarEjercicios() {
-    const ejerciciosDB = await obtenerEjercicios();
-    ejercicios.push(...ejerciciosDB);
+    
+     ejerciciosDB = await obtenerEjercicios();
+     EjerciciosTotales = [
+
+        ...ejerciciosPredeterminados,
+        ...ejerciciosDB
+     ]
+
 }
 
-function pintarEjercicios(lista = ejercicios){
+function pintarEjercicios(lista = EjerciciosTotales){
 
 let div_ejercicios = document.getElementById('lista-ejercicios');
 
@@ -128,7 +137,7 @@ buscador.addEventListener('input', () => {
     const texto = buscador.value.toLowerCase();
 
     // SI ALGÚN ELEMENTO DEL ARRAY EJERCICIOS INCLUYE EL CONTENIDO DEL TEXTO, ÉSTE ELEMENTO ES EL ÚNICO QUE SE PINTA
-    const resultado = ejercicios.filter(dato => 
+    const resultado = EjerciciosTotales.filter(dato => 
         dato.nombre.toLowerCase().includes(texto) || dato.musculo.toLowerCase().includes(texto)
     );
     pintarEjercicios(resultado);
@@ -173,8 +182,8 @@ let este_ejercicio = {
     imagenes: archivos
 };
 
-  ejercicios.push(este_ejercicio);
   await guardarEjercicio(este_ejercicio);
+  await cargarEjercicios();
   pintarEjercicios();
 
   document.getElementById('nombre_ejercicio').value = '';
