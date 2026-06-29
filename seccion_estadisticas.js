@@ -21,7 +21,7 @@ window.onload = async function () {
 
            await cargarEjercicios();
 
-            ejercicios.forEach(dato => {
+            EjerciciosTotales.forEach(dato => {
             acordeon_ejercicios += `<option value="${dato.nombre}">${dato.nombre}</option>`
             });
 
