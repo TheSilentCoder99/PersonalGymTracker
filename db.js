@@ -126,3 +126,23 @@ function obtenerEjercicios() {
     });
 }
 
+function eliminarEjercicio (idEjercicio) {
+  return new Promise((promesaCumplida, promesaFallida) => {
+
+    // Abre una transacción de lectura y escritura para permitir el borrado
+    const transaccion = conexion.transaction("ejercicios", "readwrite");
+    
+    // Accede al almacén de objetos "ejercicios"
+    const tabla_ejercicios = transaccion.objectStore("ejercicios");
+    
+    // Solicita la eliminación del registro que coincida con el id provisto
+    const peticionEliminar = tabla_ejercicios.delete(idEjercicio);
+
+    // Resuelve la promesa indicando que el borrado concluyó con éxito
+    peticionEliminar.onsuccess = () => promesaCumplida();
+    
+    // Rechaza la promesa si la solicitud de borrado falla
+    peticionEliminar.onerror   = (evento) => promesaFallida(evento.target.error);
+
+  });
+}

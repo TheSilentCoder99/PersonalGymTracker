@@ -54,11 +54,16 @@ lista.forEach(dato => {
         });
     }
 
+    // SI EL EJERCICIO SOBRE EL QUE SE ESTÉ EN ESE MOMENTO TIENE EL ATRIBUTO ID, O SEA, HA SIDO AÑADIDO POR EL USUARIO, SE LE MUESTRA EL BOTÓN DE BORRAR, SI NO, NO.
+    const botonBorrar = dato.id
+    ? `<button type="button" class="borrar-ejercicio" data-id="${dato.id}">✕</button>`
+    : "";
+
     div_ejercicios.innerHTML +=
     `<div class="ejercicio">
 
         <button class="ejercicio-nombre">${dato.nombre} — ${dato.musculo}</button>
-
+        ${botonBorrar}
         <div class="ejercicio-contenido oculto">
             <br>
 
@@ -119,6 +124,25 @@ todosLosBotonesDeEjercicio.forEach(botonDeEjercicio => {
 
 });
 
+
+document.querySelectorAll('.borrar-ejercicio').forEach(boton_borrar_ejercicio => {
+    boton_borrar_ejercicio.addEventListener('click', async () => {
+
+        // OBTENGO EL ID DEL BOTÓN DE BORRAR EJERCICIO
+        const id = Number(boton_borrar_ejercicio.dataset.id);
+
+        const confirmar = confirm('¿Eliminar este ejercicio?');
+
+        if (confirmar){
+            await eliminarEjercicio(id);
+            await cargarEjercicios();
+            pintarEjercicios();
+        };
+
+        
+    });
+});
+
 }
 
 window.onload = async function () {
@@ -168,6 +192,7 @@ boton_guardar_ejercicio.addEventListener('click',async()=>{
       let input_multimedia_nueva = document.getElementById('multimedia_ejercicio');
 
       const archivos = Array.from(input_multimedia_nueva.files);
+
 
   if(input_nombre_nuevo === ''){
     alert('El nombre del nuevo ejercicio no puede estar vacío.');
