@@ -1,4 +1,4 @@
-const CACHE_NAME = "gym-tracker-v5";
+const CACHE_NAME = "gym-tracker-v6";
 
 const ARCHIVOS_CACHE = [
     "./",
@@ -24,7 +24,17 @@ const ARCHIVOS_CACHE = [
     // MANIFEST
         "./manifest.json",
         // MANUAL DE USUARIO
-        "./manual_usuario.html"
+        "./manual_usuario.html",
+        //Multimedia de ejercicios
+        "ejercicios_predeterminados/press_banca.jpeg",
+        "ejercicios_predeterminados/banca_inclinada.webp",
+        "ejercicios_predeterminados/press_militar.webp",
+        "ejercicios_predeterminados/fondos_lastrados.jpg",
+        "ejercicios_predeterminados/triceps_polea.webp",
+        "ejercicios_predeterminados/pajaros_altos.webp",
+        "ejercicios_predeterminados/pajaros_bajos.webp",
+        "Dominadas-lastradas-subida-explosiva.png",
+        
 ];
 
 // INSTALACIÓN DEL SERVICE WORKER
