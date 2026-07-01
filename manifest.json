@@ -1,6 +1,6 @@
 {
-  "name": "Gym Tracker",
-  "short_name": "GymTracker",
+  "name": "Body Forge",
+  "short_name": "Forge",
   "start_url": "/PersonalGymTracker/",
   "scope": "/PersonalGymTracker/",
   "display": "standalone",
