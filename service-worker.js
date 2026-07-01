@@ -25,16 +25,28 @@ const ARCHIVOS_CACHE = [
         "./manifest.json",
         // MANUAL DE USUARIO
         "./manual_usuario.html",
-        //Multimedia de ejercicios
-        "ejercicios_predeterminados/press_banca.jpeg",
-        "ejercicios_predeterminados/banca_inclinada.webp",
-        "ejercicios_predeterminados/press_militar.webp",
-        "ejercicios_predeterminados/fondos_lastrados.jpg",
-        "ejercicios_predeterminados/triceps_polea.webp",
-        "ejercicios_predeterminados/pajaros_altos.webp",
-        "ejercicios_predeterminados/pajaros_bajos.webp",
-        "Dominadas-lastradas-subida-explosiva.png",
-        
+// Multimedia de ejercicios
+"ejercicios_predeterminados/press_banca.jpeg",
+"ejercicios_predeterminados/banca_inclinada.webp",
+"ejercicios_predeterminados/press_militar.webp",
+"ejercicios_predeterminados/fondos_lastrados.jpg",
+"ejercicios_predeterminados/triceps_polea.webp",
+"ejercicios_predeterminados/pajaros_altos.webp",
+"ejercicios_predeterminados/pajaros_bajos.webp",
+"ejercicios_predeterminados/jalon_al_pecho.jpeg",
+"ejercicios_predeterminados/remon_con_barra.png",
+"ejercicios_predeterminados/Seated+Cable+Row1.webp",
+"ejercicios_predeterminados/seated-cable-row2.jpg",
+"ejercicios_predeterminados/face_pull.webp",
+"ejercicios_predeterminados/dumbbell-incline-biceps-curl.webp",
+"ejercicios_predeterminados/biceps_polea.webp",
+"ejercicios_predeterminados/elevaciones_laterales.webp",
+"ejercicios_predeterminados/sentadillas.jpg",
+"ejercicios_predeterminados/prensa_piernas.jpeg",
+"ejercicios_predeterminados/peso_muerto_rumano.webp",
+"ejercicios_predeterminados/hipthrust.jpeg",
+"ejercicios_predeterminados/gemelos.webp",
+"ejercicios_predeterminados/dominadas_lastradas.jpg"
 ];
 
 // INSTALACIÓN DEL SERVICE WORKER

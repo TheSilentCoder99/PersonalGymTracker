@@ -6,19 +6,19 @@ let ejerciciosPredeterminados = [
   { nombre: "Tríceps en polea", musculo: "Tríceps", descripcion: "Empuje de barra o cuerda en polea alta hacia abajo. Aísla el tríceps de forma segura y efectiva.", imagenes: ["ejercicios_predeterminados/triceps_polea.webp"] },
   { nombre: "Pájaros en polea alta", musculo: "Pecho", descripcion: "Aperturas con poleas desde posición alta. Trabaja el pectoral en su ángulo más completo, similar a la banca plana.", imagenes: ["ejercicios_predeterminados/pajaros_altos.webp"] },
   { nombre: "Pájaros en polea baja", musculo: "Pecho", descripcion: "Apertura con poleas desde posición baja. Activa sobre todo la parte superior del pectoral.", imagenes: ["ejercicios_predeterminados/pajaros_bajos.webp"]},
-  { nombre: "Dominadas lastradas", musculo: "Espalda", descripcion: "Dominadas con peso añadido. Trabaja dorsales y fuerza de agarre.", imagenes: ["Dominadas-lastradas-subida-explosiva.png"] },
-  { nombre: "Jalón al pecho", musculo: "Espalda", descripcion: "Tirón de polea alta hacia el pecho. Ideal para trabajar los músculos dorsales.", imagenes: ["ejercicios_predeterminados/jalon_al_pecho.webp"]},
-  { nombre: "Remo con barra", musculo: "Espalda alta", descripcion: "Tracción horizontal con barra hacia el abdomen. Ideal para desarrollar trapecios, romboides y dorsales.", imagenes: [] },
-  { nombre: "Remo sentado", musculo: "Espalda media", descripcion: "Tracción con polea baja y agarre en V. Trabaja la parte media de la espalda y los dorsales inferiores.", imagenes: [] },
+  { nombre: "Dominadas lastradas", musculo: "Espalda", descripcion: "Dominadas con peso añadido. Trabaja dorsales y fuerza de agarre.", imagenes: ["ejercicios_predeterminados/dominadas_lastradas.jpg"] },
+  { nombre: "Jalón al pecho", musculo: "Espalda", descripcion: "Tirón de polea alta hacia el pecho. Ideal para trabajar los músculos dorsales.", imagenes: ["ejercicios_predeterminados/jalon_al_pecho.jpeg"]},
+  { nombre: "Remo con barra", musculo: "Espalda alta", descripcion: "Tracción horizontal con barra hacia el abdomen. Ideal para desarrollar trapecios, romboides y dorsales.", imagenes: ["ejercicios_predeterminados/remon_con_barra.png"] },
+  { nombre: "Remo sentado", musculo: "Espalda media", descripcion: "Tracción con polea baja y agarre en V. Trabaja la parte media de la espalda y los dorsales inferiores.", imagenes: ["ejercicios_predeterminados/Seated+Cable+Row1.webp","ejercicios_predeterminados/seated-cable-row2.jpg"] },
   { nombre: "Face pull", musculo: "Espalda alta", descripcion: "Tirón facial con polea alta. Perfecto para deltoides posterior, trapecio y mejorar la postura.", imagenes: ["ejercicios_predeterminados/face_pull.webp"]},
-  { nombre: "Curl de bíceps banco inclinado", musculo: "Bíceps", descripcion: "Curl de bíceps acostado boca arriba en banco inclinado. Alarga el bíceps y evita trampas con el torso.", imagenes: [] },
-  { nombre: "Curl de bíceps en polea", musculo: "Bíceps", descripcion: "Curl con polea baja y barra recta o cuerda. Mantiene tensión constante durante todo el movimiento.", imagenes: [] },
+  { nombre: "Curl de bíceps banco inclinado", musculo: "Bíceps", descripcion: "Curl de bíceps acostado boca arriba en banco inclinado. Alarga el bíceps y evita trampas con el torso.", imagenes: ["ejercicios_predeterminados/dumbbell-incline-biceps-curl.webp"] },
+  { nombre: "Curl de bíceps en polea", musculo: "Bíceps", descripcion: "Curl con polea baja y barra recta o cuerda. Mantiene tensión constante durante todo el movimiento.", imagenes: ["ejercicios_predeterminados/biceps_polea.webp"] },
   { nombre: "Elevaciones laterales en polea", musculo: "Hombros", descripcion: "Elevación lateral con polea baja de pie. Aísla el deltoides medio de forma continua.", imagenes: ["ejercicios_predeterminados/elevaciones_laterales.webp"] },
-  { nombre: "Sentadillas con barra", musculo: "Piernas", descripcion: "Ejercicio rey del tren inferior. Trabaja cuádriceps, glúteos y estabilizadores de forma global.", imagenes: [] },
-  { nombre: "Prensa de piernas", musculo: "Cuádriceps", descripcion: "Empuje en máquina de prensa horizontal o inclinada. Aísla bien el cuádriceps sin carga en la espalda.", imagenes: [] },
+  { nombre: "Sentadillas con barra", musculo: "Piernas", descripcion: "Ejercicio rey del tren inferior. Trabaja cuádriceps, glúteos y estabilizadores de forma global.", imagenes: ["ejercicios_predeterminados/sentadillas.jpg"] },
+  { nombre: "Prensa de piernas", musculo: "Cuádriceps", descripcion: "Empuje en máquina de prensa horizontal o inclinada. Aísla bien el cuádriceps sin carga en la espalda.", imagenes: ["ejercicios_predeterminados/prensa_piernas.jpeg"] },
   { nombre: "Peso muerto rumano", musculo: "Femorales", descripcion: "Peso muerto con piernas semirrígidas. Enfoque máximo en isquiotibiales y glúteo.", imagenes: ["ejercicios_predeterminados/peso_muerto_rumano.webp"] },
-  { nombre: "Hiptrust", musculo: "Glúteo", descripcion: "Empuje de cadera con barra apoyada en la pelvis. El mejor ejercicio para activar y desarrollar el glúteo.", imagenes: [] },
-  { nombre: "Elevaciones de gemelo", musculo: "Gemelos", descripcion: "Subida de talones de pie o sentado. Ideal para desarrollar sóleo y gemelos en toda su amplitud.", imagenes: [] }
+  { nombre: "Hiptrust", musculo: "Glúteo", descripcion: "Empuje de cadera con barra apoyada en la pelvis. El mejor ejercicio para activar y desarrollar el glúteo.", imagenes: ["ejercicios_predeterminados/hipthrust.jpeg"] },
+  { nombre: "Elevaciones de gemelo", musculo: "Gemelos", descripcion: "Subida de talones de pie o sentado. Ideal para desarrollar sóleo y gemelos en toda su amplitud.", imagenes: ["ejercicios_predeterminados/gemelos.webp"] }
 ];
 
 let ejerciciosDB = [];
