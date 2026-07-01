@@ -18,7 +18,9 @@ let ejerciciosPredeterminados = [
   { nombre: "Prensa de piernas", musculo: "Cuádriceps", descripcion: "Empuje en máquina de prensa horizontal o inclinada. Aísla bien el cuádriceps sin carga en la espalda.", imagenes: ["ejercicios_predeterminados/prensa_piernas.jpeg"] },
   { nombre: "Peso muerto rumano", musculo: "Femorales", descripcion: "Peso muerto con piernas semirrígidas. Enfoque máximo en isquiotibiales y glúteo.", imagenes: ["ejercicios_predeterminados/peso_muerto_rumano.webp"] },
   { nombre: "Hiptrust", musculo: "Glúteo", descripcion: "Empuje de cadera con barra apoyada en la pelvis. El mejor ejercicio para activar y desarrollar el glúteo.", imagenes: ["ejercicios_predeterminados/hipthrust.jpeg"] },
-  { nombre: "Elevaciones de gemelo", musculo: "Gemelos", descripcion: "Subida de talones de pie o sentado. Ideal para desarrollar sóleo y gemelos en toda su amplitud.", imagenes: ["ejercicios_predeterminados/gemelos.webp"] }
+  { nombre: "Elevaciones de gemelo", musculo: "Gemelos", descripcion: "Subida de talones de pie o sentado. Ideal para desarrollar sóleo y gemelos en toda su amplitud.", imagenes: ["ejercicios_predeterminados/gemelos.webp"] },
+  { nombre: "Machine Chest Fly", musculo: "Pecho", descripcion: "Apertura de brazos en máquina de poleas o palanca. Aísla el pectoral en su fase de contracción máxima, ideal para definir y dar forma al pecho sin comprometer la estabilidad.", imagenes: ["ejercicios_predeterminados/Machine-Fly-resized.webp"] }
+
 ];
 
 let ejerciciosDB = [];

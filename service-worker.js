@@ -1,4 +1,4 @@
-const CACHE_NAME = "gym-tracker-v6";
+const CACHE_NAME = "gym-tracker-v5";
 
 const ARCHIVOS_CACHE = [
     "./",
@@ -46,7 +46,8 @@ const ARCHIVOS_CACHE = [
 "ejercicios_predeterminados/peso_muerto_rumano.webp",
 "ejercicios_predeterminados/hipthrust.jpeg",
 "ejercicios_predeterminados/gemelos.webp",
-"ejercicios_predeterminados/dominadas_lastradas.jpg"
+"ejercicios_predeterminados/dominadas_lastradas.jpg",
+"ejercicios_predeterminados/Machine-Fly-resized.webp"
 ];
 
 // INSTALACIÓN DEL SERVICE WORKER
