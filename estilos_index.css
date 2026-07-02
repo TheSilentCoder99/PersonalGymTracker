@@ -204,11 +204,13 @@ h4 {
     font-size: 1rem; /* 16px */
   }
 
-   #semana-actual input[type="date"] {
-    padding: 6px 8px;
-    min-width: 0; /* Permite que se reduzca más */
+  #semana-actual input[type="date"] {
+    width: 100%;
+    min-width: 0;
+    padding: 10px 12px; /* Igual que el input de texto */
+    box-sizing: border-box;
   }
-  
+
   #crear-entrenamiento {
     padding: 10px 20px;
     font-size: 1rem; /* 16px */
