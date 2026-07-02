@@ -1,0 +1,47 @@
+<!-- Sección para generar prompts para ChatGPT -->
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="estilos_prompt.css">
+    <title>Generar Prompt IA</title>
+</head>
+<body id="arriba">
+    <h1>Generar Prompt para IA</h1>
+    
+    <a href="index.html">Volver</a>
+
+    <!-- Instrucciones para el usuario -->
+    <div class="instrucciones">
+        <h2>📋 Instrucciones</h2>
+        <p>Selecciona un entrenamiento para generar un prompt que podrás pegar directamente en ChatGPT o tu IA de confianza.</p>
+        <p><strong>Recomendación:</strong> Renombra el chat como <span class="destacar">"ENTRENAMIENTOS"</span> o <span class="destacar">"GIMNASIO"</span> para que los nuevos entrenamientos tengan contexto y retroalimentación de entrenamientos anteriores.</p>
+    </div>
+
+    <!-- Selector de entrenamiento -->
+    <div class="selector-entreno">
+        <label for="selector-entrenamiento">Selecciona un entrenamiento</label>
+        <select id="selector-entrenamiento">
+            <option value="">-- Elige un entrenamiento --</option>
+            <!-- Los options se generarán dinámicamente con JS -->
+        </select>
+    </div>
+
+    <!-- Contenedor del prompt generado -->
+    <div id="contenedor-prompt" class="oculto">
+        <h3>🤖 Prompt generado</h3>
+        <div class="prompt-generado">
+            <p id="texto-prompt"></p>
+        </div>
+        <button id="copiar-prompt" class="btn-copiar">📋 Copiar prompt</button>
+        <div id="mensaje-copiado" class="mensaje-copiado oculto">✅ ¡Prompt copiado al portapapeles!</div>
+    </div>
+
+    <!-- Botón para ir arriba -->
+    <a href="#arriba">⬆️</a>
+
+    <script src="db.js"></script>
+    <script src="generar_prompt.js"></script>
+</body>
+</html>
