@@ -111,8 +111,6 @@ h4 {
   color-scheme: dark;
 }
 
-
-
 /* Botón Guardar */
 #crear-entrenamiento {
   background-color: #00e676;
@@ -199,18 +197,16 @@ h4 {
     font-size: 1rem; /* 16px */
   }
   
+  /* Asegurar que ambos inputs tengan el mismo tamaño y no se desborden */
   #semana-actual input[type="text"],
   #semana-actual input[type="date"] {
-    font-size: 1rem; /* 16px */
-  }
-
-  #semana-actual input[type="date"] {
     width: 100%;
-    min-width: 0;
-    padding: 10px 12px; /* Igual que el input de texto */
+    min-width: 0; /* Permite que el input se reduzca */
+    padding: 10px 12px;
+    font-size: 16px; /* Previene zoom en iOS */
     box-sizing: border-box;
   }
-
+  
   #crear-entrenamiento {
     padding: 10px 20px;
     font-size: 1rem; /* 16px */
@@ -220,7 +216,10 @@ h4 {
     font-size: 1rem; /* 16px */
   }
   
+  /* Frase más grande en móvil */
   #frase_aleatoria {
-    font-size: 1rem; /* 16px */
+    font-size: 1.5rem; /* Aumentado de 1rem a 1.5rem */
+    line-height: 1.4;
+    padding: 0.5rem;
   }
 }
