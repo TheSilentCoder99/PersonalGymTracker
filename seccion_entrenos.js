@@ -60,7 +60,7 @@ async function pintarEntrenamientos() {
                 <p>${este_entreno.fecha}</p>
 
                 <button class="add-ejercicio" data-id="${este_entreno.id}">
-                Añadir ejercicios
+                Seleccionar ejercicios
                 </button>
 
                 <div class="formulario_ejercicios oculto">

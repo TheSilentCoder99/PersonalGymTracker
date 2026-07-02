@@ -16,6 +16,7 @@ body {
   max-width: 700px;
   margin: 0 auto;
   position: relative;
+  font-size: 16px; /* Tamaño base para todo el body */
 }
 
 /* Desplazamiento suave global */
@@ -40,7 +41,7 @@ a[href="index.html"] {
   border: 1px solid #333;
   color: white;
   padding: 10px 20px;
-  font-size: 0.9rem;
+  font-size: 1rem; /* 16px */
   font-weight: 500;
   border-radius: 60px;
   cursor: pointer;
@@ -91,7 +92,7 @@ a[href="index.html"]:hover {
 /* Fecha del entrenamiento */
 .entrenamiento > p {
   color: #bbbbbb;
-  font-size: 0.9rem;
+  font-size: 1rem; /* 16px */
   margin-bottom: 1rem;
   line-height: 1.4;
 }
@@ -129,7 +130,7 @@ a[href="index.html"]:hover {
   border: 1px solid #333;
   color: white;
   padding: 8px 16px;
-  font-size: 0.85rem;
+  font-size: 1rem; /* 16px */
   font-weight: 500;
   border-radius: 40px;
   cursor: pointer;
@@ -149,7 +150,7 @@ a[href="index.html"]:hover {
   border: 1px solid #333;
   color: white;
   padding: 8px 16px;
-  font-size: 0.85rem;
+  font-size: 1rem; /* 16px */
   font-weight: 500;
   border-radius: 40px;
   cursor: pointer;
@@ -169,7 +170,7 @@ a[href="index.html"]:hover {
   border: 1px solid #333;
   color: white;
   padding: 8px 16px;
-  font-size: 0.85rem;
+  font-size: 1rem; /* 16px */
   font-weight: 500;
   border-radius: 40px;
   cursor: pointer;
@@ -207,6 +208,7 @@ a[href="index.html"]:hover {
   color: #00e676;
   position: relative;
   padding-right: 2.5rem;
+  font-size: 1rem; /* 16px */
 }
 
 .mostrar_ejercicios ul > li ol {
@@ -220,7 +222,7 @@ a[href="index.html"]:hover {
   color: #cccccc;
   font-weight: normal;
   padding: 0.25rem 0;
-  font-size: 0.9rem;
+  font-size: 1rem; /* 16px */
   border-bottom: 1px solid #1a1a1a;
 }
 
@@ -277,7 +279,7 @@ a[href="index.html"]:hover {
   color: white;
   padding: 10px 12px;
   border-radius: 12px;
-  font-size: 0.95rem;
+  font-size: 1rem; /* 16px */
   font-family: inherit;
   resize: vertical;
   transition: border-color 0.2s ease;
@@ -291,7 +293,7 @@ a[href="index.html"]:hover {
 
 .nota_ejercicio p {
   color: #cccccc;
-  font-size: 0.95rem;
+  font-size: 1rem; /* 16px */
   line-height: 1.6;
   padding: 0.75rem;
   background-color: #0a0a0a;
@@ -307,7 +309,7 @@ a[href="index.html"]:hover {
   border: none;
   color: #0a0a0a;
   padding: 10px 20px;
-  font-size: 0.9rem;
+  font-size: 1rem; /* 16px */
   font-weight: 600;
   border-radius: 40px;
   cursor: pointer;
@@ -341,7 +343,7 @@ a[href="index.html"]:hover {
 
 .formulario_ejercicios form label {
   color: #00e676;
-  font-size: 0.85rem;
+  font-size: 1rem; /* 16px */
   font-weight: 500;
   margin-bottom: 0.25rem;
   display: inline-block;
@@ -354,7 +356,7 @@ a[href="index.html"]:hover {
   color: white;
   padding: 10px 12px;
   border-radius: 12px;
-  font-size: 0.95rem;
+  font-size: 1rem; /* 16px */
   margin-bottom: 0.75rem;
   transition: border-color 0.2s ease;
   appearance: none;
@@ -374,6 +376,7 @@ a[href="index.html"]:hover {
   background-color: #1a1a1a;
   color: white;
   padding: 8px;
+  font-size: 1rem; /* 16px */
 }
 
 /* ==================== CONTENEDOR DE SERIES ==================== */
@@ -391,7 +394,7 @@ a[href="index.html"]:hover {
   border: 1px solid #2c2c2c;
   list-style: none;
   color: #cccccc;
-  font-size: 0.9rem;
+  font-size: 1rem; /* 16px */
   animation: fadeIn 0.2s ease;
 }
 
@@ -402,7 +405,7 @@ a[href="index.html"]:hover {
   color: white;
   padding: 6px 10px;
   border-radius: 8px;
-  font-size: 0.85rem;
+  font-size: 1rem; /* 16px */
   transition: border-color 0.2s ease;
   margin: 0.25rem 0;
 }
@@ -418,7 +421,7 @@ a[href="index.html"]:hover {
   border: 1px solid #333;
   color: white;
   padding: 10px 20px;
-  font-size: 0.9rem;
+  font-size: 1rem; /* 16px */
   font-weight: 500;
   border-radius: 40px;
   cursor: pointer;
@@ -438,7 +441,7 @@ a[href="index.html"]:hover {
   border: none;
   color: #0a0a0a;
   padding: 10px 20px;
-  font-size: 0.9rem;
+  font-size: 1rem; /* 16px */
   font-weight: 600;
   border-radius: 40px;
   cursor: pointer;
@@ -502,6 +505,7 @@ a[href="#arriba"]:hover {
 @media (max-width: 550px) {
   body {
     padding: 1rem;
+    font-size: 16px; /* Mantener 16px en móvil también */
   }
   
   .entrenamiento {
@@ -530,7 +534,7 @@ a[href="#arriba"]:hover {
   .mostrar_ejercicios ul > li {
     padding: 0.5rem;
     padding-right: 2rem;
-    font-size: 0.9rem;
+    font-size: 1rem; /* 16px */
   }
   
   .nota_ejercicio {
@@ -539,18 +543,18 @@ a[href="#arriba"]:hover {
   
   .nota_entreno {
     min-height: 60px;
-    font-size: 0.9rem;
+    font-size: 1rem; /* 16px */
     padding: 8px 10px;
   }
   
   .nota_ejercicio p {
-    font-size: 0.9rem;
+    font-size: 1rem; /* 16px */
     padding: 0.5rem;
   }
   
   .add_notas {
     padding: 8px 16px;
-    font-size: 0.85rem;
+    font-size: 1rem; /* 16px */
   }
   
   .formulario_ejercicios form {
@@ -559,13 +563,13 @@ a[href="#arriba"]:hover {
   
   .formulario_ejercicios form select {
     padding: 8px 10px;
-    font-size: 0.9rem;
+    font-size: 1rem; /* 16px */
   }
   
   .contenedor_series li input[type="number"] {
     width: 60px;
     padding: 4px 8px;
-    font-size: 0.8rem;
+    font-size: 1rem; /* 16px */
   }
   
   .add-ejercicio,
@@ -574,7 +578,7 @@ a[href="#arriba"]:hover {
   .definir-series,
   .guardar-ejercicio_definitivo {
     padding: 6px 12px;
-    font-size: 0.8rem;
+    font-size: 1rem; /* 16px */
   }
   
   a[href="#arriba"] {

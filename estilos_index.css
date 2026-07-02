@@ -11,6 +11,7 @@ body {
   padding: 2rem 1.5rem;
   max-width: 700px;
   margin: 0 auto;
+  font-size: 16px; /* Tamaño base para todo el body */
 }
 
 /* Títulos en verde */
@@ -33,6 +34,7 @@ h3 {
 
 h4 {
   color: #00e676;
+  font-size: 1rem; /* 16px */
 }
 
 /* Efecto tarjeta para la semana actual */
@@ -59,7 +61,7 @@ h4 {
 
 #semana-actual label {
   color: #cccccc;
-  font-size: 0.9rem;
+  font-size: 1rem; /* 16px */
   font-weight: 500;
   display: flex;
   flex-direction: column;
@@ -74,7 +76,7 @@ h4 {
   color: white;
   padding: 10px 12px;
   border-radius: 12px;
-  font-size: 0.95rem;
+  font-size: 1rem; /* 16px */
   transition: border-color 0.2s ease;
 }
 
@@ -94,7 +96,7 @@ h4 {
   border: none;
   color: #0a0a0a;
   padding: 12px 24px;
-  font-size: 1rem;
+  font-size: 1rem; /* 16px */
   font-weight: 600;
   border-radius: 40px;
   cursor: pointer;
@@ -121,7 +123,7 @@ h4 {
   border: 1px solid #333;
   color: white;
   padding: 14px 20px;
-  font-size: 1rem;
+  font-size: 1rem; /* 16px */
   font-weight: 600;
   border-radius: 60px;
   cursor: pointer;
@@ -150,6 +152,7 @@ h4 {
 @media (max-width: 550px) {
   body {
     padding: 1rem;
+    font-size: 16px; /* Mantener 16px en móvil también */
   }
   
   #semana-actual {
@@ -165,12 +168,29 @@ h4 {
     font-size: 1.1rem;
   }
   
+  h4 {
+    font-size: 1rem; /* 16px */
+  }
+  
+  #semana-actual label {
+    font-size: 1rem; /* 16px */
+  }
+  
+  #semana-actual input[type="text"],
+  #semana-actual input[type="date"] {
+    font-size: 1rem; /* 16px */
+  }
+  
   #crear-entrenamiento {
     padding: 10px 20px;
-    font-size: 0.9rem;
+    font-size: 1rem; /* 16px */
+  }
+  
+  .boton-nav {
+    font-size: 1rem; /* 16px */
   }
   
   #frase_aleatoria {
-    font-size: 1rem;
+    font-size: 1rem; /* 16px */
   }
 }
