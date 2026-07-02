@@ -1,4 +1,4 @@
-const CACHE_NAME = "gym-tracker-v5";
+const CACHE_NAME = "gym-tracker-v6";
 
 const ARCHIVOS_CACHE = [
     "./",
@@ -22,7 +22,6 @@ const ARCHIVOS_CACHE = [
         "./preguntar_ia.html",
         "./generar_prompt.js",
         "./estilos_prompt.css",
-
 // BASE DE DATOS
     "./db.js",
     // MANIFEST
