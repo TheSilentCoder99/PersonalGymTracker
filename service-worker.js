@@ -55,6 +55,9 @@ const ARCHIVOS_CACHE = [
 
 // INSTALACIÓN DEL SERVICE WORKER
 self.addEventListener("install", evento => {
+
+    self.skipWaiting();
+
     evento.waitUntil(
         caches.open(CACHE_NAME)
             .then(cache => {
@@ -72,7 +75,7 @@ self.addEventListener("activate", evento => {
                     .filter(nombre => nombre !== CACHE_NAME)
                     .map(nombre => caches.delete(nombre))
             );
-        })
+        }).then(()=> self.clients.claim())
     );
 });
 
