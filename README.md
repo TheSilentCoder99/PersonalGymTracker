@@ -14,7 +14,7 @@ El objetivo no es solo tener una aplicación funcional para registrar entrenamie
 * Local Storage
 * Organización modular del código
 * Resolución de problemas mediante proyectos reales
-
+ 
 ## Funcionalidades
 
 * Registrar diferentes entrenamientos
