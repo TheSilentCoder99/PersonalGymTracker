@@ -20,6 +20,8 @@ const ARCHIVOS_CACHE = [
         "./estilos_estadisticas.css",
         //SECCIÓN PREGUNTAR A UNA IA
         "./preguntar_ia.html",
+        "./generar_prompt.js",
+        "./estilos_prompt.css",
 
 // BASE DE DATOS
     "./db.js",
