@@ -307,7 +307,8 @@
       <li><a href="#crear-entreno">Crear un entrenamiento</a></li>
       <li><a href="#gestionar-entrenos">Gestionar entrenamientos</a></li>
       <li><a href="#añadir-ejercicios">Añadir ejercicios a un entrenamiento</a></li>
-      <li><a href="#notas">Notas de entrenamiento</a></li>
+      <li><a href="#plantillas">Plantillas de entrenamiento</a></li>
+      <li><a href="#notas">Notas</a></li>
       <li><a href="#ejercicios-propuestos">Ejercicios propuestos</a></li>
       <li><a href="#estadisticas">Estadísticas</a></li>
       <li><a href="#instalar">Instalar la app en tu dispositivo</a></li>
@@ -338,7 +339,7 @@
       <li><span class="num">4</span>Pulsa <strong>Guardar</strong>. El entrenamiento queda registrado y estará disponible en la sección <em>Gestionar entrenos</em>.</li>
     </ol>
     <div class="tip">
-      <strong>Tip:</strong> Crea primero el entrenamiento vacío y luego añade los ejercicios desde la sección <em>Gestionar entrenos</em>.
+      <strong>Tip:</strong> Crea primero el entrenamiento vacío y luego añade los ejercicios desde la sección <em>Gestionar entrenos</em>. Si ya tienes una plantilla guardada, consulta la sección <a href="#plantillas" style="color:#00e676">Plantillas de entrenamiento</a> para agilizar el proceso.
     </div>
   </section>
 
@@ -356,6 +357,16 @@
       <li><span class="num">3</span>Pulsa de nuevo para ocultar la lista.</li>
     </ol>
 
+    <h3>Guardar un entrenamiento como plantilla</h3>
+    <p>Si un entrenamiento te ha quedado bien montado (ejercicios, series, kilos y repeticiones), puedes guardarlo como plantilla para reutilizarlo más adelante sin volver a montarlo desde cero.</p>
+    <ol class="pasos">
+      <li><span class="num">1</span>En la tarjeta del entrenamiento, pulsa <strong>«Guardar como plantilla»</strong>.</li>
+      <li><span class="num">2</span>Se crea automáticamente una copia con el mismo nombre, ejercicios, series, kilos y repeticiones, disponible en la sección <a href="#plantillas" style="color:#00e676">Plantillas de entrenamiento</a>.</li>
+    </ol>
+    <div class="tip">
+      <strong>Tip:</strong> Guardar como plantilla no modifica ni elimina el entrenamiento original; solo crea una copia independiente en la sección de plantillas.
+    </div>
+
     <h3>Borrar un entrenamiento</h3>
     <ol class="pasos">
       <li><span class="num">1</span>Pulsa el botón <strong>✕</strong> en la esquina superior derecha de la tarjeta.</li>
@@ -363,7 +374,7 @@
     </ol>
 
     <div class="tip">
-      <strong>Aviso:</strong> Borrar un entrenamiento elimina también todos los ejercicios y series que contiene. No hay forma de recuperarlo.
+      <strong>Aviso:</strong> Borrar un entrenamiento elimina también todos los ejercicios y series que contiene. No hay forma de recuperarlo. Si lo habías guardado como plantilla, esta no se ve afectada porque es una copia independiente.
     </div>
   </section>
 
@@ -388,26 +399,65 @@
 
   <hr>
 
-  <!-- 5. NOTAS -->
-  <section id="notas">
-    <h2>5. Notas de entrenamiento</h2>
-    <p>Cada entrenamiento dispone de un campo de notas libre donde puedes apuntar sensaciones, observaciones o cualquier información relevante de esa sesión.</p>
+  <!-- 5. PLANTILLAS -->
+  <section id="plantillas">
+    <h2>5. Plantillas de entrenamiento</h2>
+    <p>La sección <strong>«Plantillas»</strong> guarda entrenamientos completos (ejercicios, series, kilos y repeticiones) para que no tengas que volver a montarlos desde cero cada semana. Las plantillas no se crean desde esta sección: se generan desde un entrenamiento ya existente pulsando <strong>«Guardar como plantilla»</strong> en <a href="#gestionar-entrenos" style="color:#00e676">Gestionar entrenos</a>.</p>
+
+    <h3>Ver el contenido de una plantilla</h3>
     <ol class="pasos">
-      <li><span class="num">1</span>En la tarjeta del entrenamiento, pulsa <strong>«Ver notas»</strong>. Se desplegará el área de notas.</li>
+      <li><span class="num">1</span>Localiza la tarjeta de la plantilla que quieres consultar.</li>
+      <li><span class="num">2</span>Pulsa <strong>«Mostrar plantilla»</strong>. Se desplegará la lista de ejercicios con sus series, kilos y repeticiones.</li>
+      <li><span class="num">3</span>Pulsa de nuevo para ocultarla.</li>
+    </ol>
+
+    <h3>Editar los kilos y repeticiones de una plantilla</h3>
+    <p>A diferencia de un entrenamiento normal, en una plantilla los campos de kg y reps de cada serie son directamente editables desde la propia tarjeta.</p>
+    <ol class="pasos">
+      <li><span class="num">1</span>Con la plantilla desplegada, modifica los valores de <em>kg</em> y/o <em>reps</em> que necesites en cada serie.</li>
+      <li><span class="num">2</span>Pulsa <strong>«Guardar cambios»</strong>. Los nuevos valores quedan guardados en la plantilla.</li>
+    </ol>
+    <div class="tip">
+      <strong>Tip:</strong> El nombre del ejercicio y el número de series de una plantilla no se pueden cambiar desde aquí; solo los valores de kg y reps de cada serie.
+    </div>
+
+    <h3>Notas en una plantilla</h3>
+    <p>Igual que en un entrenamiento normal, cada plantilla tiene su propio campo de notas.</p>
+    <ol class="pasos">
+      <li><span class="num">1</span>Pulsa <strong>«Ver notas»</strong> en la tarjeta de la plantilla. Se desplegará el área de notas.</li>
+      <li><span class="num">2</span>Escribe tu nota en el campo de texto.</li>
+      <li><span class="num">3</span>Pulsa <strong>«Añadir nota»</strong> para guardarla. El texto guardado aparecerá justo debajo.</li>
+    </ol>
+
+    <h3>Borrar una plantilla</h3>
+    <ol class="pasos">
+      <li><span class="num">1</span>Pulsa el botón <strong>✕</strong> en la esquina superior de la tarjeta.</li>
+      <li><span class="num">2</span>Confirma el borrado en el diálogo que aparece. Esta acción es permanente y no afecta al entrenamiento original del que se creó.</li>
+    </ol>
+  </section>
+
+  <hr>
+
+  <!-- 6. NOTAS -->
+  <section id="notas">
+    <h2>6. Notas</h2>
+    <p>Tanto los entrenamientos como las plantillas disponen de un campo de notas libre donde puedes apuntar sensaciones, observaciones o cualquier información relevante.</p>
+    <ol class="pasos">
+      <li><span class="num">1</span>En la tarjeta correspondiente, pulsa <strong>«Ver notas»</strong>. Se desplegará el área de notas.</li>
       <li><span class="num">2</span>Escribe tu nota en el campo de texto.</li>
       <li><span class="num">3</span>Pulsa <strong>«Añadir nota»</strong> para guardarla. El texto guardado aparecerá justo debajo.</li>
       <li><span class="num">4</span>Pulsa <strong>«Ver notas»</strong> de nuevo para ocultar el panel.</li>
     </ol>
     <div class="tip">
-      <strong>Tip:</strong> Si guardas una nueva nota sobre una ya existente, la reemplaza. Úsalo para actualizar la nota de esa sesión en cualquier momento.
+      <strong>Tip:</strong> Si guardas una nueva nota sobre una ya existente, la reemplaza. Las notas de un entrenamiento y las de la plantilla creada a partir de él son independientes entre sí.
     </div>
   </section>
 
   <hr>
 
-  <!-- 6. EJERCICIOS PROPUESTOS -->
+  <!-- 7. EJERCICIOS PROPUESTOS -->
   <section id="ejercicios-propuestos">
-    <h2>6. Ejercicios propuestos</h2>
+    <h2>7. Ejercicios propuestos</h2>
     <p>La sección <strong>«Ejercicios propuestos»</strong> incluye una biblioteca de 20 ejercicios organizados por grupo muscular, con descripción de la técnica y vídeo de referencia.</p>
     <ol class="pasos">
       <li><span class="num">1</span>Pulsa <strong>«Ejercicios propuestos»</strong> en la pantalla principal.</li>
@@ -421,33 +471,33 @@
 
   <hr>
 
-  <!-- 7. ESTADÍSTICAS -->
+  <!-- 8. ESTADÍSTICAS -->
   <section id="estadisticas">
-    <h2>7. Estadísticas</h2>
-    <p>La sección <strong>«Estadísticas»</strong> calcula automáticamente tus datos a partir de todos los entrenamientos guardados. No requiere ninguna acción manual: se actualiza cada vez que abres la sección.</p>
+    <h2>8. Estadísticas</h2>
+    <p>La sección <strong>«Estadísticas»</strong> calcula automáticamente tus datos a partir de las <a href="#plantillas" style="color:#00e676">plantillas</a> que tengas guardadas. No requiere ninguna acción manual: se actualiza cada vez que abres la sección.</p>
 
     <h3>Peso récord por ejercicio</h3>
-    <p>En la parte superior encontrarás un selector desplegable con todos los ejercicios disponibles. Al elegir uno, se muestra al instante el peso máximo que has levantado en ese ejercicio a lo largo de todos tus entrenamientos.</p>
+    <p>En la parte superior encontrarás un selector desplegable con todos los ejercicios disponibles. Al elegir uno, se muestra al instante el peso máximo registrado en ese ejercicio dentro de tus plantillas.</p>
 
     <h3>Estadísticas globales</h3>
     <ol class="pasos">
-      <li><span class="num">1</span><strong>Peso máximo levantado</strong> — el kg más alto registrado en cualquier serie de cualquier ejercicio.</li>
-      <li><span class="num">2</span><strong>Peso levantado acumulado</strong> — suma de todos los kg de todas las series de todos los entrenamientos.</li>
+      <li><span class="num">1</span><strong>Peso máximo levantado</strong> — el kg más alto registrado en cualquier serie de cualquier ejercicio de tus plantillas.</li>
+      <li><span class="num">2</span><strong>Peso levantado acumulado</strong> — suma de todos los kg de todas las series de todas las plantillas.</li>
       <li><span class="num">3</span><strong>Volumen de entreno acumulado</strong> — el valor más alto de (kg × reps) alcanzado en una sola serie.</li>
-      <li><span class="num">4</span><strong>Total de entrenos</strong> — número de entrenamientos guardados.</li>
-      <li><span class="num">5</span><strong>Total de ejercicios</strong> — número de ejercicios registrados en todos los entrenamientos.</li>
+      <li><span class="num">4</span><strong>Total de entrenos</strong> — número de plantillas guardadas.</li>
+      <li><span class="num">5</span><strong>Total de ejercicios</strong> — número de ejercicios registrados en todas las plantillas.</li>
     </ol>
 
     <div class="tip">
-      <strong>Tip:</strong> Cuantos más entrenamientos tengas registrados, más significativos serán los datos. Las estadísticas no se pueden borrar de forma independiente; se eliminan solo si borras los entrenamientos que las generan.
+      <strong>Tip:</strong> Como las estadísticas se calculan a partir de las plantillas y no de cada entrenamiento individual, para que sean representativas conviene mantener tus plantillas actualizadas con «Guardar cambios» cada vez que subas de peso.
     </div>
   </section>
 
   <hr>
 
-  <!-- 8. INSTALAR -->
+  <!-- 9. INSTALAR -->
   <section id="instalar">
-    <h2>8. Instalar la app en tu dispositivo</h2>
+    <h2>9. Instalar la app en tu dispositivo</h2>
     <p>Body Forge es una PWA: puedes añadirla a la pantalla de inicio y usarla sin abrir el navegador.</p>
 
     <h3>En Android (Chrome)</h3>
@@ -478,9 +528,9 @@
 
   <hr>
 
-  <!-- 9. REFERENCIA RÁPIDA -->
+  <!-- 10. REFERENCIA RÁPIDA -->
   <section id="referencia">
-    <h2>9. Referencia rápida de botones</h2>
+    <h2>10. Referencia rápida de botones</h2>
     <div class="tabla-wrapper">
       <table>
         <thead>
@@ -509,7 +559,7 @@
           <tr>
             <td>Estadísticas</td>
             <td>Pantalla principal</td>
-            <td>Abre la sección con el peso récord por ejercicio y las estadísticas globales.</td>
+            <td>Abre la sección con el peso récord por ejercicio y las estadísticas globales, calculadas a partir de las plantillas.</td>
           </tr>
           <tr>
             <td>✕</td>
@@ -520,6 +570,11 @@
             <td>Añadir ejercicios</td>
             <td>Tarjeta de entrenamiento</td>
             <td>Despliega el formulario para añadir un ejercicio al entrenamiento.</td>
+          </tr>
+          <tr>
+            <td>Guardar como plantilla</td>
+            <td>Tarjeta de entrenamiento</td>
+            <td>Crea una copia del entrenamiento (ejercicios, series, kg y reps) en la sección de plantillas.</td>
           </tr>
           <tr>
             <td>Definir series</td>
@@ -537,14 +592,29 @@
             <td>Muestra u oculta la lista de ejercicios del entrenamiento.</td>
           </tr>
           <tr>
+            <td>Mostrar plantilla</td>
+            <td>Tarjeta de plantilla</td>
+            <td>Muestra u oculta los ejercicios, series, kg y reps de la plantilla.</td>
+          </tr>
+          <tr>
+            <td>Guardar cambios</td>
+            <td>Tarjeta de plantilla</td>
+            <td>Guarda los valores de kg y reps editados en la plantilla.</td>
+          </tr>
+          <tr>
+            <td>✕</td>
+            <td>Tarjeta de plantilla</td>
+            <td>Borra la plantilla (pide confirmación). No afecta al entrenamiento original.</td>
+          </tr>
+          <tr>
             <td>Ver notas</td>
-            <td>Tarjeta de entrenamiento</td>
-            <td>Muestra u oculta el panel de notas de esa sesión.</td>
+            <td>Tarjeta de entrenamiento / plantilla</td>
+            <td>Muestra u oculta el panel de notas.</td>
           </tr>
           <tr>
             <td>Añadir nota</td>
             <td>Panel de notas</td>
-            <td>Guarda el texto escrito como nota del entrenamiento.</td>
+            <td>Guarda el texto escrito como nota del entrenamiento o plantilla.</td>
           </tr>
           <tr>
             <td>Agregar nuevo ejercicio</td>

@@ -2,7 +2,7 @@
 window.onload = async function () {
     await inicializarBaseDeDatos();
 
-    let entrenamientos = await obtenerEntrenamientos();
+    let entrenamientos = await obtenerPlantillas();
 
     let peso_maximo_ejercicio = 0;
 
@@ -42,14 +42,14 @@ selector.addEventListener('change', () => {
 
     let peso_maximo_en = 0;
 
-    entrenamientos.forEach(entreno => {
+    entrenamientos.forEach(plantilla => {
 
-        entreno.ejercicios.forEach(ejercicio => {
+        plantilla.ejercicios.forEach(plantilla => {
 
 
-          if (ejercicio.nombre === nombreBuscado) {
+          if (plantilla.nombre === nombreBuscado) {
 
-            ejercicio.series.forEach(serie => {
+            plantilla.series.forEach(serie => {
 
                 if (serie.kg > peso_maximo_en) {
                     peso_maximo_en = serie.kg;
@@ -98,7 +98,7 @@ entrenamientos.forEach(entreno => {
 
 let info_estadisticas = 
 `<ol>
-      <li>Peso máximo levantado: <span class="num">${peso_maximo_ejercicio} kg</span></li>
+      <li>Peso máximo levantado (global): <span class="num">${peso_maximo_ejercicio} kg</span></li>
         <li>Peso levantado acumulado: <span class="num">${peso_levantado_acumulado} kg</span></li>
        <li>Volumen de entreno acumulado: <span class="num">${volumen_por_entreno} kg</span></li>
        <li>Total de entrenos: <span class="num">${total_entrenos} entrenos</span></li>

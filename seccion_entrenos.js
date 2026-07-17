@@ -53,7 +53,7 @@ async function pintarEntrenamientos() {
             <div class="entrenamiento">
 
             <button type="button" class="guardar-como-plantilla" data-id="${este_entreno.id}">
-                Guardar como plantilla
+                Guardar como rutina de entrenamiento.
                 </button>
 
                 <button class="borrar-entrenamiento" data-id="${este_entreno.id}">
