@@ -63,7 +63,7 @@ async function pintarEntrenamientos() {
                 Seleccionar ejercicios
                 </button>
 
-                <button type="button" class="guardar-como-plantilla" data-id="${este_entreno.id}">
+                <button type="button" class="guardar-como-plantilla add-ejercicio" data-id="${este_entreno.id}">
                 Guardar como plantilla
                 </button>
 
@@ -278,8 +278,6 @@ botones_add_ejercicio.forEach(boton_add_ejercicio => {
 
                 });
 
-
-
                 let ejercicio = {
 
                     id: Date.now(),
@@ -289,7 +287,6 @@ botones_add_ejercicio.forEach(boton_add_ejercicio => {
                     series
 
                 };
-
 
 
                 await addEjercicio_Entreno(Number(boton_guardar_definitivo.dataset.id), ejercicio);
