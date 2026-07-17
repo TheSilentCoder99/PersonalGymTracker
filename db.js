@@ -3,7 +3,7 @@ let conexion;
 function inicializarBaseDeDatos() {
     return new Promise((resolve, reject) => {
 
-        const request = indexedDB.open("gymtracker", 5);
+        const request = indexedDB.open("gymtracker", 6);
 
         request.onupgradeneeded = (e) => {
             const db = e.target.result;
@@ -16,6 +16,11 @@ function inicializarBaseDeDatos() {
     if (!db.objectStoreNames.contains("ejercicios")) {
         db.createObjectStore("ejercicios", { keyPath: "id" });
     }
+
+        if (!db.objectStoreNames.contains("plantillas")) {
+        db.createObjectStore("plantillas", { keyPath: "id" });
+    }
+
 
         };
 
@@ -143,6 +148,69 @@ function eliminarEjercicio (idEjercicio) {
     
     // Rechaza la promesa si la solicitud de borrado falla
     peticionEliminar.onerror   = (evento) => promesaFallida(evento.target.error);
+
+  });
+}
+
+// PLANTILLAS
+function guardarPlantilla(plantilla) {
+    return new Promise((resolve, reject) => {
+        const tx = conexion.transaction("plantillas", "readwrite");
+        const store = tx.objectStore("plantillas");
+        const request = store.put(plantilla);
+        request.onsuccess = () => resolve();
+        request.onerror = (e) => reject(e.target.error);
+    });
+}
+ 
+function obtenerPlantillas() {
+    return new Promise((resolve, reject) => {
+        const tx = conexion.transaction("plantillas", "readonly");
+        const store = tx.objectStore("plantillas");
+        const request = store.getAll();
+        request.onsuccess = () => resolve(request.result);
+        request.onerror = (e) => reject(e.target.error);
+    });
+}
+ 
+function eliminarPlantilla (idPlantilla) {
+  return new Promise((promesaCumplida, promesaFallida) => {
+ 
+    // Abre una transacción de lectura y escritura para permitir el borrado
+    const transaccion = conexion.transaction("plantillas", "readwrite");
+    
+    // Accede al almacén de objetos "plantillas"
+    const tabla_plantillas = transaccion.objectStore("plantillas");
+    
+    // Solicita la eliminación del registro que coincida con el id provisto
+    const peticionEliminar = tabla_plantillas.delete(idPlantilla);
+ 
+    // Resuelve la promesa indicando que el borrado concluyó con éxito
+    peticionEliminar.onsuccess = () => promesaCumplida();
+    
+    // Rechaza la promesa si la solicitud de borrado falla
+    peticionEliminar.onerror   = (evento) => promesaFallida(evento.target.error);
+ 
+  });
+}
+
+function ObtenerPlantilla(idPlantilla) {
+  return new Promise((promesaCumplida, promesaFallida) => {
+
+    // Abre una transacción de lectura y escritura para permitir el borrado
+    const transaccion = conexion.transaction("plantillas", "readonly");
+    
+    // Accede al almacén de objetos "entrenamientos"
+    const tabla_plantillas = transaccion.objectStore("plantillas");
+    
+    // Solicita el registro que coincida con el id provisto
+    const peticionObtener = tabla_plantillas.get(idPlantilla);
+
+    // Resuelve la promesa indicando que concluyó con éxito
+    peticionObtener.onsuccess = () => promesaCumplida(peticionObtener.result);
+    
+    // Rechaza la promesa si la solicitud falla
+    peticionObtener.onerror   = (evento) => promesaFallida(evento.target.error);
 
   });
 }

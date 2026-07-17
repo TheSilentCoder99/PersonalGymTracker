@@ -63,6 +63,11 @@ async function pintarEntrenamientos() {
                 Seleccionar ejercicios
                 </button>
 
+                <button type="button" class="guardar-como-plantilla" data-id="${este_entreno.id}">
+                Guardar como plantilla
+                </button>
+
+
                 <div class="formulario_ejercicios oculto">
                 </div>
 
@@ -342,7 +347,41 @@ botones_add_ejercicio.forEach(boton_add_ejercicio => {
         });
     });
 
+    // BOTÓN PARA GUARDAR UN ENTRENAMIENTO COMO PLANTILLA
+    const botones_guardar_plantilla = document.querySelectorAll('.guardar-como-plantilla');
+    botones_guardar_plantilla.forEach(boton_plantilla => {
+        boton_plantilla.addEventListener('click', async () => {
+ 
+            const idEntrenamiento = Number(boton_plantilla.dataset.id);
+ 
+            // OBTENGO EL ENTRENAMIENTO COMPLETO Y ACTUALIZADO DE LA BD
+            const entreno = await ObtenerEntreno(idEntrenamiento);
+
+            if(entreno.ejercicios < 1){
+                alert('Esta plantilla está vacía. Debes definir los ejercicios para poder guardarla.');
+                return;
+            }
+ 
+            // CONSTRUYO LA PLANTILLA A PARTIR DE LOS EJERCICIOS DEL ENTRENAMIENTO (NOMBRE + SERIES CON KG Y REPS)
+            const plantilla = {
+                id: Date.now(),
+                nombre: entreno.nombre,
+                ejercicios: entreno.ejercicios.map(ejercicio => ({
+                    nombre: ejercicio.nombre,
+                    series: ejercicio.series
+                }))
+            };
+ 
+            await guardarPlantilla(plantilla);
+ 
+            alert('¡Plantilla guardada!');
+        });
+    });
+
 }
+
+
+
 
 window.onload = async function () {
 

@@ -1,0 +1,341 @@
+.oculto {
+  display: none;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  background-color: #0a0a0a;
+  color: #ffffff;
+  font-family: system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;
+  padding: 2rem 1.5rem;
+  max-width: 700px;
+  margin: 0 auto;
+  position: relative;
+  font-size: 16px;
+}
+
+/* Desplazamiento suave global */
+html {
+  scroll-behavior: smooth;
+}
+
+/* Títulos en verde */
+h1 {
+  color: #00e676;
+  font-size: 2rem;
+  font-weight: 700;
+  border-left: 5px solid #00e676;
+  padding-left: 1rem;
+  margin-bottom: 1.5rem;
+}
+
+/* Enlace "Volver" estilo botón */
+a[href="index.html"] {
+  display: inline-block;
+  background-color: #1f1f1f;
+  border: 1px solid #333;
+  color: white;
+  padding: 10px 20px;
+  font-size: 1rem;
+  font-weight: 500;
+  border-radius: 60px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  text-align: center;
+  text-decoration: none;
+  margin-bottom: 1.5rem;
+}
+
+a[href="index.html"]:hover {
+  background-color: #2a2a2a;
+  border-color: #00e676;
+  color: #00e676;
+}
+
+/* Contenedor de todas las plantillas */
+#All-plantillas {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  margin: 1.5rem 0 2rem 0;
+}
+
+/* ==================== TARJETA DE PLANTILLA ==================== */
+.plantilla {
+  background-color: #121212;
+  border-radius: 20px;
+  padding: 1.2rem 1.5rem;
+  border: 1px solid #2c2c2c;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4);
+  transition: border-color 0.2s ease;
+  position: relative;
+}
+
+.plantilla:hover {
+  border-color: #00e676;
+}
+
+/* Título de la plantilla */
+.plantilla h3 {
+  color: #00e676;
+  font-size: 1.3rem;
+  font-weight: 600;
+  margin-bottom: 0.5rem;
+  padding-right: 2rem;
+}
+
+/* ==================== BOTÓN DE BORRAR PLANTILLA ==================== */
+.borrar-plantilla {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  background-color: #2a1a1a;
+  border: 1px solid #661111;
+  color: #ff5555;
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  cursor: pointer;
+  font-size: 1.2rem;
+  font-weight: bold;
+  transition: all 0.2s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.borrar-plantilla:hover {
+  background-color: #441111;
+  border-color: #ff0000;
+  color: #ff8888;
+  transform: scale(1.05);
+}
+
+/* ==================== BOTÓN MOSTRAR PLANTILLA ==================== */
+.mostrar_ocultar_plantilla {
+  background-color: #1f1f1f;
+  border: 1px solid #333;
+  color: white;
+  padding: 8px 16px;
+  font-size: 1rem;
+  font-weight: 500;
+  border-radius: 40px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  margin-top: 0.5rem;
+}
+
+.mostrar_ocultar_plantilla:hover {
+  background-color: #2a2a2a;
+  border-color: #00e676;
+  color: #00e676;
+}
+
+/* ==================== CONTENIDO DE LA PLANTILLA ==================== */
+.contenido_plantilla {
+  margin-top: 1rem;
+  padding-top: 1rem;
+  border-top: 1px solid #2c2c2c;
+  animation: fadeIn 0.3s ease;
+}
+
+.contenido_plantilla.oculto {
+  display: none;
+}
+
+.contenido_plantilla ul {
+  list-style: none;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  margin-bottom: 1rem;
+  /* Centrar los elementos */
+  align-items: center;
+}
+
+.contenido_plantilla ul > li {
+  background-color: #0a0a0a;
+  padding: 0.75rem;
+  border-radius: 12px;
+  border-left: 3px solid #00e676;
+  font-weight: 600;
+  color: #00e676;
+  /* Centrar el contenido */
+  text-align: center;
+  width: 100%;
+  max-width: 500px;
+}
+
+.contenido_plantilla ul > li ol {
+  list-style: none;
+  padding: 0;
+  margin-top: 0.5rem;
+  padding-left: 0.5rem;
+  /* Centrar las series */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.contenido_plantilla ul > li ol li {
+  color: #cccccc;
+  font-weight: normal;
+  padding: 0.5rem 0;
+  font-size: 1rem;
+  border-bottom: 1px solid #1a1a1a;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  flex-wrap: wrap;
+  width: 100%;
+  max-width: 300px;
+}
+
+.contenido_plantilla ul > li ol li:last-child {
+  border-bottom: none;
+}
+
+/* ==================== INPUTS DE KG Y REPES ==================== */
+.contenido_plantilla input[type="number"] {
+  background-color: #1a1a1a;
+  border: 1px solid #333;
+  color: white;
+  padding: 6px 8px;
+  border-radius: 8px;
+  font-size: 1rem;
+  width: 60px;
+  transition: border-color 0.2s ease;
+  text-align: center;
+}
+
+.contenido_plantilla input[type="number"]:focus {
+  outline: none;
+  border-color: #00e676;
+}
+
+.contenido_plantilla input[type="number"]::-webkit-inner-spin-button,
+.contenido_plantilla input[type="number"]::-webkit-outer-spin-button {
+  opacity: 0.5;
+}
+
+.kg-plantilla {
+  width: 60px;
+}
+
+.repes-plantilla {
+  width: 50px;
+}
+
+/* ==================== BOTÓN GUARDAR CAMBIOS ==================== */
+.guardar-cambios-plantilla {
+  background-color: #00e676;
+  border: none;
+  color: #0a0a0a;
+  padding: 10px 20px;
+  font-size: 1rem;
+  font-weight: 600;
+  border-radius: 40px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  width: 100%;
+  margin-top: 0.5rem;
+}
+
+.guardar-cambios-plantilla:hover {
+  background-color: #00c853;
+  transform: scale(1.01);
+}
+
+/* ==================== ANIMACIONES ==================== */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* ==================== MEDIA QUERIES ==================== */
+@media (max-width: 550px) {
+  body {
+    padding: 1rem;
+  }
+  
+  h1 {
+    font-size: 1.7rem;
+    padding-left: 0.75rem;
+  }
+  
+  .plantilla {
+    padding: 1rem;
+  }
+  
+  .plantilla h3 {
+    font-size: 1.1rem;
+    padding-right: 2rem;
+  }
+  
+  .borrar-plantilla {
+    top: 0.75rem;
+    right: 0.75rem;
+    width: 28px;
+    height: 28px;
+    font-size: 1rem;
+  }
+  
+  .mostrar_ocultar_plantilla {
+    padding: 6px 12px;
+    font-size: 0.9rem;
+  }
+  
+  .contenido_plantilla ul > li {
+    padding: 0.5rem;
+    font-size: 0.9rem;
+    max-width: 100%;
+  }
+  
+  .contenido_plantilla ul > li ol li {
+    font-size: 0.9rem;
+    padding: 0.4rem 0;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.25rem;
+    max-width: 100%;
+  }
+  
+  .contenido_plantilla input[type="number"] {
+    width: 50px;
+    padding: 4px 6px;
+    font-size: 0.9rem;
+  }
+  
+  .kg-plantilla {
+    width: 50px;
+  }
+  
+  .repes-plantilla {
+    width: 45px;
+  }
+  
+  .guardar-cambios-plantilla {
+    padding: 8px 16px;
+    font-size: 0.9rem;
+  }
+}
+
+/* Media query para tablets */
+@media (min-width: 551px) and (max-width: 1024px) {
+  .contenido_plantilla ul > li ol li {
+    gap: 0.5rem;
+  }
+}

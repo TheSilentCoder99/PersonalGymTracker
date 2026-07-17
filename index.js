@@ -162,6 +162,12 @@ boton_crear_entreno.addEventListener('click', function (event) {
 
     let fecha_ingresada = fecha_entreno.value;
     let nombre_ingresado = nombre_entreno.value;
+
+    if(nombre_ingresado === ''){
+        alert('El nombre del entrenamiento no puede estar vacío.');
+        return;
+    }
+
     crearEntrenamiento(nombre_ingresado, fecha_ingresada);
 
     nombre_entreno.value = "";

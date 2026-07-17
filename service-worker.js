@@ -1,4 +1,4 @@
-const CACHE_NAME = "gym-tracker-v7";
+const CACHE_NAME = "gym-tracker-v8";
 
 const ARCHIVOS_CACHE = [
     "./",
@@ -28,6 +28,10 @@ const ARCHIVOS_CACHE = [
         "./manifest.json",
         // MANUAL DE USUARIO
         "./manual_usuario.html",
+        //SECCIÓN PLANTILLAS
+        "seccion_plantillas.html",
+        "seccion_plantillas.js",
+        "estilos_seccion_plantillas.css",
 // Multimedia de ejercicios
 "ejercicios_predeterminados/press_banca.jpeg",
 "ejercicios_predeterminados/banca_inclinada.webp",

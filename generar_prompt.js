@@ -9,35 +9,36 @@ const mensaje_copiado = document.getElementById('mensaje-copiado');
 // RELLENA EL SELECTOR CON TODOS LOS ENTRENAMIENTOS GUARDADOS
 async function cargarSelectorEntrenamientos() {
 
-    const entrenamientos = await obtenerEntrenamientos();
+    const plantillas = await obtenerPlantillas();
 
-    entrenamientos.forEach(entreno => {
+    plantillas.forEach(plantilla => {
         const opcion = document.createElement('option');
-        opcion.value = entreno.id;
-        opcion.textContent = `${entreno.nombre} — ${entreno.fecha}`;
+        opcion.value = plantilla.id;
+        opcion.textContent = `${plantilla.nombre}`;
         selector_entrenamiento.appendChild(opcion);
     });
 }
 
 // CONSTRUYE EL TEXTO DEL PROMPT A PARTIR DE UN ENTRENAMIENTO
-function generarPrompt(entreno) {
+function generarPrompt(plantilla) {
 
     let detalleEjercicios = "";
 
-    entreno.ejercicios.forEach(ejercicio => {
+    plantilla.ejercicios.forEach(ejercicio => {
         detalleEjercicios += `\n- ${ejercicio.nombre}:`;
         ejercicio.series.forEach((serie, i) => {
             detalleEjercicios += `\n   Serie ${i + 1}: ${serie.kg}kg x ${serie.reps} reps`;
         });
     });
 
-    let prompt = `Dame retroalimentación y estadísticas detalladas sobre mi entrenamiento. Compáralo con entrenamientos anteriores que te haya pasado anteriormente.\n\n`;
-    prompt += `Entrenamiento: ${entreno.nombre}\n`;
-    prompt += `Fecha: ${entreno.fecha}\n`;
+    let prompt = `Dame retroalimentación y estadísticas detalladas sobre mi entrenamiento. Compáralo con entrenamientos anteriores que te haya pasado para obtener información sobre mi evolución.\n\n`;
+    prompt += `Entrenamiento: ${plantilla.nombre}\n`;
 
-    if (entreno.nota) {
-        prompt += `Notas: ${entreno.nota}\n`;
-    }
+    // prompt += `Fecha: ${plantilla.fecha}\n`;
+
+    // if (plantilla.nota) {
+    //     prompt += `Notas: ${plantilla.nota}\n`;
+    // }
 
     prompt += `Ejercicios:${detalleEjercicios}`;
 
@@ -55,9 +56,9 @@ selector_entrenamiento.addEventListener('change', async () => {
         return;
     }
 
-    const entreno = await ObtenerEntreno(Number(idSeleccionado));
+    const plantilla = await ObtenerPlantilla(Number(idSeleccionado));
 
-    texto_prompt.textContent = generarPrompt(entreno);
+    texto_prompt.textContent = generarPrompt(plantilla);
 
     contenedor_prompt.classList.remove('oculto');
     mensaje_copiado.classList.add('oculto');
