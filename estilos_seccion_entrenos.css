@@ -322,6 +322,31 @@ a[href="index.html"]:hover {
   transform: scale(1.01);
 }
 
+/* ==================== BOTÓN GUARDAR COMO PLANTILLA ==================== */
+.guardar-como-plantilla {
+  background-color: rgb(13, 115, 69);
+  border: 1px solid #333;
+  color: white;
+  padding: 8px 16px;
+  font-size: 1rem;
+  font-weight: 500;
+  border-radius: 40px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  margin-top: 0.5rem;
+  margin-right: 0.5rem;
+}
+
+.guardar-como-plantilla:hover {
+  background-color: #2a2a2a;
+  border-color: #00e676;
+  color: #00e676;
+}
+
+.guardar-como-plantilla:active {
+  transform: scale(0.98);
+}
+
 /* ==================== FORMULARIO DE EJERCICIOS ==================== */
 .formulario_ejercicios {
   margin-top: 1rem;

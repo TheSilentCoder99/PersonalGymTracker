@@ -1,3 +1,9 @@
+async function guardarNota(idPlantilla, nota) {
+    let plantilla_actual = await ObtenerPlantilla(idPlantilla);
+    plantilla_actual.nota = nota;
+    await guardarPlantilla(plantilla_actual);
+}
+
 async function pintarPlantillas() {
 
     let htmlPlantillas = "";
@@ -55,7 +61,27 @@ async function pintarPlantillas() {
                     <button type="button" class="guardar-cambios-plantilla" data-id="${esta_plantilla.id}">
                     Guardar cambios
                     </button>
+
+                    <button type="button" class="boton_ver_notas">
+             Ver notas
+             </button>
+
+                        <div class="nota_ejercicio oculto">
+                        
+                        <textArea class="nota_entreno"></textArea>
+
+                        <div>
+                        <p class="nota_ejercicio">${esta_plantilla.nota || ""}</p>
+                        </div>
+
+                        <button type="button" class="add_notas" data-id="${esta_plantilla.id}">Añadir nota</button>
+
+                        </div>
+
+
                 </div>
+
+                
 
             </div>
         `;
@@ -64,6 +90,7 @@ async function pintarPlantillas() {
     // PINTO LAS PLANTILLAS EN EL HTML
     const contenedor_plantillas = document.getElementById('All-plantillas');
     contenedor_plantillas.innerHTML = htmlPlantillas;
+
 
     // BOTÓN PARA MOSTRAR U OCULTAR EL CONTENIDO DE UNA PLANTILLA
     const botones_mostrar_plantilla = document.querySelectorAll('.mostrar_ocultar_plantilla');
@@ -125,6 +152,34 @@ async function pintarPlantillas() {
             await guardarPlantilla(plantilla);
 
             alert('¡Cambios guardados!');
+        });
+    });
+
+        const botones_add_notas = document.querySelectorAll('.add_notas');
+        botones_add_notas.forEach(boton_nota => {
+        boton_nota.addEventListener('click', () => {
+
+            let nota = boton_nota.closest('.nota_ejercicio').querySelector('.nota_entreno').value;
+
+            let contenedor = boton_nota.closest('.nota_ejercicio');
+
+            let id = Number(boton_nota.dataset.id);
+
+            guardarNota(id, nota);
+
+            contenedor.querySelector('p').textContent = nota;
+
+        })
+    });
+
+
+        // BOTÓN PARA MOSTRAR U OCULTAR LAS NOTAS
+    let botones_ver_notas = document.querySelectorAll('.boton_ver_notas');
+    botones_ver_notas.forEach(ver_notas => {
+        ver_notas.addEventListener('click', () => {
+            let contenedor_notas = ver_notas.nextElementSibling;
+            contenedor_notas.classList.toggle('oculto');
+
         });
     });
 

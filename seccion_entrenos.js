@@ -52,6 +52,10 @@ async function pintarEntrenamientos() {
         htmlEntrenos += `
             <div class="entrenamiento">
 
+            <button type="button" class="guardar-como-plantilla" data-id="${este_entreno.id}">
+                Guardar como plantilla
+                </button>
+
                 <button class="borrar-entrenamiento" data-id="${este_entreno.id}">
                 x
                 </button>
@@ -61,10 +65,6 @@ async function pintarEntrenamientos() {
 
                 <button class="add-ejercicio" data-id="${este_entreno.id}">
                 Seleccionar ejercicios
-                </button>
-
-                <button type="button" class="guardar-como-plantilla add-ejercicio" data-id="${este_entreno.id}">
-                Guardar como plantilla
                 </button>
 
 
@@ -245,8 +245,6 @@ botones_add_ejercicio.forEach(boton_add_ejercicio => {
 
             });
 
-
-
             let boton_guardar_definitivo = contenedor_formulario_a_rellenar.querySelector('.guardar-ejercicio_definitivo');
 
 
@@ -287,7 +285,6 @@ botones_add_ejercicio.forEach(boton_add_ejercicio => {
                     series
 
                 };
-
 
                 await addEjercicio_Entreno(Number(boton_guardar_definitivo.dataset.id), ejercicio);
 
