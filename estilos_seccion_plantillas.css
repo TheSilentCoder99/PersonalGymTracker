@@ -413,3 +413,74 @@ a[href="index.html"]:hover {
     gap: 0.5rem;
   }
 }
+
+/* ==================== MEDIA QUERIES ==================== */
+
+@media (max-width: 550px) {
+  body {
+    padding: 1rem;
+  }
+  
+  h1 {
+    font-size: 1.7rem;
+    padding-left: 0.75rem;
+  }
+  
+  .plantilla {
+    padding: 1rem;
+  }
+  
+  .plantilla h3 {
+    font-size: 1.1rem;
+    padding-right: 2rem;
+  }
+  
+  .borrar-plantilla {
+    top: 0.75rem;
+    right: 0.75rem;
+    width: 28px;
+    height: 28px;
+    font-size: 1rem;
+  }
+  
+  .mostrar_ocultar_plantilla {
+    padding: 6px 12px;
+    font-size: 0.9rem;
+  }
+  
+  .contenido_plantilla ul > li {
+    padding: 0.5rem;
+    font-size: 0.9rem;
+    max-width: 100%;
+  }
+  
+  .contenido_plantilla ul > li ol li {
+    font-size: 0.9rem;
+    padding: 0.4rem 0;
+    flex-direction: row; /* Cambiado de column a row */
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    max-width: 100%;
+    flex-wrap: wrap; /* Permite que los elementos se envuelvan si no caben */
+  }
+  
+  .contenido_plantilla input[type="number"] {
+    width: 70px;
+    padding: 4px 6px;
+    font-size: 0.9rem;
+  }
+  
+  .kg-plantilla {
+    width: 50px;
+  }
+  
+  .repes-plantilla {
+    width: 45px;
+  }
+  
+  .guardar-cambios-plantilla {
+    padding: 8px 16px;
+    font-size: 0.9rem;
+  }
+}

@@ -25,9 +25,10 @@ async function pintarPlantillas() {
             ejercicio.series.forEach((serie, indiceSerie) => {
                 htmlSeries += `
         <li>
-            <input type="number" min="0" step="0.5" value="${serie.kg}" class="kg-plantilla"
-                data-ejercicio="${indiceEjercicio}" data-serie="${indiceSerie}">
-            kg - <input type="number" min="0" value="${serie.reps}" class="repes-plantilla"
+                <input type="number" min="0" step="0.5" value="${serie.kg}" class="kg-plantilla"
+                data-ejercicio="${indiceEjercicio}" data-serie="${indiceSerie}"> kg -   
+                
+                <input type="number" min="0" value="${serie.reps}" class="repes-plantilla"
                 data-ejercicio="${indiceEjercicio}" data-serie="${indiceSerie}"> reps
         </li>
     `;

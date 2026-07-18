@@ -67,7 +67,6 @@ async function pintarEntrenamientos() {
                 Seleccionar ejercicios
                 </button>
 
-
                 <div class="formulario_ejercicios oculto">
                 </div>
 
@@ -78,8 +77,7 @@ async function pintarEntrenamientos() {
                 <div class="mostrar_ejercicios oculto">
                     <ul>${htmlEjercicios}</ul>
                     </div>
-
-
+                    
                      <button type="button" class="boton_ver_notas">
              Ver notas
              </button>
